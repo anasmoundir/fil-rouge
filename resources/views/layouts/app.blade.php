@@ -12,14 +12,13 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
     <!-- style -->
-    <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">
+
 
 
 
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-    @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/owl.carousel.min.js'])
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body class="font-sans antialiased">

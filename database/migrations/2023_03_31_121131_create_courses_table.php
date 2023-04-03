@@ -18,6 +18,7 @@ return new class extends Migration
             $table -> string('description') -> default('');
             $table -> unsignedBiginteger('category_id');
             $table -> string('image') -> default('');
+            $table -> string('video') -> default('');
             $table -> string('slug') -> unique();
             $table -> boolean('IS_FREE') -> default(true);
             $table -> string('duration')-> default('0');

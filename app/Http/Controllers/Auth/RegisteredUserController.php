@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\View\View;
 
 class RegisteredUserController extends Controller
@@ -43,9 +44,8 @@ class RegisteredUserController extends Controller
         ]);
 
         event(new Registered($user));
-
-        Auth::login($user);
-
+        //if welcomemail is not sent, then the user is not logged in        
         return redirect(RouteServiceProvider::HOME);
     }
+
 }

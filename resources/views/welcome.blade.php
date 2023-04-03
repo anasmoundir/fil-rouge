@@ -839,7 +839,7 @@
     </head>
 
 
-    <nav class="p-5 bg-white shadow md:flex md:items-center md:justify-between">
+    <nav class="p-5  bg-white shadow md:flex md:items-center md:justify-between">
         <div class="flex justify-between items-center ">
             <span class="text-2xl font-[Poppins] cursor-pointer">
                 <img class="h-10 inline" src="{{ asset('images/BrainRose.png') }}">
@@ -852,8 +852,7 @@
                 </span>
             </div>
 
-            <ul
-                class="md:flex md:items-center z-[-1] md:z-auto md:static absolute bg-white w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in duration-500">
+            <ul class="md:flex md:items-center z-50 md:static absolute bg-white w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-16 transition-all ease-in duration-500">
                 <li class="mx-4 my-6 md:my-0">
                     <form>   
                         <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
@@ -895,315 +894,358 @@
         </nav>
      
         <main class="pt-20 mt-4">
-           
-            <div class="flex
-    flex-col ">
-                    
-                <div class="bg-gray-800">
-                      
-                <div class="bg-gray-300 pt-12 pb-6 flex-1">
-                    <div class="container mx-auto">
-                        <div class="flex flex-wrap md:-mx-3">
-                            <div class="md:w-1/2 px-3 mb-6 w-full">
-                                <div class="flex w-full flex-col flex-wrap bg-cover bg-no-repeat bg-center p-5 rounded overflow-hidden"
-                                    style="background-image:url(https://images.unsplash.com/photo-1513438205128-16af16280739?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=935&q=80)">
-                                    <h2 class="text-white text-lg mb-2">Is The Herbal Way The Right Way</h2>
-                                    <p class="text-white opacity-50">Adwords Keyword Research For Beginners</p>
-                                    <div class="flex flex-wrap justify-between items-center mt-auto pt-6">
-                                        <div class="inline-flex items-center">
-                                            <div class="w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
-                                                <img src="https://randomuser.me/api/portraits/women/2.jpg" />
-                                            </div>
-                                            <div class="flex-1 pl-2">
-                                                <h2 class="text-white mb-1">Ollie McBride</h2>
-                                                <p class="text-white opacity-50 text-xs">May 18</p>
+
+                    <div class="flex flex-col ">
+                        <div class="bg-gray-800">
+                            <div class="bg-gray-300 pt-12 pb-6 flex-1">
+                                <div class="container mx-auto">
+                                    <div class="flex flex-wrap md:-mx-3">
+                                        <div class="md:w-1/2 px-3 mb-6 w-full">
+                                            <div class="flex w-full flex-col flex-wrap bg-cover bg-no-repeat bg-center p-5 rounded overflow-hidden"
+                                                style="background-image:url(https://images.unsplash.com/photo-1513438205128-16af16280739?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=935&q=80)">
+                                                <h2 class="text-white text-lg mb-2">Is The Herbal Way The Right Way</h2>
+                                                <p class="text-white opacity-50">Adwords Keyword Research For Beginners
+                                                </p>
+                                                <div class="flex flex-wrap justify-between items-center mt-auto pt-6">
+                                                    <div class="inline-flex items-center">
+                                                        <div
+                                                            class="w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
+                                                            <img src="https://randomuser.me/api/portraits/women/2.jpg" />
+                                                        </div>
+                                                        <div class="flex-1 pl-2">
+                                                            <h2 class="text-white mb-1">Ollie McBride</h2>
+                                                            <p class="text-white opacity-50 text-xs">May 18</p>
+                                                        </div>
+                                                    </div>
+                                                    <span class="text-white opacity-50">
+                                                        <svg class="fill-current w-5 h-5"
+                                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 459 459">
+                                                            <path
+                                                                d="M357 0H102C73.95 0 51 22.95 51 51v408l178.5-76.5L408 459V51c0-28.05-22.95-51-51-51z" />
+                                                        </svg>
+                                                    </span>
+                                                </div>
                                             </div>
                                         </div>
-                                        <span class="text-white opacity-50">
-                                            <svg class="fill-current w-5 h-5" xmlns="http://www.w3.org/2000/svg"
-                                                viewBox="0 0 459 459">
-                                                <path
-                                                    d="M357 0H102C73.95 0 51 22.95 51 51v408l178.5-76.5L408 459V51c0-28.05-22.95-51-51-51z" />
-                                            </svg>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="md:w-1/2 px-3 mb-6 w-full">
-                                <div class="flex w-full h-full flex-wrap bg-gray-800 overflow-hidden rounded">
-                                    <div class="w-2/6">
-                                        <img class="object-cover h-full w-full"
-                                            src="https://images.unsplash.com/photo-1532799755889-1247a1b7f10e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1936&q=80" />
-                                    </div>
-                                    <div class="w-4/6 p-5">
-                                        <h2 class="text-white leading-normal text-lg">How To Boost Your Traffic
-                                            Of Your Blog And Destroy The Competition</h2>
-                                        <div class="flex flex-wrap justify-between items-center mt-6">
-                                            <div class="inline-flex items-center">
-                                                <div class="w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
-                                                    <img src="https://randomuser.me/api/portraits/men/5.jpg" />
+                                        <div class="md:w-1/2 px-3 mb-6 w-full">
+                                            <div
+                                                class="flex w-full h-full flex-wrap bg-gray-800 overflow-hidden rounded">
+                                                <div class="w-2/6">
+                                                    <img class="object-cover h-full w-full"
+                                                        src="https://images.unsplash.com/photo-1532799755889-1247a1b7f10e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1936&q=80" />
                                                 </div>
-                                                <div class="flex-1 pl-2">
-                                                    <h2 class="text-white mb-1">Luke Nunez</h2>
-                                                    <p class="text-white opacity-50 text-xs">May 18</p>
+                                                <div class="w-4/6 p-5">
+                                                    <h2 class="text-white leading-normal text-lg">How To Boost Your
+                                                        Traffic
+                                                        Of Your Blog And Destroy The Competition</h2>
+                                                    <div class="flex flex-wrap justify-between items-center mt-6">
+                                                        <div class="inline-flex items-center">
+                                                            <div
+                                                                class="w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
+                                                                <img
+                                                                    src="https://randomuser.me/api/portraits/men/5.jpg" />
+                                                            </div>
+                                                            <div class="flex-1 pl-2">
+                                                                <h2 class="text-white mb-1">Luke Nunez</h2>
+                                                                <p class="text-white opacity-50 text-xs">May 18</p>
+                                                            </div>
+                                                        </div>
+                                                        <span class="text-white opacity-50">
+                                                            <svg class="fill-current w-5 h-5"
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                viewBox="0 0 459 459">
+                                                                <path
+                                                                    d="M357 0H102C73.95 0 51 22.95 51 51v408l178.5-76.5L408 459V51c0-28.05-22.95-51-51-51z" />
+                                                            </svg>
+                                                        </span>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <span class="text-white opacity-50">
-                                                <svg class="fill-current w-5 h-5" xmlns="http://www.w3.org/2000/svg"
-                                                    viewBox="0 0 459 459">
-                                                    <path
-                                                        d="M357 0H102C73.95 0 51 22.95 51 51v408l178.5-76.5L408 459V51c0-28.05-22.95-51-51-51z" />
-                                                </svg>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="md:w-1/2 px-3 mb-6 w-full">
-                                <div class="flex w-full h-full flex-wrap bg-gray-800 overflow-hidden rounded">
-                                    <div class="w-2/6">
-                                        <img class="object-cover h-full w-full"
-                                            src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80" />
-                                    </div>
-                                    <div class="w-4/6 p-5">
-                                        <h2 class="text-white leading-normal text-lg">How To Boost Your Traffic
-                                            Of Your Blog And Destroy The Competition</h2>
-                                        <div class="flex flex-wrap justify-between items-center mt-6">
-                                            <div class="inline-flex items-center">
-                                                <div class="w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
-                                                    <img src="https://randomuser.me/api/portraits/men/8.jpg" />
-                                                </div>
-                                                <div class="flex-1 pl-2">
-                                                    <h2 class="text-white mb-1">Jonathan Mithu</h2>
-                                                    <p class="text-white opacity-50 text-xs">May 18</p>
-                                                </div>
-                                            </div>
-                                            <span class="text-white opacity-50">
-                                                <svg class="fill-current w-5 h-5" xmlns="http://www.w3.org/2000/svg"
-                                                    viewBox="0 0 459 459">
-                                                    <path
-                                                        d="M357 0H102C73.95 0 51 22.95 51 51v408l178.5-76.5L408 459V51c0-28.05-22.95-51-51-51z" />
-                                                </svg>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="md:w-1/2 px-3 mb-6 w-full">
-                                <div class="flex w-full h-full flex-wrap bg-gray-800 overflow-hidden rounded">
-                                    <div class="w-2/6">
-                                        <img class="object-cover h-full w-full"
-                                            src="https://images.unsplash.com/photo-1556742044-3c52d6e88c62?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80" />
-                                    </div>
-                                    <div class="w-4/6 p-5">
-                                        <h2 class="text-white leading-normal text-lg">How To Boost Your Traffic
-                                            Of Your Blog And Destroy The Competition</h2>
-                                        <div class="flex flex-wrap justify-between items-center mt-6">
-                                            <div class="inline-flex items-center">
-                                                <div class="w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
-                                                    <img src="https://randomuser.me/api/portraits/men/11.jpg" />
-                                                </div>
-                                                <div class="flex-1 pl-2">
-                                                    <h2 class="text-white mb-1">Chris Sonne</h2>
-                                                    <p class="text-white opacity-50 text-xs">May 18</p>
-                                                </div>
-                                            </div>
-                                            <span class="text-white opacity-50">
-                                                <svg class="fill-current w-5 h-5" xmlns="http://www.w3.org/2000/svg"
-                                                    viewBox="0 0 459 459">
-                                                    <path
-                                                        d="M357 0H102C73.95 0 51 22.95 51 51v408l178.5-76.5L408 459V51c0-28.05-22.95-51-51-51z" />
-                                                </svg>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="md:w-1/2 px-3 mb-6 w-full">
-                                <div class="flex w-full h-full flex-wrap bg-gray-800 overflow-hidden rounded">
-                                    <div class="w-2/6">
-                                        <img class="object-cover h-full w-full"
-                                            src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjU1MzA3fQ&auto=format&fit=crop&w=2250&q=80" />
-                                    </div>
-                                    <div class="w-4/6 p-5">
-                                        <h2 class="text-white leading-normal text-lg">How To Boost Your Traffic
-                                            Of Your Blog And Destroy The Competition</h2>
-                                        <div class="flex flex-wrap justify-between items-center mt-6">
-                                            <div class="inline-flex items-center">
-                                                <div class="w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
-                                                    <img src="https://randomuser.me/api/portraits/men/33.jpg" />
-                                                </div>
-                                                <div class="flex-1 pl-2">
-                                                    <h2 class="text-white mb-1">Mike Olle</h2>
-                                                    <p class="text-white opacity-50 text-xs">May 18</p>
-                                                </div>
-                                            </div>
-                                            <span class="text-white opacity-50">
-                                                <svg class="fill-current w-5 h-5" xmlns="http://www.w3.org/2000/svg"
-                                                    viewBox="0 0 459 459">
-                                                    <path
-                                                        d="M357 0H102C73.95 0 51 22.95 51 51v408l178.5-76.5L408 459V51c0-28.05-22.95-51-51-51z" />
-                                                </svg>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="md:w-1/2 px-3 mb-6 w-full">
-                                <div class="flex w-full h-full flex-col flex-wrap bg-cover bg-no-repeat bg-center p-5 rounded overflow-hidden"
-                                    style="background-image:url(https://images.unsplash.com/photo-1539623704225-548826dc5a08?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80)">
-                                    <h2 class="text-white text-lg mb-2">Is The Herbal Way The Right Way</h2>
-                                    <p class="text-white opacity-50">Adwords Keyword Research For Beginners</p>
-                                    <div class="flex flex-wrap justify-between items-center mt-auto pt-6">
-                                        <div class="inline-flex items-center">
-                                            <div class="w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
-                                                <img src="https://randomuser.me/api/portraits/women/2.jpg" />
-                                            </div>
-                                            <div class="flex-1 pl-2">
-                                                <h2 class="text-white mb-1">Jack Roath</h2>
-                                                <p class="text-white opacity-50 text-xs">May 18</p>
                                             </div>
                                         </div>
-                                        <span class="text-white opacity-50">
-                                            <svg class="fill-current w-5 h-5" xmlns="http://www.w3.org/2000/svg"
-                                                viewBox="0 0 459 459">
-                                                <path
-                                                    d="M357 0H102C73.95 0 51 22.95 51 51v408l178.5-76.5L408 459V51c0-28.05-22.95-51-51-51z" />
-                                            </svg>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="lg:w-1/4 md:w-1/2 px-3 mb-6">
-                                <div class="flex w-full h-full flex-wrap bg-gray-800 overflow-hidden rounded">
-                                    <div class="w-full">
-                                        <img class="object-cover h-full w-full"
-                                            src="https://images.unsplash.com/photo-1556909190-eccf4a8bf97a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80" />
-                                    </div>
-                                    <div class="w-full p-5">
-                                        <h2 class="text-white leading-normal text-lg">How To Boost Your Traffic
-                                            Of Your Blog And Destroy The Competition</h2>
-                                        <div class="flex flex-wrap justify-between items-center mt-6">
-                                            <div class="inline-flex items-center">
-                                                <div class="w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
-                                                    <img src="https://randomuser.me/api/portraits/men/22.jpg" />
+                                        <div class="md:w-1/2 px-3 mb-6 w-full">
+                                            <div
+                                                class="flex w-full h-full flex-wrap bg-gray-800 overflow-hidden rounded">
+                                                <div class="w-2/6">
+                                                    <img class="object-cover h-full w-full"
+                                                        src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80" />
                                                 </div>
-                                                <div class="flex-1 pl-2">
-                                                    <h2 class="text-white mb-1">Chris Sonne</h2>
-                                                    <p class="text-white opacity-50 text-xs">May 18</p>
-                                                </div>
-                                            </div>
-                                            <span class="text-white opacity-50">
-                                                <svg class="fill-current w-5 h-5" xmlns="http://www.w3.org/2000/svg"
-                                                    viewBox="0 0 459 459">
-                                                    <path
-                                                        d="M357 0H102C73.95 0 51 22.95 51 51v408l178.5-76.5L408 459V51c0-28.05-22.95-51-51-51z" />
-                                                </svg>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="lg:w-1/4 md:w-1/2 px-3 mb-6">
-                                <div class="flex w-full h-full flex-wrap bg-gray-800 overflow-hidden rounded">
-                                    <div class="w-full">
-                                        <img class="object-cover h-full w-full"
-                                            src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2247&q=80" />
-                                    </div>
-                                    <div class="w-full p-5">
-                                        <h2 class="text-white leading-normal text-lg">How To Boost Your Traffic
-                                            Of Your Blog And Destroy The Competition</h2>
-                                        <div class="flex flex-wrap justify-between items-center mt-6">
-                                            <div class="inline-flex items-center">
-                                                <div class="w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
-                                                    <img src="https://randomuser.me/api/portraits/men/23.jpg" />
-                                                </div>
-                                                <div class="flex-1 pl-2">
-                                                    <h2 class="text-white mb-1">Chris Sonne</h2>
-                                                    <p class="text-white opacity-50 text-xs">May 18</p>
+                                                <div class="w-4/6 p-5">
+                                                    <h2 class="text-white leading-normal text-lg">How To Boost Your
+                                                        Traffic
+                                                        Of Your Blog And Destroy The Competition</h2>
+                                                    <div class="flex flex-wrap justify-between items-center mt-6">
+                                                        <div class="inline-flex items-center">
+                                                            <div
+                                                                class="w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
+                                                                <img
+                                                                    src="https://randomuser.me/api/portraits/men/8.jpg" />
+                                                            </div>
+                                                            <div class="flex-1 pl-2">
+                                                                <h2 class="text-white mb-1">Jonathan Mithu</h2>
+                                                                <p class="text-white opacity-50 text-xs">May 18</p>
+                                                            </div>
+                                                        </div>
+                                                        <span class="text-white opacity-50">
+                                                            <svg class="fill-current w-5 h-5"
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                viewBox="0 0 459 459">
+                                                                <path
+                                                                    d="M357 0H102C73.95 0 51 22.95 51 51v408l178.5-76.5L408 459V51c0-28.05-22.95-51-51-51z" />
+                                                            </svg>
+                                                        </span>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <span class="text-white opacity-50">
-                                                <svg class="fill-current w-5 h-5" xmlns="http://www.w3.org/2000/svg"
-                                                    viewBox="0 0 459 459">
-                                                    <path
-                                                        d="M357 0H102C73.95 0 51 22.95 51 51v408l178.5-76.5L408 459V51c0-28.05-22.95-51-51-51z" />
-                                                </svg>
-                                            </span>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="lg:w-1/4 md:w-1/2 px-3 mb-6">
-                                <div class="flex w-full h-full flex-wrap bg-gray-800 overflow-hidden rounded">
-                                    <div class="w-full">
-                                        <img class="object-cover h-full w-full"
-                                            src="https://images.unsplash.com/photo-1565388161858-5ae922cbfde0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80" />
-                                    </div>
-                                    <div class="w-full p-5">
-                                        <h2 class="text-white leading-normal text-lg">How To Boost Your Traffic
-                                            Of Your Blog And Destroy The Competition</h2>
-                                        <div class="flex flex-wrap justify-between items-center mt-6">
-                                            <div class="inline-flex items-center">
-                                                <div class="w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
-                                                    <img src="https://randomuser.me/api/portraits/men/25.jpg" />
+                                        <div class="md:w-1/2 px-3 mb-6 w-full">
+                                            <div
+                                                class="flex w-full h-full flex-wrap bg-gray-800 overflow-hidden rounded">
+                                                <div class="w-2/6">
+                                                    <img class="object-cover h-full w-full"
+                                                        src="https://images.unsplash.com/photo-1556742044-3c52d6e88c62?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80" />
                                                 </div>
-                                                <div class="flex-1 pl-2">
-                                                    <h2 class="text-white mb-1">Chris Sonne</h2>
-                                                    <p class="text-white opacity-50 text-xs">May 18</p>
+                                                <div class="w-4/6 p-5">
+                                                    <h2 class="text-white leading-normal text-lg">How To Boost Your
+                                                        Traffic
+                                                        Of Your Blog And Destroy The Competition</h2>
+                                                    <div class="flex flex-wrap justify-between items-center mt-6">
+                                                        <div class="inline-flex items-center">
+                                                            <div
+                                                                class="w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
+                                                                <img
+                                                                    src="https://randomuser.me/api/portraits/men/11.jpg" />
+                                                            </div>
+                                                            <div class="flex-1 pl-2">
+                                                                <h2 class="text-white mb-1">Chris Sonne</h2>
+                                                                <p class="text-white opacity-50 text-xs">May 18</p>
+                                                            </div>
+                                                        </div>
+                                                        <span class="text-white opacity-50">
+                                                            <svg class="fill-current w-5 h-5"
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                viewBox="0 0 459 459">
+                                                                <path
+                                                                    d="M357 0H102C73.95 0 51 22.95 51 51v408l178.5-76.5L408 459V51c0-28.05-22.95-51-51-51z" />
+                                                            </svg>
+                                                        </span>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <span class="text-white opacity-50">
-                                                <svg class="fill-current w-5 h-5" xmlns="http://www.w3.org/2000/svg"
-                                                    viewBox="0 0 459 459">
-                                                    <path
-                                                        d="M357 0H102C73.95 0 51 22.95 51 51v408l178.5-76.5L408 459V51c0-28.05-22.95-51-51-51z" />
-                                                </svg>
-                                            </span>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="lg:w-1/4 md:w-1/2 px-3 mb-6">
-                                <div class="flex w-full h-full flex-wrap bg-gray-800 overflow-hidden rounded">
-                                    <div class="w-full">
-                                        <img class="object-cover h-full w-full"
-                                            src="https://images.unsplash.com/photo-1481277542470-605612bd2d61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2195&q=80" />
-                                    </div>
-                                    <div class="w-full p-5">
-                                        <h2 class="text-white leading-normal text-lg">How To Boost Your Traffic
-                                            Of Your Blog And Destroy The Competition</h2>
-                                        <div class="flex flex-wrap justify-between items-center mt-6">
-                                            <div class="inline-flex items-center">
-                                                <div class="w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
-                                                    <img src="https://randomuser.me/api/portraits/men/29.jpg" />
+                                        <div class="md:w-1/2 px-3 mb-6 w-full">
+                                            <div
+                                                class="flex w-full h-full flex-wrap bg-gray-800 overflow-hidden rounded">
+                                                <div class="w-2/6">
+                                                    <img class="object-cover h-full w-full"
+                                                        src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjU1MzA3fQ&auto=format&fit=crop&w=2250&q=80" />
                                                 </div>
-                                                <div class="flex-1 pl-2">
-                                                    <h2 class="text-white mb-1">Chris Sonne</h2>
-                                                    <p class="text-white opacity-50 text-xs">May 18</p>
+                                                <div class="w-4/6 p-5">
+                                                    <h2 class="text-white leading-normal text-lg">How To Boost Your
+                                                        Traffic
+                                                        Of Your Blog And Destroy The Competition</h2>
+                                                    <div class="flex flex-wrap justify-between items-center mt-6">
+                                                        <div class="inline-flex items-center">
+                                                            <div
+                                                                class="w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
+                                                                <img
+                                                                    src="https://randomuser.me/api/portraits/men/33.jpg" />
+                                                            </div>
+                                                            <div class="flex-1 pl-2">
+                                                                <h2 class="text-white mb-1">Mike Olle</h2>
+                                                                <p class="text-white opacity-50 text-xs">May 18</p>
+                                                            </div>
+                                                        </div>
+                                                        <span class="text-white opacity-50">
+                                                            <svg class="fill-current w-5 h-5"
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                viewBox="0 0 459 459">
+                                                                <path
+                                                                    d="M357 0H102C73.95 0 51 22.95 51 51v408l178.5-76.5L408 459V51c0-28.05-22.95-51-51-51z" />
+                                                            </svg>
+                                                        </span>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <span class="text-white opacity-50">
-                                                <svg class="fill-current w-5 h-5" xmlns="http://www.w3.org/2000/svg"
-                                                    viewBox="0 0 459 459">
-                                                    <path
-                                                        d="M357 0H102C73.95 0 51 22.95 51 51v408l178.5-76.5L408 459V51c0-28.05-22.95-51-51-51z" />
-                                                </svg>
-                                            </span>
                                         </div>
+                                        <div class="md:w-1/2 px-3 mb-6 w-full">
+                                            <div class="flex w-full h-full flex-col flex-wrap bg-cover bg-no-repeat bg-center p-5 rounded overflow-hidden"
+                                                style="background-image:url(https://images.unsplash.com/photo-1539623704225-548826dc5a08?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80)">
+                                                <h2 class="text-white text-lg mb-2">Is The Herbal Way The Right Way
+                                                </h2>
+                                                <p class="text-white opacity-50">Adwords Keyword Research For Beginners
+                                                </p>
+                                                <div class="flex flex-wrap justify-between items-center mt-auto pt-6">
+                                                    <div class="inline-flex items-center">
+                                                        <div
+                                                            class="w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
+                                                            <img
+                                                                src="https://randomuser.me/api/portraits/women/2.jpg" />
+                                                        </div>
+                                                        <div class="flex-1 pl-2">
+                                                            <h2 class="text-white mb-1">Jack Roath</h2>
+                                                            <p class="text-white opacity-50 text-xs">May 18</p>
+                                                        </div>
+                                                    </div>
+                                                    <span class="text-white opacity-50">
+                                                        <svg class="fill-current w-5 h-5"
+                                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 459 459">
+                                                            <path
+                                                                d="M357 0H102C73.95 0 51 22.95 51 51v408l178.5-76.5L408 459V51c0-28.05-22.95-51-51-51z" />
+                                                        </svg>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="lg:w-1/4 md:w-1/2 px-3 mb-6">
+                                            <div
+                                                class="flex w-full h-full flex-wrap bg-gray-800 overflow-hidden rounded">
+                                                <div class="w-full">
+                                                    <img class="object-cover h-full w-full"
+                                                        src="https://images.unsplash.com/photo-1556909190-eccf4a8bf97a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80" />
+                                                </div>
+                                                <div class="w-full p-5">
+                                                    <h2 class="text-white leading-normal text-lg">How To Boost Your
+                                                        Traffic
+                                                        Of Your Blog And Destroy The Competition</h2>
+                                                    <div class="flex flex-wrap justify-between items-center mt-6">
+                                                        <div class="inline-flex items-center">
+                                                            <div
+                                                                class="w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
+                                                                <img
+                                                                    src="https://randomuser.me/api/portraits/men/22.jpg" />
+                                                            </div>
+                                                            <div class="flex-1 pl-2">
+                                                                <h2 class="text-white mb-1">Chris Sonne</h2>
+                                                                <p class="text-white opacity-50 text-xs">May 18</p>
+                                                            </div>
+                                                        </div>
+                                                        <span class="text-white opacity-50">
+                                                            <svg class="fill-current w-5 h-5"
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                viewBox="0 0 459 459">
+                                                                <path
+                                                                    d="M357 0H102C73.95 0 51 22.95 51 51v408l178.5-76.5L408 459V51c0-28.05-22.95-51-51-51z" />
+                                                            </svg>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="lg:w-1/4 md:w-1/2 px-3 mb-6">
+                                            <div
+                                                class="flex w-full h-full flex-wrap bg-gray-800 overflow-hidden rounded">
+                                                <div class="w-full">
+                                                    <img class="object-cover h-full w-full"
+                                                        src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2247&q=80" />
+                                                </div>
+                                                <div class="w-full p-5">
+                                                    <h2 class="text-white leading-normal text-lg">How To Boost Your
+                                                        Traffic
+                                                        Of Your Blog And Destroy The Competition</h2>
+                                                    <div class="flex flex-wrap justify-between items-center mt-6">
+                                                        <div class="inline-flex items-center">
+                                                            <div
+                                                                class="w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
+                                                                <img
+                                                                    src="https://randomuser.me/api/portraits/men/23.jpg" />
+                                                            </div>
+                                                            <div class="flex-1 pl-2">
+                                                                <h2 class="text-white mb-1">Chris Sonne</h2>
+                                                                <p class="text-white opacity-50 text-xs">May 18</p>
+                                                            </div>
+                                                        </div>
+                                                        <span class="text-white opacity-50">
+                                                            <svg class="fill-current w-5 h-5"
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                viewBox="0 0 459 459">
+                                                                <path
+                                                                    d="M357 0H102C73.95 0 51 22.95 51 51v408l178.5-76.5L408 459V51c0-28.05-22.95-51-51-51z" />
+                                                            </svg>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="lg:w-1/4 md:w-1/2 px-3 mb-6">
+                                            <div
+                                                class="flex w-full h-full flex-wrap bg-gray-800 overflow-hidden rounded">
+                                                <div class="w-full">
+                                                    <img class="object-cover h-full w-full"
+                                                        src="https://images.unsplash.com/photo-1565388161858-5ae922cbfde0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80" />
+                                                </div>
+                                                <div class="w-full p-5">
+                                                    <h2 class="text-white leading-normal text-lg">How To Boost Your
+                                                        Traffic
+                                                        Of Your Blog And Destroy The Competition</h2>
+                                                    <div class="flex flex-wrap justify-between items-center mt-6">
+                                                        <div class="inline-flex items-center">
+                                                            <div
+                                                                class="w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
+                                                                <img
+                                                                    src="https://randomuser.me/api/portraits/men/25.jpg" />
+                                                            </div>
+                                                            <div class="flex-1 pl-2">
+                                                                <h2 class="text-white mb-1">Chris Sonne</h2>
+                                                                <p class="text-white opacity-50 text-xs">May 18</p>
+                                                            </div>
+                                                        </div>
+                                                        <span class="text-white opacity-50">
+                                                            <svg class="fill-current w-5 h-5"
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                viewBox="0 0 459 459">
+                                                                <path
+                                                                    d="M357 0H102C73.95 0 51 22.95 51 51v408l178.5-76.5L408 459V51c0-28.05-22.95-51-51-51z" />
+                                                            </svg>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="lg:w-1/4 md:w-1/2 px-3 mb-6">
+                                            <div
+                                                class="flex w-full h-full flex-wrap bg-gray-800 overflow-hidden rounded">
+                                                <div class="w-full">
+                                                    <img class="object-cover h-full w-full"
+                                                        src="https://images.unsplash.com/photo-1481277542470-605612bd2d61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2195&q=80" />
+                                                </div>
+                                                <div class="w-full p-5">
+                                                    <h2 class="text-white leading-normal text-lg">How To Boost Your
+                                                        Traffic
+                                                        Of Your Blog And Destroy The Competition</h2>
+                                                    <div class="flex flex-wrap justify-between items-center mt-6">
+                                                        <div class="inline-flex items-center">
+                                                            <div
+                                                                class="w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
+                                                                <img
+                                                                    src="https://randomuser.me/api/portraits/men/29.jpg" />
+                                                            </div>
+                                                            <div class="flex-1 pl-2">
+                                                                <h2 class="text-white mb-1">Chris Sonne</h2>
+                                                                <p class="text-white opacity-50 text-xs">May 18</p>
+                                                            </div>
+                                                        </div>
+                                                        <span class="text-white opacity-50">
+                                                            <svg class="fill-current w-5 h-5"
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                viewBox="0 0 459 459">
+                                                                <path
+                                                                    d="M357 0H102C73.95 0 51 22.95 51 51v408l178.5-76.5L408 459V51c0-28.05-22.95-51-51-51z" />
+                                                            </svg>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-center">
+                                        <button
+                                            class="border border-gray-600 text-gray-600 px-4 py-2 rounded-full hover:bg-gray-600 hover:text-white">Show
+                                            More</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="text-center">
-                            <button
-                                class="border border-gray-600 text-gray-600 px-4 py-2 rounded-full hover:bg-gray-600 hover:text-white">Show
-                                More</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </main>
+                        </main>
 </body>
 
 </html>
@@ -1214,7 +1256,7 @@
     function Menu(e) {
         let list = document.querySelector('ul');
         e.name === 'menu' ? (e.name = "close", list.classList.add('top-[80px]'), list.classList.add('opacity-100')) : (e
-            .name = "menu", list.classList.remove('top-[80px]'), list.classList.remove('opacity-100'))
+            .name = "menu", list.classList.remove('top-[120px]'), list.classList.remove('opacity-100'))
     }
     const navbar = document.querySelector('nav');
     let prevScrollPos = window.pageYOffset;
@@ -1227,22 +1269,22 @@
         }
         prevScrollPos = currentScrollPos;
     });
-    $(document).ready(function () {
-        $('.owl-carousel').owlCarousel({
-            loop: true,
-            margin: 10,
-            nav: true,
-            responsive: {
-                0: {
-                    items: 1
-                },
-                600: {
-                    items: 3
-                },
-                1000: {
-                    items: 5
-                }
-            }
-        });
-    });
+    // $(document).ready(function() {
+    //     $('.owl-carousel').owlCarousel({
+    //         loop: true,
+    //         margin: 10,
+    //         nav: true,
+    //         responsive: {
+    //             0: {
+    //                 items: 1
+    //             },
+    //             600: {
+    //                 items: 3
+    //             },
+    //             1000: {
+    //                 items: 5
+    //             }
+    //         }
+    //     });
+    // });
 </script>
