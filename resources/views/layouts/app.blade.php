@@ -11,14 +11,12 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-    <!-- style -->
 
-
-
-
-    <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <!-- Vite runtime script -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <!-- Vite-generated CSS -->
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 </head>
 
 <body class="font-sans antialiased">
@@ -34,11 +32,17 @@
             </header>
         @endif
 
+        <!-- Vue dashboard -->
+        <div id="vue-dashboard"></div>
+
         <!-- Page Content -->
         <main>
             {{ $slot }}
         </main>
     </div>
+
+    <!-- Vite-generated JavaScript -->
+    <script type="module" src="{{ mix('js/app.js') }}"></script>
 </body>
 
 </html>

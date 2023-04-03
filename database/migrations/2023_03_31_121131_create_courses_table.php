@@ -25,6 +25,7 @@ return new class extends Migration
             $table -> string('level')-> default('beginner');
             $table -> string('language')-> default('en');
             $table -> foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table ->softDeletes();
             $table->timestamps();
         });
     }

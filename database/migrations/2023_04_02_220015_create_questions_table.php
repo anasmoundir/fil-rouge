@@ -17,6 +17,7 @@ return new class extends Migration
             $table->boolean('is_correct');
             $table->unsignedBigInteger('quizz_id');
             $table->foreign('quizz_id')->references('id')->on('quizzs')->onDelete('cascade');
+            $table ->softDeletes();
             $table->timestamps();
         });
     }
