@@ -3,6 +3,5 @@
         <li>
             <x-sidebar-link></x-sidebar-link>
         </li>
-        <!-- Sidebar Links... -->
     </ul>
 </nav>
