@@ -36,6 +36,7 @@
               <li class="mx-4 my-6 md:my-0">
                   <a href="#" class="text-xl hover:text-cyan-500 duration-500">BLOG'S</a>
               </li>
+              @guest
               <li class="mx-4 my-6 md:my-0">
                   @if (Route::has('login'))
                       <a href="{{ route('login') }}"
@@ -48,6 +49,8 @@
                       <a href="{{ route('register') }}"
                           class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">Register</a> @endif
               </li>
+              @endguest
+              @auth
               <li class="mx-4
                 my-6 md:my-0">
                 <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
@@ -91,6 +94,7 @@
                         </x-dropdown>
                     </div>
                 </li>
+                 @endauth
                 </ul>
 </nav>
 <script>
