@@ -29,10 +29,8 @@
                 </div>
             </header>
         @endif
-
         <!-- Vue dashboard -->
         <div id="vue-dashboard"></div>
-
         <!-- Page Content -->
         <main>
             {{ $slot }}
@@ -42,5 +40,4 @@
     <!-- Vite-generated JavaScript -->
     <script type="module" src="{{ mix('js/app.js') }}"></script>
 </body>
-
 </html>

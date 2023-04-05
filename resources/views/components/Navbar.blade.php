@@ -58,41 +58,38 @@
                 </x-nav-link>
                 </li>
                 <li class="mx-4 my-6 md:my-0">
-                    <div class="hidden sm:flex sm:items-center sm:ml-6">
-                        <x-dropdown align="right" width="48">
-                            <x-slot name="trigger">
-                                <button
-                                    class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
-                                    <div>{{ Auth::user()->name }}</div>
-                                    <div class="ml-1">
-                                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
-                                            viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd"
-                                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                                clip-rule="evenodd" />
-                                        </svg>
-                                    </div>
-                                </button>
-                            </x-slot>
+                    <div class="relative" x-data="{ isOpen: false }">
+                        <button @click="isOpen = !isOpen" class="p-1 bg-gray-200 rounded-full focus:outline-none focus:ring">
+                            <img class="object-cover w-8 h-8 rounded-full"
+                            src="https://avatars0.githubusercontent.com/u/57622665?s=460&u=8f581f4c4acd4c18c33a87b3e6476112325e8b38&v=4"
+                             />
+                          <div class="ml-1">
 
-                            <x-slot name="content">
-                                <x-dropdown-link :href="route('profile.edit')">
-                                    {{ __('Profile') }}
-                                </x-dropdown-link>
-
-                                <!-- Authentication -->
-                                <form method="POST" action="{{ route('logout') }}">
-                                    @csrf
-
-                                    <x-dropdown-link :href="route('logout')"
-                                        onclick="event.preventDefault();
-                                                    this.closest('form').submit();">
-                                        {{ __('Log Out') }}
-                                    </x-dropdown-link>
-                                </form>
-                            </x-slot>
-                        </x-dropdown>
-                    </div>
+                          </div>
+                        </button>
+                        <!-- green dot -->
+                        <div class="absolute right-0 p-1 bg-green-400 rounded-full bottom-3 animate-ping"></div>
+                        <div class="absolute right-0 p-1 bg-green-400 border border-white rounded-full bottom-3"></div>
+                      
+                        <!-- Dropdown card -->
+                        <div @click.away="isOpen = false" x-show.transition.opacity="isOpen" class="absolute mt-3 transform -translate-x-full bg-white rounded-md shadow-lg min-w-max">
+                          <div class="flex flex-col p-4 space-y-1 font-medium border-b">
+                            <span class="text-gray-800">{{ Auth::user()->name }}</span>
+                            <span class="text-sm text-gray-400">{{ Auth::user()->email }}</span>
+                          </div>
+                          <ul class="flex flex-col p-2 my-2 space-y-1">
+                            <li>
+                              <a href="{{ route('profile.edit') }}" class="block px-2 py-1 transition rounded-md hover:bg-gray-100">{{ __('Profile') }}</a>
+                            </li>
+                            <li>
+                              <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <a href="#" onclick="event.preventDefault(); this.closest('form').submit();" class="block px-2 py-1 transition rounded-md hover:bg-gray-100">{{ __('Log Out') }}</a>
+                              </form>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
                 </li>
                  @endauth
                 </ul>
