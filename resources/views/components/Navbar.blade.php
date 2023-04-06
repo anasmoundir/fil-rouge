@@ -1,11 +1,8 @@
-
-
 <nav class="p-5  bg-white shadow md:flex md:items-center md:justify-between">
     <div class="flex justify-between items-center ">
         <span class="text-2xl font-[Poppins] cursor-pointer">
             <img class="h-10 inline" src="{{ asset('images/BrainRose.png') }}">
-            BrainRose <span
-                class="text-cyan-400 hover@author">.com</span>
+            BrainRose <span class="text-cyan-400 hover@author">.com</span>
               </span>
 
               <span class="text-3xl cursor-pointer mx-2 md:hidden block">
@@ -52,6 +49,7 @@
                           class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">Register</a> @endif
               </li>
               @endguest
+
               @auth
               <li class="mx-4
                 my-6 md:my-0">
@@ -84,16 +82,15 @@
                               <a href="{{ route('profile.edit') }}" class="block px-2 py-1 transition rounded-md hover:bg-gray-100">{{ __('Profile') }}</a>
                             </li>
                             <li>
-                              <form method="POST" action="{{ route('logout') }}">
-                                @csrf
-                                <a href="#" onclick="event.preventDefault(); this.closest('form').submit();" class="block px-2 py-1 transition rounded-md hover:bg-gray-100">{{ __('Log Out') }}</a>
-                              </form>
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <a href="#" onclick="event.preventDefault(); this.closest('form').submit();" class="block px-2 py-1 transition rounded-md hover:bg-gray-100">{{ __('Log Out') }}</a>
+                                </form>
                             </li>
                           </ul>
                         </div>
                       </div>
-                </li>
-                 @endauth
+                </li> @endauth
                 </ul>
 </nav>
 <script>

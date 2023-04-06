@@ -259,7 +259,7 @@
             </header>
             <!-- Main content -->
 
-            <div class="flex flex-col flex-1 w-full">
+            <div class="flex flex-col flex-1 w-full ">
 
                 <!-- the main should be included here -->
               @include('admin.partials.categories')
