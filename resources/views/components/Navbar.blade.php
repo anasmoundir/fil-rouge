@@ -10,7 +10,7 @@
               </span>
           </div>
 
-          <ul class="md:flex md:items-center z-50 md:static absolute bg-white w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-16 transition-all ease-in duration-500">
+          <ul class="md:flex md:items-center md:static absolute bg-white w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-16 transition-all ease-in duration-500">
               <li class="mx-4 my-6 md:my-0">
                   <form>   
                       <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
@@ -46,7 +46,8 @@
               <li class="mx-4 my-6 md:my-0">
                   @if (Route::has('register'))
                       <a href="{{ route('register') }}"
-                          class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">Register</a> @endif
+                          class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">Register</a> 
+                @endif
               </li>
               @endguest
 
@@ -90,7 +91,8 @@
                           </ul>
                         </div>
                       </div>
-                </li> @endauth
+                </li>
+                @endauth
                 </ul>
 </nav>
 <script>

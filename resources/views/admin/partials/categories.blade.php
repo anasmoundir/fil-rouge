@@ -18,19 +18,17 @@
                                 ID</th>
                             <th
                                 class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
-                                Title</th>
+                                Name</th>
                             <th
                                 class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
-                                Description</th>
+                                Image</th>
                             <th
                                 class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
                                 Created_At</th>
+
+                            </th>
                             <th class="px-6 py-3 text-sm text-left text-gray-500 border-b border-gray-200 bg-gray-50"
                                 colspan="3">
-                              </th>
-                            <th class="px-6 py-3 text-sm text-left text-gray-500 border-b border-gray-200 bg-gray-50" colspan="3">
-                           
-
                                 Action</th>
                         </tr>
                     </thead>
@@ -67,7 +65,6 @@
                                             d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                                     </svg>
                                 </a>
-
                             <td
                                 class="text-sm font-medium leading-5 text-center whitespace-no-wrap border-b border-gray-200 ">
                                 <a href="#" class="text-gray-600 hover:text-gray-900">
@@ -79,7 +76,6 @@
                                             d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                                     </svg>
                                 </a>
-
                             </td>
 
                             </td>
@@ -93,28 +89,27 @@
 
                             </td>
                         </tr>
+
+
                         <tr>
                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                 <div class="flex items-center">
                                     2
                                 </div>
-
                             </td>
 
                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                <div class="text-sm leading-5 text-gray-900">Create CURD with laravel
+                                <div class="text-sm leading-5 text-gray-900">Create crud with tailwind v3
                                 </div>
                             </td>
 
                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit...</p>
                             </td>
-
                             <td
                                 class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
                                 <span>12/12/22</span>
                             </td>
-
                             <td
                                 class="text-sm font-medium leading-5 text-center whitespace-no-wrap border-b border-gray-200 ">
                                 <a href="#" class="text-indigo-600 hover:text-indigo-900">
@@ -124,9 +119,6 @@
                                             d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                                     </svg>
                                 </a>
-
-                            </td>
-
                             <td
                                 class="text-sm font-medium leading-5 text-center whitespace-no-wrap border-b border-gray-200 ">
                                 <a href="#" class="text-gray-600 hover:text-gray-900">
@@ -138,6 +130,8 @@
                                             d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                                     </svg>
                                 </a>
+
+                            </td>
 
                             </td>
                             <td class="text-sm font-medium leading-5 whitespace-no-wrap border-b border-gray-200 ">
@@ -172,33 +166,39 @@
                     </div>
 
                     <div class="w-full px-6 py-4 bg-white rounded shadow-md ring-1 ring-gray-900/10">
-                        <form action="#">
-                              @csrf
-                              <!-- Title -->
-                              <div>
-                                  <label class="block text-sm font-bold text-gray-700" for="name">
-                                      name
-                                  </label>
-                                  <input class="block w-full mt-1 border-gray-300 rounded-md shadow-sm placeholder:text-gray-400 placeholder:text-right focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                                      type="text" name="title" placeholder="180" />
-                              </div>
-                              <!-- Description -->
-                              <div class="mt-4">
-                                  <label class="block text-sm font-bold text-gray-700" for="description">
-                                      Description
-                                  </label>
-                                  <textarea name="description" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm placeholder:text-gray-400 placeholder:text-right focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                                      rows="4" placeholder="400"></textarea>
-                              </div>
-                              <div class="flex items-center justify-start mt-4 gap-x-2">
-                                  <button type="submit" class="px-6 py-2 text-sm font-semibold rounded-md shadow-md text-sky-100 bg-sky-500 hover:bg-sky-700 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300">
-                                      Save
-                                  </button>
-                                  <button type="button" class="px-6 py-2 text-sm font-semibold text-gray-100 bg-gray-400 rounded-md shadow-md hover:bg-gray-600 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300" id="closeBtn">
-                                      Cancel
-                                  </button>
-                              </div>
-                          </form>
+                        <form action="#" method="POST" enctype="multipart/form-data">
+                            @csrf
+
+                            <div>
+                                <label class="block text-sm font-bold text-gray-700" for="name">
+                                    Name
+                                </label>
+                                <input
+                                    class="block w-full mt-1 border-gray-300 rounded-md shadow-sm placeholder:text-gray-400 placeholder:text-right focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                                    type="text" name="name" placeholder="Category Name" />
+                            </div>
+                
+                            <div class="mt-4">
+                                <label class="block text-sm font-bold text-gray-700" for="image">
+                                    Image
+                                </label>
+                                <input
+                                    class="block w-full mt-1 border-gray-300 rounded-md shadow-sm placeholder:text-gray-400 placeholder:text-right focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                                    type="file" name="image" accept="image/*" />
+                            </div>
+                
+                            <div class="flex items-center justify-start mt-4 gap-x-2">
+                                <button type="submit"
+                                    class="px-6 py-2 text-sm font-semibold rounded-md shadow-md text-sky-100 bg-sky-500 hover:bg-sky-700 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300">
+                                    Save
+                                </button>
+                                <button type="button"
+                                    class="px-6 py-2 text-sm font-semibold text-gray-100 bg-gray-400 rounded-md shadow-md hover:bg-gray-600 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300"
+                                    id="closeBtn">
+                                    Cancel
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -248,24 +248,28 @@
 </style>
 
 <script>
+    function initModal() {
+        var triggerBtn = document.getElementById("modalBtn");
+        triggerBtn.addEventListener("click", showModal);
+
+        var closeBtn = document.getElementById("closeBtn");
+        closeBtn.addEventListener("click", function() {
+            var modal = document.getElementById("myModal");
+            modal.style.display = "none";
+        });
+
+        window.addEventListener("click", function(event) {
+            var modal = document.getElementById("myModal");
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        });
+    }
+
     function showModal() {
         var modal = document.getElementById("myModal");
         modal.style.display = "flex";
     }
 
-    var triggerBtn = document.getElementById("modalBtn");
-    triggerBtn.addEventListener("click", showModal);
-
-    var closeBtn = document.getElementById("closeBtn");
-    closeBtn.addEventListener("click", function() {
-        var modal = document.getElementById("myModal");
-        modal.style.display = "none";
-    });
-
-    window.addEventListener("click", function(event) {
-        var modal = document.getElementById("myModal");
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    });
+    initModal();
 </script>
