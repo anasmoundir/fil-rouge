@@ -11,10 +11,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
         $categories = Category::all();
-
-        return view('categories.index', compact('categories'));
+        return view('partials.categories', compact('categories'));
     }
 
     /**
@@ -31,7 +29,16 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $category = new Category();
+        $category->name = $request->name;
+        $image = $request->file('image');
+        $image_name = time() . '.' . $image->getClientOriginalExtension();
+        $image->move(public_path('images'), $image_name);
+        $category->image = $image_name;
+
+
+        $category->save();
     }
 
     /**
@@ -40,6 +47,7 @@ class CategoryController extends Controller
     public function show(string $id)
     {
         //
+
     }
 
     /**
@@ -55,7 +63,19 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        //update category with validation
+        $category = Category::findOrFail($id);
+        //validate
+        $request->validate([
+            'name' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+        $category->name = $request->name;
+        $image = $request->file('image');
+        $image_name = time() . '.' . $image->getClientOriginalExtension();
+        $image->move(public_path('images'), $image_name);
+        $category->image = $image_name;
+        $category->save();
     }
 
     /**
@@ -63,6 +83,8 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        //delete category with validation 
+        $category = Category::findOrFail($id);
+        $category->delete();
     }
 }
