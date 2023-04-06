@@ -1,3 +1,4 @@
+
 <div>
     <div class="flex h-screen overflow-y-hidden bg-white" x-data="setup()" x-init="$refs.loading.classList.add('hidden')">
         <!-- Loading screen -->
@@ -261,6 +262,7 @@
             <div class="flex flex-col flex-1 w-full">
 
                 <!-- the main should be included here -->
+              @include('admin.partials.categories')
 
             </div>
             <div>

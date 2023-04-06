@@ -10,6 +10,14 @@
       
       </li>
       <li>
+        <a href="#" class="sidebar-item block py-2 px-4">
+          <div class ="flex item-center">
+            <x-heroicon-o-book-open class="w-5 h-5 mr-2"/>
+            <span class="sidebar-item-text">Categories</span>
+          </div>
+          </a>
+    </li>
+      <li>
             
           <a href="#" class="sidebar-item block py-2 px-4">
             <div class ="flex item-center">
@@ -22,14 +30,7 @@
           </a>
           
       </li>
-      <li>
-          <a href="#" class="sidebar-item block py-2 px-4">
-            <div class ="flex item-center">
-              <x-heroicon-o-book-open class="w-5 h-5 mr-2"/>
-              <span class="sidebar-item-text">Courses</span>
-            </div>
-            </a>
-      </li>
+     
       <li>
           <a href="#" class="sidebar-item block py-2 px-4">
             <div class="flex item-center">

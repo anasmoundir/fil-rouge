@@ -31,6 +31,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/settings', [DashboardController::class, 'settings'])->name('settings');
     Route::get('/admin', function () { 
         return view('admin.index'); })->name('admin');
+        Route::get('/categories', 'CategoryController@index')->name('categories.index');
 });
 
 require __DIR__.'/auth.php';
