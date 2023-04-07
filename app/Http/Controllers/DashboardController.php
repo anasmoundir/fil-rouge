@@ -2,32 +2,20 @@
 
 namespace App\Http\Controllers;
 use App\Models\User;
+use App\Models\Lesson;
+use App\Models\Course;
+use App\Models\Categorie;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
     //
-    public function dashboard()
+    public function index()
     {
-        $header = "Dashboard";
-        $data = user::all();
-
-        return view('admin.dashboard', compact('header', 'data'));
-    }
-
-    public function users()
-    {
-        $header = "Users";
-        $data = User::all();
-
-        return view('admin.users', compact('header', 'data'));
-    }
-
-    public function settings()
-    {
-        $header = "Settings";
-        $data = User::all();
-
-        return view('admin.settings', compact('header', 'data'));
+        $lessons = Lesson::all();
+        $categories = Categorie::all();
+        $users = User::all();
+        $courses = Course::all();
+        return view('dashboard', compact('lessons', 'categories', 'users', 'courses'));
     }
 }
