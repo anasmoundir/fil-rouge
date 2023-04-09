@@ -8,10 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Question extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'name',
-        'quizz_id',
-    ];
     public function quizz()
     {
         return $this->belongsTo(Quizz::class);

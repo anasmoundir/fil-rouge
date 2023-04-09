@@ -2,20 +2,22 @@
 
 namespace App\Http\Controllers;
 use App\Models\User;
+use Illuminate\Http\Request;
 use App\Models\Lesson;
 use App\Models\Course;
 use App\Models\Categorie;
-use Illuminate\Http\Request;
+
+
 
 class DashboardController extends Controller
 {
-    //
+    // Dashboard
     public function index()
     {
-        $lessons = Lesson::all();
-        $categories = Categorie::all();
         $users = User::all();
+        $lessons = Lesson::all();
         $courses = Course::all();
-        return view('dashboard', compact('lessons', 'categories', 'users', 'courses'));
+        $categories = Categorie::all();
+        return view('dashboard', compact('users', 'lessons', 'courses', 'categories'));
     }
 }

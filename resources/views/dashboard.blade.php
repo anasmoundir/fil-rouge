@@ -1,11 +1,12 @@
 <x-app-layout>
     <x-navbar></x-navbar>
-    <x-maindashboard></x-maindashboard>
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                @yield('content')
-            </div>
+    <div class="flex flex-col md:flex-row">
+        <x-sidebar-link class="w-full md:w-1/4 md:flex-row">
+            <x-categorieitem :categories="$categories" />
+            
+        </x-sidebar-link>
+        <div class="md:w-3/4">
+            <!-- Main content goes here -->
         </div>
     </div>
 </x-app-layout>

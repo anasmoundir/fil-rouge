@@ -1,12 +1,7 @@
-
-<div class=" ">
-    <div class="mb-4">
-        <h1 class="font-serif text-3xl font-bold underline decoration-gray-400"> categories Index</h1>
-        <div class="flex justify-end">
-            <button class="px-4 py-2 rounded-md bg-sky-500 text-sky-100 hover:bg-sky-600" id="modalBtn">Create
-                Post</button>
-        </div>
+    <div class="flex justify-end">
+        <button class="px-4 py-2 rounded-md bg-sky-500 text-sky-100 hover:bg-sky-600" id="modalBtn">Create  a categorie</button>
     </div>
+
     <div class="flex flex-col">
         <div class="overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
             <div
@@ -36,14 +31,11 @@
 
                     <tbody class="bg-white">
                         @foreach ($categories as $categorie )
-                            
-                        @endforeach
                         <tr>
                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                 <div class="flex items-center">
                                     {{$categorie->id}}
                                 </div>
-
                             </td>
 
                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
@@ -54,13 +46,11 @@
                                 <p>{{$categorie->image}}</p>
                             </td>
 
-                            <td
-                                class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
-                                <span>12/12/22</span>
+                            <td class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
+                                <span>{{$categorie->created_at}}</span>
                             </td>
 
-                            <td
-                                class="text-sm font-medium leading-5 text-center whitespace-no-wrap border-b border-gray-200 ">
+                            <td class="text-sm font-medium leading-5 text-center whitespace-no-wrap border-b border-gray-200 ">
                                 <a href="#" class="text-indigo-600 hover:text-indigo-900">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none"
                                         viewBox="0 0 24 24" stroke="currentColor">
@@ -91,66 +81,64 @@
                                     </svg></a>
                             </td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-</div>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            
+            <div>
+                <div class="flex flex-col items-center min-h-screen pt-6 bg-gray-100 sm:justify-center sm:pt-0">
+                    <div class="w-full px-16 py-20 mt-6 overflow-hidden bg-white rounded-lg lg:max-w-4xl">
+                        <div class="mb-4">
+                            <h1 class="font-serif text-3xl font-bold underline decoration-gray-400"> ADD your categorie</h1>
+                        
+                        </div>
 
+                        <div class="w-full px-6 py-4 bg-white rounded shadow-md ring-1 ring-gray-900/10">
+                            <form action="#" method="POST" enctype="multipart/form-data">
+                                @csrf
 
-<div id="myModal" class="modal">
-    <div class="modal-content">
-        <!-- Modal content goes here -->
-        <div>
-            <div class="flex flex-col items-center min-h-screen pt-6 bg-gray-100 sm:justify-center sm:pt-0">
-                <div class="w-full px-16 py-20 mt-6 overflow-hidden bg-white rounded-lg lg:max-w-4xl">
-                    <div class="mb-4">
-                        <h1 class="font-serif text-3xl font-bold underline decoration-gray-400">
-                            Add a new categorie
-                        </h1>
-                    </div>
-
-                    <div class="w-full px-6 py-4 bg-white rounded shadow-md ring-1 ring-gray-900/10">
-                        <form action="#" method="POST" enctype="multipart/form-data">
-                            @csrf
-
-                            <div>
-                                <label class="block text-sm font-bold text-gray-700" for="name">
-                                    Name
-                                </label>
-                                <input
-                                    class="block w-full mt-1 border-gray-300 rounded-md shadow-sm placeholder:text-gray-400 placeholder:text-right focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                                    type="text" name="name" placeholder="Category Name" />
-                            </div>
-                
-                            <div class="mt-4">
-                                <label class="block text-sm font-bold text-gray-700" for="image">
-                                    Image
-                                </label>
-                                <input
-                                    class="block w-full mt-1 border-gray-300 rounded-md shadow-sm placeholder:text-gray-400 placeholder:text-right focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                                    type="file" name="image" accept="image/*" />
-                            </div>
-                
-                            <div class="flex items-center justify-start mt-4 gap-x-2">
-                                <button type="submit"
-                                    class="px-6 py-2 text-sm font-semibold rounded-md shadow-md text-sky-100 bg-sky-500 hover:bg-sky-700 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300">
-                                    Save
-                                </button>
-                                <button type="button"
-                                    class="px-6 py-2 text-sm font-semibold text-gray-100 bg-gray-400 rounded-md shadow-md hover:bg-gray-600 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300"
-                                    id="closeBtn">
-                                    Cancel
-                                </button>
-                            </div>
-                        </form>
+                                <div>
+                                    <label class="block text-sm font-bold text-gray-700" for="name">
+                                        Name
+                                    </label>
+                                    <input
+                                        class="block w-full mt-1 border-gray-300 rounded-md shadow-sm placeholder:text-gray-400 placeholder:text-right focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                                        type="text" name="name" placeholder="Category Name" />
+                                </div>
+                    
+                                <div class="mt-4">
+                                    <label class="block text-sm font-bold text-gray-700" for="image">
+                                        Image
+                                    </label>
+                                    <input
+                                        class="block w-full mt-1 border-gray-300 rounded-md shadow-sm placeholder:text-gray-400 placeholder:text-right focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                                        type="file" name="image" accept="image/*" />
+                                </div>
+                    
+                                <div class="flex items-center justify-start mt-4 gap-x-2">
+                                    <button type="submit"
+                                        class="px-6 py-2 text-sm font-semibold rounded-md shadow-md text-sky-100 bg-sky-500 hover:bg-sky-700 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300">
+                                        Save
+                                    </button>
+                                    <button type="button"
+                                        class="px-6 py-2 text-sm font-semibold text-gray-100 bg-gray-400 rounded-md shadow-md hover:bg-gray-600 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300"
+                                        id="closeBtn">
+                                        Cancel
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+
 
 <style>
 
@@ -191,23 +179,23 @@
 </style>
 
 <script>
-(function() {
-  var modal = document.getElementById("myModal");
-  var triggerBtn = document.getElementById("modalBtn");
-  var closeBtn = document.getElementById("closeBtn");
-
-  triggerBtn.addEventListener("click", function() {
-    modal.style.display = "flex";
-  });
-
-  closeBtn.addEventListener("click", function() {
-    modal.style.display = "none";
-  });
-
-  window.addEventListener("click", function(event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
-    }
-  });
-})();
-</script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var modal = document.getElementById("myModal");
+      var triggerBtn = document.getElementById("modalBtn");
+      var closeBtn = document.getElementById("closeBtn");
+    
+      triggerBtn.addEventListener("click", function() {
+        modal.style.display = "flex";
+      });
+    
+      closeBtn.addEventListener("click", function() {
+        modal.style.display = "none";
+      });
+    
+      window.addEventListener("click", function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      });
+    });
+    </script>
