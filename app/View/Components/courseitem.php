@@ -12,10 +12,10 @@ class courseitem extends Component
      * Create a new component instance.
      */
     public  $categories,$courses;
-    public function __construct($categories,$Courses)
+    public function __construct($categories,$courses)
     {
         $this->categories = $categories;
-        $this->courses = $Courses;
+        $this->courses = $courses;
     }
 
     /**
@@ -25,4 +25,5 @@ class courseitem extends Component
     {
         return view('components.courseitem');
     }
+    
 }
