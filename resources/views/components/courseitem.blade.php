@@ -1,3 +1,6 @@
+
+<p>course modal</p>
+<h1>course section </h1>
 <div x-data="{ isOpen: false }">
     <button @click="isOpen = true">Add Course</button>
 
@@ -27,9 +30,9 @@
                         </div>
                     </div>
 
-                    <form action="{{ route('courses.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="" method="POST" enctype="multipart/form-data">
                         @csrf
-                        <div class="mt-5">
+                        <e class="mt-5">
                             <div>
                                 <label for="title" class="block text-sm font-medium text-gray-700">Title</label>
                                 <div class="mt-1">
@@ -117,3 +120,7 @@
                             <div class="mt-3">
                                 <label for="language" class="block text-sm font-medium text-gray-700">Language</label>
                                 <div class="mt-1">
+                                </div>
+                            </div>
+                        </e>
+
