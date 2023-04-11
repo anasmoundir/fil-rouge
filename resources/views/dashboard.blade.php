@@ -25,7 +25,7 @@
                         </a>
                     </li>
                     <li class="relative">
-                        <a id="userlink" href="#"
+                        <a id="usersLink" href="#"
                             class="flex items-center p-2 space-x-2 rounded-md hover:bg-gray-100">
                             <x-heroicon-o-user-group class="w-5 h-5" />
                             <span>Users</span>
@@ -34,9 +34,10 @@
                         </a>
                     </li>
                     <li class="relative">
-                        <a href="#" id="lessonsLink" class="flex items-center p-2 space-x-2 rounded-md hover:bg-gray-100">
+                        <a id="lessonsLink" href="#"
+                            class="flex items-center p-2 space-x-2 rounded-md hover:bg-gray-100">
                             <x-heroicon-o-document class="w-5 h-5" />
-                            <span>lessons</span>
+                            <span>Lessons</span>
                         </a>
                     </li>
                     <li class="relative">
@@ -46,14 +47,15 @@
                         </a>
                     </li>
                     <li class="relative">
-                        <a id="courses-container" href="#"
+                        <a id="coursesLink" href="#"
                             class="flex items-center p-2 space-x-2 rounded-md hover:bg-gray-100">
                             <x-heroicon-o-book-open class="w-5 h-5" />
                             <span>Courses</span>
                             <span
                                 class="inline-block px-2 py-1 ml-auto text-xs font-semibold leading-5 text-gray-600 rounded-full">+</span>
                         </a>
-                        <ul class="absolute top-full left-0 mt-1 ml-6 w-1/2 bg-white rounded-lg shadow-md">
+                        <ul id="coursesDropdown"
+                            class="absolute top-full left-0 mt-1 ml-6 w-1/2 bg-white rounded-lg shadow-md">
                             <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Mathematics</a></li>
                             <li><a href="#" class="block py-1 px-2 hover:bg-gray-100">Science</a></li>
                             <li><a href="#" class="block py-1 px-2 hover:bg-gray-100">History</a></li>
@@ -61,33 +63,32 @@
                     </li>
                 </ul>
         </aside>
+
+
         <div class="w-5/6 p-4">
-            <div id="categories-container">
-                <div id="categories-container" class="container">
-                    <x-categorieitem :categories="$categories" />
-                </div>
 
-                <div id="lessons-container" class="container">
-                    <x-lessonitem :lessons="$lessons" :courses="$courses" />
-                </div>
+            <div id="categories-container" class="container">
+                <x-categorieitem :categories="$categories" />
+            </div>
 
-                <div id="courses-container" class="container">
-                    <x-courseitem :categories="$categories" :courses="$courses" />
-                </div>
+            <div id="lessons-container" class="container">
+                <x-lessonitem :lessons="$lessons" :courses="$courses" />
+            </div>
+
+            <div id="courses-container" class="container">
+                <x-courseitem :categories="$categories" :courses="$courses" />
             </div>
         </div>
     </div>
 
+
     <div class="md:w-3/4">
     </div>
-    </div>
 </x-app-layout>
-
 <script>
     const categoriesLink = document.getElementById('categoriesLink');
     const lessonsLink = document.getElementById('lessonsLink');
-    const coursesLink = document.getElementById('coursesLink');
-
+    const coursesLink = document.getElementById('courses-container');
 
     const categoriesContainer = document.getElementById('categories-container');
     const lessonsContainer = document.getElementById('lessons-container');
@@ -111,12 +112,3 @@
         coursesContainer.style.display = 'block';
     });
 </script>
-// all elment should only appear if i click on the link by default 
-
-
-
-<style>
-
-</style>
-
-

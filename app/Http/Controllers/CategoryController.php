@@ -12,7 +12,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::all();
-        return view('partials.categories', compact('categories'));
+        return view('dashboard', compact('categories'));
     }
 
     /**
@@ -29,15 +29,17 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-
+        //the vlidation
+        $request->validate([
+            'name' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
         $category = new Category();
         $category->name = $request->name;
         $image = $request->file('image');
         $image_name = time() . '.' . $image->getClientOriginalExtension();
         $image->move(public_path('images'), $image_name);
         $category->image = $image_name;
-
-
         $category->save();
     }
 
