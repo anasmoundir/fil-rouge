@@ -5,5 +5,5 @@ Alpine.start();
 import { createApp } from 'vue'
 
 const app = createApp({})
-app.component('MyDashboard', MyDashboard)
+// app.component('MyDashboard', MyDashboard)
 app.mount('#app')
