@@ -15,9 +15,22 @@ use App\Http\Controllers\DashboardController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/student/login', [StudentAuthController::class, 'showLoginForm']);
+Route::post('/student/login', [StudentAuthController::class, 'login']);
+Route::get('/student/register', [StudentAuthController::class, 'showRegistrationForm']);
+Route::post('/student/register', [StudentAuthController::class, 'register']);
 
-Route::resource('courses', CourseController::class);
-Route::resource('lessons', LessonController::class);
+Route::get('/instructor/login', [InstructorAuthController::class, 'showLoginForm']);
+Route::post('/instructor/login', [InstructorAuthController::class, 'login']);
+Route::get('/instructor/register', [InstructorAuthController::class, 'showRegistrationForm']);
+Route::post('/instructor/register', [InstructorAuthController::class, 'register']);
+
+Route::get('/admin/login', [AdminAuthController::class, 'showLoginForm']);
+Route::post('/admin/login', [AdminAuthController::class, 'login']);
+Route::get('/admin/register', [AdminAuthController::class, 'showRegistrationForm']);
+Route::post('/admin/register', [AdminAuthController::class, 'register']);
+
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -33,6 +46,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/users', [DashboardController::class, 'users'])->name('users');
     Route::get('/settings', [DashboardController::class, 'settings'])->name('settings');
+    Route::resource('courses', CourseController::class);
+    Route::resource('lessons', LessonController::class);    
     Route::resource('categories', CategoryController::class);
     Route::get('/admin', function () { 
     return view('admin.index'); })->name('admin');    
