@@ -33,10 +33,10 @@ Route::post('/student/register', [StudentAuthController::class, 'register'])->na
 Route::get('/student', [StudentAuthController::class, 'showStudentPage'])->name('student');
 
 
-Route::get('/instructor/login', [InstructorAuthController::class, 'showLoginForm']);
-Route::post('/instructor/login', [InstructorAuthController::class, 'login']);
-Route::get('/instructor/register', [InstructorAuthController::class, 'showRegistrationForm']);
-Route::post('/instructor/register', [InstructorAuthController::class, 'register']);
+Route::get('/instructor/login', [InstructorAuthController::class, 'showLoginForm'])->name('instructor.showLoginForm');
+Route::post('/instructor/login', [InstructorAuthController::class, 'login'])->name('instructor.login');
+Route::get('/instructor/register', [InstructorAuthController::class, 'showRegistrationForm'])->name('instructor.showRegistrationForm');
+Route::post('/instructor/register', [InstructorAuthController::class, 'register'])->name('instructor.register');
 
 Route::get('/admin/login', [AdminAuthController::class, 'showLoginForm']);
 Route::post('/admin/login', [AdminAuthController::class, 'login']);
