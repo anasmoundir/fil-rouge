@@ -109,38 +109,57 @@
                                     class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
                                     <span>{{ $categorie->created_at }}</span>
                                 </td>
-                                <td>
-                                  <button @click="showModal = true; category = {{ json_encode($categorie) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Edit</button>
-                              </td>
+                              
               
 
-                                <td
-                                    class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
-                                    <span>{{ $categorie->updated_at }}</span>
-                                    <button type="button" class="text-gray-600 hover:text-gray-900 ml-4"
-                                        data-toggle="modal" data-target="#updateModal{{ $categorie->id }}">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none"
-                                            viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M19 21a2 2 0 01-2 2H7a2 2 0 01-2-2V7a2 2 0 012-2h10l4 4v10z" />
-                                        </svg>
-                                    </button>
-
-              
-                                </td>
 
                                 <td
                                     class="text-sm font-medium leading-5 text-center whitespace-no-wrap border-b border-gray-200">
-                                    <a href="{{ route('categories.show', $categorie->id) }}"
-                                        class="text-gray-600 hover:text-gray-900 ml-4">show</a>
-
-                                    <button @click="showModal = true"
-                                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                                        data-target="#update-category-modal-{{ $categorie->id }}>
-                                    update categorie
-                                    </button>
+                                    <div x-data="{ showModal: false }">
+   
+                                      <div class="flex justify-end">
+                                          <button @click="showModal = true" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                              Edit
+                                          </button>
+                                      </div>
+                                    
+                                      <div x-show="showModal" class="fixed z-10 inset-0 overflow-y-auto">
+                                          <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                                              <div class="fixed inset-0 transition-opacity">
+                                                  <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+                                              </div>
+                                    
+                                              <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+                                                  <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                                                      <h2 class="text-lg font-medium text-gray-900 mb-4" id="modal-headline">Edit Category</h2>
+                                                      <form method="POST" action="{{ route('categories.update', $categorie->id) }}" enctype="multipart/form-data">
+                                                          @csrf
+                                                          @method('PUT')
+                                    
+                                                          <div class="mb-4">
+                                                              <label for="name" class="block mb-2 font-bold text-gray-700">Name</label>
+                                                              <input type="text" name="name" id="name" class="form-input w-full" value="{{ $categorie->name }}" required>
+                                                          </div>
+                                    
+                                                          <div class="mb-4">
+                                                              <label for="image" class="block mb-2 font-bold text-gray-700">Upload Image</label>
+                                                              <input type="file" name="image" id="image" class="form-input w-full">
+                                                          </div>
+                                    
+                                                          <div class="flex justify-end">
+                                                              <button type="button" @click="showModal = false" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 mr-2 rounded">
+                                                                  Cancel
+                                                              </button>
+                                                              <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                                                  Update
+                                                              </button>
+                                                          </div>
+                                                      </form>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
                                         
                                 </td>
 

@@ -78,13 +78,21 @@ class CategoryController extends Controller
         $category = Categorie::findOrFail($id);
         $request->validate([
             'name' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            //the image should be optional also 
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
         $category->name = $request->name;
         $image = $request->file('image');
-        $image_name = time() . '.' . $image->getClientOriginalExtension();
-        $image->move(public_path('images'), $image_name);
-        $category->image = $image_name;
+        if($image != null)
+        {
+            $image_name = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('images'), $image_name);
+            $category->image = $image_name;
+        }else 
+        {
+            $category->image = $category->image;
+        }
+       
         $category->save();
         //turn to the dashboard
     return redirect()->route('dashboard');
@@ -97,7 +105,6 @@ class CategoryController extends Controller
     {
         //delete category with validation
         $category = Categorie::findOrFail($id);
-        //delete the image from the folder
         $image_path = public_path('images/' . $category->image);
         $category->delete();
 
