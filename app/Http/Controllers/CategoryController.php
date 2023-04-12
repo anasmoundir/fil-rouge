@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categorie;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -11,7 +13,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
+        $categories = Categorie::all();
         return view('dashboard', compact('categories'));
     }
 
@@ -29,18 +31,26 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //the vlidation
+        //the vlidation of the form with the error message
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|unique:categories',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-        $category = new Category();
+        // return message if the validation is not correct
+        if(!$request->hasFile('image'))
+        {
+            return redirect()->back()->with('error', 'The image must be a file of type: jpeg, png, jpg, gif, svg.');
+        }
+        $category = new Categorie();
         $category->name = $request->name;
+        $category->slug = Str::slug($request->name, '-');
         $image = $request->file('image');
         $image_name = time() . '.' . $image->getClientOriginalExtension();
         $image->move(public_path('images'), $image_name);
         $category->image = $image_name;
         $category->save();
+
+        return redirect()->route('dashboard');
     }
 
     /**
@@ -65,9 +75,7 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //update category with validation
-        $category = Category::findOrFail($id);
-        //validate
+        $category = Categorie::findOrFail($id);
         $request->validate([
             'name' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -78,6 +86,8 @@ class CategoryController extends Controller
         $image->move(public_path('images'), $image_name);
         $category->image = $image_name;
         $category->save();
+        //turn to the dashboard
+    return redirect()->route('dashboard');
     }
 
     /**
@@ -85,8 +95,12 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //delete category with validation 
-        $category = Category::findOrFail($id);
+        //delete category with validation
+        $category = Categorie::findOrFail($id);
+        //delete the image from the folder
+        $image_path = public_path('images/' . $category->image);
         $category->delete();
+
+        return redirect()->route('dashboard');
     }
 }
