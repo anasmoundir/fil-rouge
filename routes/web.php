@@ -17,7 +17,7 @@ use App\Http\Controllers\DashboardController;
 */
 Route::get('/student/login', [StudentAuthController::class, 'showLoginForm']);
 Route::post('/student/login', [StudentAuthController::class, 'login']);
-Route::get('/student/register', [StudentAuthController::class, 'showRegistrationForm']);
+Route::get('/student/register', [StudentAuthController::class, ' ']);
 Route::post('/student/register', [StudentAuthController::class, 'register']);
 
 Route::get('/instructor/login', [InstructorAuthController::class, 'showLoginForm']);

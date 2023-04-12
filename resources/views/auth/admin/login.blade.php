@@ -61,7 +61,8 @@
           </div>
       </div>
       <div class="flex justify-center mt-6">
-          {{-- <a href="{{ route('instructor.register') }}" class="text-sm text-gray-600 hover:text-gray-500"> --}}
+          <a href="{{ route('instructor.register') }}" class="text-sm text-gray-600 hover:text-gray-500">
+            {{ __('Not a instructor?') }}
               {{ __('Not a staff?') }}
           </a>
   </x-guest-layout>
