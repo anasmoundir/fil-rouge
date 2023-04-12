@@ -30,6 +30,8 @@ Route::get('/student/login', [StudentAuthController::class, 'showLoginForm'])->n
 Route::post('/student/login', [StudentAuthController::class, 'login'])->name('student.login');
 Route::get('/student/register', [StudentAuthController::class, 'showRegistrationForm'])->name('student.showRegistrationForm');
 Route::post('/student/register', [StudentAuthController::class, 'register'])->name('student.register');
+Route::get('/student', [StudentAuthController::class, 'showStudentPage'])->name('student');
+
 
 Route::get('/instructor/login', [InstructorAuthController::class, 'showLoginForm']);
 Route::post('/instructor/login', [InstructorAuthController::class, 'login']);
