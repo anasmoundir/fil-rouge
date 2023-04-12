@@ -15,7 +15,25 @@
               <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
               <x-input-error :messages="$errors->get('email')" class="mt-2" />
           </div>
-  
+
+          <!--  first_name  -->
+          <div class ="mt-4">
+            <x-input-label for="first_name" :value="__('First Name')" />
+            <x-text-input id="first_name" class="block mt-1 w-full" type="text" name="first_name" :value="old('first_name')" required autofocus autocomplete="first_name" />
+            <x-input-error :messages="$errors->get('first_name')" class="mt-2" />
+          </div>
+          <!-- last_name  -->
+          <div class = "mt-4">
+            <x-input-label for="last_name" :value="__('Last Name')" />
+            <x-text-input id="last_name" class="block mt-1 w-full" type="text" name="last_name" :value="old('last_name')" required autofocus autocomplete="last_name" />
+            <x-input-error :messages="$errors->get('last_name')" class="mt-2" />
+          </div>
+          <!-- date_of_birth  -->
+          <div class = "mt-4">
+            <x-input-label for="date_of_birth" :value="__('Date of Birth')" />
+            <x-text-input id="date_of_birth" class="block mt-1 w-full" type="date" name="date_of_birth" :value="old('date_of_birth')" required autofocus autocomplete="date_of_birth" />
+            <x-input-error :messages="$errors->get('date_of_birth')" class="mt-2" />
+          </div>
           <!-- Password -->
           <div class="mt-4">
               <x-input-label for="password" :value="__('Password')" />
@@ -24,7 +42,6 @@
                               type="password"
                               name="password"
                               required autocomplete="new-password" />
-  
               <x-input-error :messages="$errors->get('password')" class="mt-2" />
           </div>
   
