@@ -26,10 +26,10 @@ use App\Http\Controllers\StudentLessonController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/student/login', [StudentAuthController::class, 'showLoginForm'])->name('student.login');
-Route::post('/student/login', [StudentAuthController::class, 'login']);
-Route::get('/student/register', [StudentAuthController::class, ' ']);
-Route::post('/student/register', [StudentAuthController::class, 'register']);
+Route::get('/student/login', [StudentAuthController::class, 'showLoginForm'])->name('student.showLoginForm');
+Route::post('/student/login', [StudentAuthController::class, 'login'])->name('student.login');
+Route::get('/student/register', [StudentAuthController::class, 'showRegistrationForm'])->name('student.showRegistrationForm');
+Route::post('/student/register', [StudentAuthController::class, 'register'])->name('student.register');
 
 Route::get('/instructor/login', [InstructorAuthController::class, 'showLoginForm']);
 Route::post('/instructor/login', [InstructorAuthController::class, 'login']);
