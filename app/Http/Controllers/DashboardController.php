@@ -11,7 +11,6 @@ use App\Models\Categorie;
 
 class DashboardController extends Controller
 {
-    // Dashboard
     public function index()
     {
         $users = User::all();
