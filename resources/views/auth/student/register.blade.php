@@ -11,7 +11,7 @@
     @endif
     <p>Register form for student</p>
 
-    <form method="POST" action="{{ route('student.register') }}">
+    <form method="POST" action="{{ route('student.register') }}"  enctype="multipart/form-data>
         @csrf
 
         <!-- Name -->
