@@ -21,11 +21,14 @@ class InstructorAuthController extends Controller
       }
       public function login(Request $request)
       {
-          $credentials = $request->only('email', 'password');
-          if (Auth::attempt($credentials)) {
-              return redirect()->intended('instructor');
-          }
-      }
+        $credentials = $request->only('email', 'password');
+
+        if (auth()->attempt($credentials) && auth()->user()->roles->contains('name', 'instructor') && auth()->user()->approved === 1) {
+            return redirect()->intended('instructor');
+        } else {
+            return redirect()->back()->with('error', 'You are not authorized to access this page');
+        }
+        }
       public function showRegistrationForm()
       {
                 $roles = Role::all();
@@ -35,6 +38,7 @@ class InstructorAuthController extends Controller
 
       public function register(Request $request)
     {
+
     $request->validate([
         'name' => 'required',
         'first_name' => 'required',
@@ -47,9 +51,9 @@ class InstructorAuthController extends Controller
         'password' => 'required|min:6|confirmed',
         'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         'cv' => 'required|file|mimes:pdf,doc,docx|max:2048',
-        'role_id' => 'required',
         ]);
 
+   
     $image = $request->file('image');
     $image_name = time() . '.' . $image->getClientOriginalExtension();
     $image->move(public_path('images'), $image_name);
@@ -58,12 +62,14 @@ class InstructorAuthController extends Controller
     $cv_name = time() . '.' . $cv->getClientOriginalExtension();
     $cv->move(public_path('cv'), $cv_name);
 
+
     $user = User::create([
         'name' => $request->name,
         'email' => $request->email,
         'password' => Hash::make($request->password),
+        'role' => 'pending_instructor',
     ]);
-   
+       
        $instructor  = instructor::create([
         'first_name' => $request->first_name,
         'last_name' => $request->last_name,
@@ -75,8 +81,9 @@ class InstructorAuthController extends Controller
         'approved' => 0,
         'image' => $image_name,
         'cv' => $cv_name,
-        'role' => 'pending_instructor',
+       
     ]);
+
 
     $role = Role::first();
     $user->roles()->attach($role->id);
