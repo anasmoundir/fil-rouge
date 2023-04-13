@@ -9,7 +9,6 @@
                 autofocus autocomplete="name" />
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
-
         <!-- Email Address -->
         <div class="mt-4">
             <x-input-label for="email" :value="__('Email')" />
@@ -17,7 +16,55 @@
                 required autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
-
+        <!-- first name -->
+        <div class="mt-4">
+            <x-input-label for="first_name" :value="__('First Name')" />
+            <x-text-input id="first_name" class="block mt-1 w-full" type="text" name="first_name" :value="old('first_name')"
+                required autofocus autocomplete="first_name" />
+            <x-input-error :messages="$errors->get('first_name')" class="mt-2" />
+        </div>
+        <!-- last name -->
+        <div class="mt-4">
+            <x-input-label for="last_name" :value="__('Last Name')" />
+            <x-text-input id="last_name" class="block mt-1 w-full" type="text" name="last_name" :value="old('last_name')"
+                required autofocus autocomplete="last_name" />
+            <x-input-error :messages="$errors->get('last_name')" class="mt-2" />
+        </div>
+        <!--date of birth -->
+        <div class="mt-4">
+            <x-input-label for="date_of_birth" :value="__('Date of Birth')" />
+            <x-text-input id="date_of_birth" class="block mt-1 w-full" type="date" name="date_of_birth"
+                :value="old('date_of_birth')" required autofocus autocomplete="date_of_birth" />
+            <x-input-error :messages="$errors->get('date_of_birth')" class="mt-2" />
+        </div>
+        <!--teaching experience-->
+        <div class="mt-4">
+            <x-input-label for="teaching_experience" :value="__('Teaching Experience')" />
+            <x-text-input id="teaching_experience" class="block mt-1 w-full" type="text" name="teaching_experience"
+                :value="old('teaching_experience')" required autofocus autocomplete="teaching_experience" />
+            <x-input-error :messages="$errors->get('teaching_experience')" class="mt-2" />
+        </div>
+        <!--field of expertise-->
+        <div class="mt-4">
+            <x-input-label for="field_of_expertise" :value="__('Field of Expertise')" />
+            <x-text-input id="field_of_expertise" class="block mt-1 w-full" type="text" name="field_of_expertise"
+                :value="old('field_of_expertise')" required autofocus autocomplete="field_of_expertise" />
+            <x-input-error :messages="$errors->get('field_of_expertise')" class="mt-2" />
+        </div>
+        <!--the photo of the instructor it is a file input-->
+       <div class="mt-4">
+            <x-input-label for="photo" :value="__('Photo')" />
+            <x-text-input id="photo" class="block mt-1 w-full" type="file" name="photo" :value="old('photo')"
+                required autofocus autocomplete="photo" />
+            <x-input-error :messages="$errors->get('photo')" class="mt-2" />
+        </div>
+        <!--the cv of the instructor it is a file input-->
+        <div class="mt-4">
+            <x-input-label for="cv" :value="__('CV')" />
+            <x-text-input id="cv" class="block mt-1 w-full" type="file" name="cv" :value="old('cv')"
+                required autofocus autocomplete="cv" />
+            <x-input-error :messages="$errors->get('cv')" class="mt-2" />
+        </div>
         <!-- Password -->
         <div class="mt-4">
             <x-input-label for="password" :value="__('Password')" />
