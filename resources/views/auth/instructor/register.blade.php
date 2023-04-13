@@ -8,7 +8,7 @@
                 @endforeach
             </ul>
         </div>
-        @endif
+    @endif
     <form method="POST" action="{{ route('instructor.register') }}" enctype="multipart/form-data">
         @csrf
 
@@ -68,7 +68,6 @@
                 required autofocus autocomplete="image" />
             <x-input-error :messages="$errors->get('image')" class="mt-2" />
         </div>
-       
         <!--the cv of the instructor it is a file input-->
         <div class="mt-4">
             <x-input-label for="cv" :value="__('CV')" />

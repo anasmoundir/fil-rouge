@@ -1,6 +1,5 @@
-
-@if(Auth::guard('student')->user()->role != 'student'){
+@if (Auth::guard('student')->check() && Auth::guard('student')->user()->role != 'student')
     return redirect()->route('student.login');
-}
 @endif
-<p>hello</p>
+
+<p>this is the courses page</p>

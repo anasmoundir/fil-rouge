@@ -13,7 +13,6 @@ use App\Models\Student;
 
 class StudentAuthController extends Controller
 {
-      // public function showLoginForm(): View
       public function showLoginForm()
       {
           return view('auth.student.login');
@@ -22,9 +21,9 @@ class StudentAuthController extends Controller
       public function login(Request $request)
       {
           $credentials = $request->only('email', 'password');
-          if (Auth::attempt($credentials)) {
+          if (Auth::guard('student')->attempt($credentials)) {
               return redirect()->intended('student');
-          }
+          }  
       }
 
         public function showRegistrationForm()
@@ -47,27 +46,27 @@ class StudentAuthController extends Controller
         'enrollement_date' => 'required|string|max:255',
         ]);
 
-    $user = User::create([
+        $user = User::create([
         'name' => $validatedData['name'],
         'email' => $validatedData['email'],
         'password' => bcrypt($validatedData['password']),
         'role' => 'student',
-    ]);
+        ]);
 
-    $student = Student::create([
+         $student = Student::create([
         'first_name' => $validatedData['first_name'],
         'last_name' => $validatedData['last_name'],
         'date_of_birth' => $validatedData['date_of_birth'],
         'address' => $validatedData['address'],
         'enrollement_date' => $validatedData['enrollement_date'],
         'user_id' => $user->id,
-    ]);
+        ]);
 
-    auth()->login($user);
-    return redirect()->route('student');
-    }
-    public function showStudentPage()
-    {
-        return view('student');
-    }
+        auth()->login($user);
+        return redirect()->route('student');
+        }
+        public function showStudentPage()
+        {
+            return view('student');
+         }
 }
