@@ -60,7 +60,6 @@ class InstructorAuthController extends Controller
 
     $user = User::create([
         'name' => $request->name,
-        'role' => 'pending_instructor',
         'email' => $request->email,
         'password' => Hash::make($request->password),
     ]);
@@ -76,6 +75,7 @@ class InstructorAuthController extends Controller
         'approved' => 0,
         'image' => $image_name,
         'cv' => $cv_name,
+        'role' => 'pending_instructor',
     ]);
 
     $role = Role::first();
