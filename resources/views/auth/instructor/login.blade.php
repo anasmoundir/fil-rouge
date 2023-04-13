@@ -45,7 +45,7 @@
                                 {{ __('Remember me') }}
                             </label>
                         </div>
-
+                    
                         @if (Route::has('password.request'))
                             <a href="{{ route('password.request') }}"
                                 class="text-sm text-indigo-600 hover:text-indigo-500">

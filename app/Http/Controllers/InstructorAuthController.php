@@ -22,10 +22,17 @@ class InstructorAuthController extends Controller
       public function login(Request $request)
       {
           $credentials = $request->only('email', 'password');
-          if (Auth::attempt($credentials)) {
-              return redirect()->intended('instructor');
-          }
-      }
+        //   check if the user is an instructor to be approved it should be 1
+        //the condition is not working
+            if (Auth::guard('instructor')->attempt($credentials) && Auth::guard('instructor')->user()->approved == 1) 
+            {
+                return redirect()->intended('instructor');
+            }
+            else
+            {
+                return redirect()->back()->with('error', 'You are not approved yet');
+            }
+        }
       public function showRegistrationForm()
       {
                 $roles = Role::all();
