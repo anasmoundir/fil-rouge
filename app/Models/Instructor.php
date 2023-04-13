@@ -19,7 +19,8 @@ class Instructor extends Model
         'user_id',
         'approved',
         'image',
-        'cv'
+        'cv',
+        'address',
     ];
     public function user()
     {

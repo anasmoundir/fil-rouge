@@ -1,5 +1,15 @@
 <x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
+
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
+    <form method="POST" action="{{ route('instructor.register') }}" enctype="multipart/form-data">
         @csrf
 
         <!-- Name -->
@@ -51,13 +61,14 @@
                 :value="old('field_of_expertise')" required autofocus autocomplete="field_of_expertise" />
             <x-input-error :messages="$errors->get('field_of_expertise')" class="mt-2" />
         </div>
-        <!--the photo of the instructor it is a file input-->
-       <div class="mt-4">
-            <x-input-label for="photo" :value="__('Photo')" />
-            <x-text-input id="photo" class="block mt-1 w-full" type="file" name="photo" :value="old('photo')"
-                required autofocus autocomplete="photo" />
-            <x-input-error :messages="$errors->get('photo')" class="mt-2" />
+        <!--the image of the instructor it is a file input-->
+        <div class="mt-4">
+            <x-input-label for="image" :value="__('Image')" />
+            <x-text-input id="image" class="block mt-1 w-full" type="file" name="image" :value="old('image')"
+                required autofocus autocomplete="image" />
+            <x-input-error :messages="$errors->get('image')" class="mt-2" />
         </div>
+       
         <!--the cv of the instructor it is a file input-->
         <div class="mt-4">
             <x-input-label for="cv" :value="__('CV')" />
@@ -74,7 +85,13 @@
 
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
-
+        <!-- address-->
+        <div class="mt-4">
+            <x-input-label for="address" :value="__('Address')" />
+            <x-text-input id="address" class="block mt-1 w-full" type="text" name="address" :value="old('address')"
+                required autofocus autocomplete="address" />
+            <x-input-error :messages="$errors->get('address')" class="mt-2" />
+        </div>
         <!-- Confirm Password -->
         <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
 
@@ -89,7 +106,7 @@
                 href="{{ route('login') }}">
                 {{ __('Already registered?') }}
             </a>
-
+            <input type="hidden" name="role" value="instructor">
             <x-primary-button class="ml-4">
                 {{ __('Register') }}
             </x-primary-button>

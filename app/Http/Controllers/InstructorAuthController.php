@@ -30,8 +30,8 @@ class InstructorAuthController extends Controller
       }
        public function register(Request $request)
       {
-        dd($request->all());
         $request->validate([
+            'name' => 'required',
             'first_name' => 'required',
             'last_name' => 'required',
             'date_of_birth' => 'required',
@@ -42,8 +42,10 @@ class InstructorAuthController extends Controller
             'password' => 'required|min:6|confirmed',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'cv' => 'required|file|mimes:pdf,doc,docx|max:2048',
+            'address' => 'required',
         ]);
-        // return message if the validation is not correct
+
+        
         if(!$request->hasFile('image'))
         {
             return redirect()->back()->with('error', 'The image must be a file of type: jpeg, png, jpg, gif, svg.');
@@ -53,6 +55,8 @@ class InstructorAuthController extends Controller
             return redirect()->back()->with('error', 'The cv must be a file of type: pdf, doc, docx.');
         }
         $user = new User();
+        $user->name = $request->name;
+        $user->role = 'pending_instructor';
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->save();
@@ -77,5 +81,5 @@ class InstructorAuthController extends Controller
         return redirect()->route('instructor.login');
       }
 
-     
+    
 }
