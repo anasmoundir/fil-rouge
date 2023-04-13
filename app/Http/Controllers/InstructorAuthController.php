@@ -47,7 +47,6 @@ class InstructorAuthController extends Controller
         'password' => 'required|min:6|confirmed',
         'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         'cv' => 'required|file|mimes:pdf,doc,docx|max:2048',
-        'role_id' => 'required',
         ]);
 
     $image = $request->file('image');
