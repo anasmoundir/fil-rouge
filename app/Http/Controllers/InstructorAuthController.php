@@ -22,29 +22,38 @@ class InstructorAuthController extends Controller
      
       public function showRegistrationForm()
       {
-             $roles = Role::all();
-              return view('auth.instructor.register')->with('roles', $roles);
+             
+              return view('auth.instructor.register');
       }
       public function login(Request $request)
       {
-
-         $credentials = $request->only('email', 'password');
+        
+        $credentials = $request->only('email', 'password');
         $user = User::where('email', $credentials['email'])->first();
-        $role = $user->roles->first()->name;
-        if($role == 'instructor'){
-            $instructor = Instructor::where('user_id', $user->id)->first();
-            if($instructor->approved){
-                if (Auth::guard('instructor')) {
-                    return redirect()->intended('instructor');
+        if($user)
+        {
+            $user = User::where('email', $credentials['email'])->first();
+            $role = $user->roles()->first()->name;
+            if($role == 'instructor'){
+                $instructor = Instructor::where('user_id', $user->id)->first();
+                if($instructor->approved){
+                    if (Auth::guard('instructor')) {
+                        return redirect()->intended('instructor');
+                    }
+                    else{
+                        // dd('not instructor');
+                        return view('application_pending');
+                    }
+                 }
                 }
-                else{
-                    dd('not instructor');
+                else {
+                  
                     return view('application_pending');
                 }
-             }
         }
         else{
-            return view('auth.instructor.register');
+            echo 'doesn\'t exist';
+            return redirect()->back()->withErrors(['email' => 'Invalid email or password']);
         }    
       }
       public function register(Request $request)

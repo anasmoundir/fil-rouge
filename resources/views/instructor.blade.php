@@ -1,4 +1,3 @@
-</x-app-layout>
 <style>
     .emoji-404 {
 
@@ -59,4 +58,4 @@
             class="text-gray-500 font-mono text-xl bg-gray-200 p-3 rounded-md hover:shadow-md">Go back </a>
     </center>
 </div>
-</x-app-layout>
+
