@@ -19,23 +19,34 @@ class InstructorAuthController extends Controller
       {
           return view('auth.instructor.login');
       }
-      public function login(Request $request)
-      {
-        $credentials = $request->only('email', 'password');
-
-        if (auth()->attempt($credentials) && auth()->user()->roles->contains('name', 'instructor') && auth()->user()->approved === 1) {
-            return redirect()->intended('instructor');
-        } else {
-            return redirect()->back()->with('error', 'You are not authorized to access this page');
-        }
-        }
+     
       public function showRegistrationForm()
       {
-                $roles = Role::all();
+             $roles = Role::all();
               return view('auth.instructor.register')->with('roles', $roles);
       }
-      
+      public function login(Request $request)
+      {
 
+         $credentials = $request->only('email', 'password');
+        $user = User::where('email', $credentials['email'])->first();
+        $role = $user->roles->first()->name;
+        if($role == 'instructor'){
+            $instructor = Instructor::where('user_id', $user->id)->first();
+            if($instructor->approved){
+                if (Auth::guard('instructor')) {
+                    return redirect()->intended('instructor');
+                }
+                else{
+                    dd('not instructor');
+                    return view('application_pending');
+                }
+             }
+        }
+        else{
+            return view('auth.instructor.register');
+        }    
+      }
       public function register(Request $request)
     {
 
@@ -52,17 +63,13 @@ class InstructorAuthController extends Controller
         'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         'cv' => 'required|file|mimes:pdf,doc,docx|max:2048',
         ]);
-
    
     $image = $request->file('image');
     $image_name = time() . '.' . $image->getClientOriginalExtension();
     $image->move(public_path('images'), $image_name);
-
     $cv = $request->file('cv');
     $cv_name = time() . '.' . $cv->getClientOriginalExtension();
     $cv->move(public_path('cv'), $cv_name);
-
-
     $user = User::create([
         'name' => $request->name,
         'email' => $request->email,
@@ -83,8 +90,6 @@ class InstructorAuthController extends Controller
         'cv' => $cv_name,
        
     ]);
-
-
     $role = Role::first();
     $user->roles()->attach($role->id);
     return redirect()->route('instructor.login');
