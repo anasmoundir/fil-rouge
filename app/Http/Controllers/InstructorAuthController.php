@@ -27,34 +27,48 @@ class InstructorAuthController extends Controller
       }
       public function login(Request $request)
       {
-        
+        //try and catch block
+
+        try{
+
         $credentials = $request->only('email', 'password');
         $user = User::where('email', $credentials['email'])->first();
-        if($user)
+
+        if($user && Hash::check($credentials['password'], $user->password))
         {
             $user = User::where('email', $credentials['email'])->first();
-            $role = $user->roles()->first()->name;
-            if($role == 'instructor'){
+         
+                $user->roles()->first()->name;
+           
+                // return redirect()->back()->withErrors(['email' => 'Invalid email or password']);
+            
+            if(($user->roles()->first()->name) == 'instructor')
+            {
                 $instructor = Instructor::where('user_id', $user->id)->first();
                 if($instructor->approved){
                     if (Auth::guard('instructor')) {
                         return redirect()->intended('instructor');
                     }
-                    else{
-                        // dd('not instructor');
-                        return view('application_pending');
-                    }
                  }
-                }
-                else {
-                  
+                 else{
                     return view('application_pending');
                 }
+            }
+            else if(($user->roles()->first()->name) == 'pending_instructor')
+            {
+                return view('application_pending');
+            }else
+            {
+                echo "you are not an instructor";
+            }
         }
         else{
-            echo 'doesn\'t exist';
             return redirect()->back()->withErrors(['email' => 'Invalid email or password']);
         }    
+    }
+        catch(\Exception $e){
+            return redirect()->back()->withErrors(['email' => 'Invalid email or password']);
+        }
       }
       public function register(Request $request)
     {
