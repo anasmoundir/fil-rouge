@@ -1,7 +1,6 @@
 <x-guest-layout>
 
     <p>welcome to instructure phase </p>
-
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
@@ -55,7 +54,7 @@
                                 {{ __('Remember me') }}
                             </label>
                         </div>
-                    
+
                         @if (Route::has('password.request'))
                             <a href="{{ route('password.request') }}"
                                 class="text-sm text-indigo-600 hover:text-indigo-500">
