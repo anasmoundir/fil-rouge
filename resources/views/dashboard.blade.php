@@ -1,3 +1,4 @@
+
 <x-app-layout>
     <x-navbar></x-navbar>
     <div class="flex flex-col md:flex-row">

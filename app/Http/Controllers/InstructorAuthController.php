@@ -27,21 +27,14 @@ class InstructorAuthController extends Controller
       }
       public function login(Request $request)
       {
-        //try and catch block
-
         try{
-
         $credentials = $request->only('email', 'password');
         $user = User::where('email', $credentials['email'])->first();
-
         if($user && Hash::check($credentials['password'], $user->password))
         {
             $user = User::where('email', $credentials['email'])->first();
          
-                $user->roles()->first()->name;
-           
-                // return redirect()->back()->withErrors(['email' => 'Invalid email or password']);
-            
+                $user->roles()->first()->name;           
             if(($user->roles()->first()->name) == 'instructor')
             {
                 $instructor = Instructor::where('user_id', $user->id)->first();
@@ -65,7 +58,7 @@ class InstructorAuthController extends Controller
         else{
             return redirect()->back()->withErrors(['email' => 'Invalid email or password']);
         }    
-    }
+        }
         catch(\Exception $e){
             return redirect()->back()->withErrors(['email' => 'Invalid email or password']);
         }

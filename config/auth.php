@@ -81,6 +81,7 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\Student::class,
         ],
+        
         'instructors'=>
         [
             'driver' => 'eloquent',
