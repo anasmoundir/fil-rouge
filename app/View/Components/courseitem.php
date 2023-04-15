@@ -11,11 +11,12 @@ class courseitem extends Component
     /**
      * Create a new component instance.
      */
-    public  $categories,$courses;
-    public function __construct($categories,$courses)
+    public  $categories,$courses,$instructors;
+    public function __construct($categories,$courses,$instructors)
     {
         $this->categories = $categories;
         $this->courses = $courses;
+        $this->instructors = $instructors;
     }
 
     /**
