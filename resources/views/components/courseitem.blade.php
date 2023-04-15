@@ -33,12 +33,19 @@
                         <div class="mb-2">
                             <label for="categorie_id" class="block mb-2 font-bold text-gray-700">Category</label>
                             <select name="categorie_id" id="categorie_id" class="form-select w-full" required>
-                                @foreach ($categories as $category)
-                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                @foreach ($categories as $categorie)
+                                    <option value="{{ $categorie->id }}">{{ $categorie->name }}</option>
                                 @endforeach
                             </select>
                         </div>
-
+                        <div class="mb-2">
+                            <label for="instructor_id" class="block mb-2 font-bold text-gray-700">Instructor</label>
+                            <select name="instructor_id" id="instructor_id" class="form-select w-full" required>
+                                @foreach ($instructors as $instructor)
+                                    <option value="{{ $instructor->id }}">{{ $instructor->first_name }} {{ $instructor->last_name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                         <div class="mb-2">
                             <label for="image" class="block mb-2 font-bold text-gray-700">Image</label>
                             <input type="file" name="image" id="image" class="form-input w-full" required>

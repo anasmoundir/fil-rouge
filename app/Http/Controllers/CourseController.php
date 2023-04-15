@@ -17,7 +17,8 @@ class CourseController extends Controller
     {
         $courses = Course::all();
         $categories = Category::all();
-        return view('dashboard', compact('courses', 'categories'));
+        $instructors = Instructor::where('approved', 1)->get();
+        return view('dashboard', compact('courses', 'categories', 'instructors'));
     }
 
     /**
@@ -44,6 +45,7 @@ class CourseController extends Controller
             'is_free' =>'required',
             'level' => 'required',
             'language' => 'required',
+            'instructor_id' => 'required',
         ]);
         // return message if the validation is not correct
         if(!$request->hasFile('image'))
@@ -60,10 +62,11 @@ class CourseController extends Controller
         $image_name = time() . '.' . $image->getClientOriginalExtension();
         $image->move(public_path('images'), $image_name);
         $course->image = $image_name;
-        $course->category_id = $request->category_id;
+        $course->categorie_id = $request->categorie_id;
         $course->is_free = $request->is_free;
         $course->level = $request->level;
         $course->language = $request->language;
+        $course->instructor_id = $request->instructor_id;
         $course->save();
         return redirect()->route('dashboard');
     }
@@ -87,10 +90,11 @@ class CourseController extends Controller
             'name' => 'required',
             'description' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'category_id' => 'required',    
+            'categorie_id' => 'required',    
             'is_free' =>'required',
             'level' => 'required',
             'language' => 'required',
+            'instructor_id' => 'required',
         ]);
         // return message if the validation is not correct
         if(!$request->hasFile('image'))
@@ -106,7 +110,8 @@ class CourseController extends Controller
         $image_name = time() . '.' . $image->getClientOriginalExtension();
         $image->move(public_path('images'), $image_name);
         $course->image = $image_name;
-        $course->category_id = $request->category_id;
+        $course->categorie_id = $request->categorie_id;
+        $course->instructor_id = $request->instructor_id;
         $course->is_free = $request->is_free;
         $course->level = $request->level;
         $course->language = $request->language;

@@ -1,4 +1,3 @@
-
 <x-app-layout>
     <x-navbar></x-navbar>
     <div class="flex flex-col md:flex-row">
@@ -77,7 +76,7 @@
             </div>
 
             <div id="courses-container" class="container">
-                <x-courseitem :categories="$categories" :courses="$courses" />
+                <x-courseitem :categories="$categories" :courses="$courses" :instructors="$instructors" />
             </div>
         </div>
     </div>
