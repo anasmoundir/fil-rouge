@@ -71,9 +71,10 @@
                         <div class="mb-2">
                             <label for="language" class="block mb-2 font-bold text-gray-700">language</label>
                             <select name="language" id="language" class="form-select w-full" required>
-                                <option value="1">English</option>
-                                <option value="2">French</option>
-                                <option value="3">Spanish</option>
+                                <option value="Arabic">Arabic</option>
+                                <option value="English">English</option>
+                                <option value="French">French</option>
+                                <option value="Spanish">Spanish</option>
                             </select>
                         </div>
                         <div class="flex justify-end">
@@ -265,7 +266,7 @@
                                                                         {{ $instructor->last_name }}
                                                                     </option>
                                                                 @endforeach
-                                                                </select>
+                                                            </select>
                                                         </div>
                                                         <!--category-->
                                                         <div class="mb-4">
@@ -285,7 +286,7 @@
                                                                 class="block mb-2 font-bold text-gray-700">Level</label>
                                                             <select name="level" id="level"
                                                                 class="form-input w-full"
-                                                                value="{{ $course->is_free }}">
+                                                                value="{{ $course->level }}">
                                                                 <option value="beginner">Beginner</option>
                                                                 <option value="intermediate">Intermediate</option>
                                                                 <option value="advanced">Advanced</option>
@@ -296,11 +297,12 @@
                                                             <label for="language"
                                                                 class="block mb-2 font-bold text-gray-700">Language</label>
                                                             <select name="language" id="language"
-                                                                class="form-input w-full">
-                                                                value="{{ $course->is_free }}">
-                                                                <option value="english">English</option>
-                                                                <option value="french">French</option>
-                                                                <option value="spanish">Spanish</option>
+                                                                class="form-input w-full"
+                                                                value="{{ $course->language }}">
+                                                                <option value="Arabic">Arabic</option>
+                                                                <option value="English">English</option>
+                                                                <option value="French">French</option>
+                                                                <option value="Spanish">Spanish</option>
                                                             </select>
                                                         </div>
 
