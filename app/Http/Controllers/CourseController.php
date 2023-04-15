@@ -18,6 +18,10 @@ class CourseController extends Controller
         $courses = Course::all();
         $categories = Category::all();
         $instructors = Instructor::where('approved', 1)->get();
+        foreach ($courses as $course) {
+            $instructor = Instructor::find($course->instructor);
+            $course->instructor_name = $instructor->name;
+        }
         return view('dashboard', compact('courses', 'categories', 'instructors'));
     }
 
