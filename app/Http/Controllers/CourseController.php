@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Course;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 
 
 class CourseController extends Controller
@@ -39,7 +40,6 @@ class CourseController extends Controller
             'name' => 'required',
             'description' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'price' => 'required',
             'category_id' => 'required',    
             'is_free' =>'required',
             'level' => 'required',
@@ -52,6 +52,8 @@ class CourseController extends Controller
         }
         //do the creation of the course
         $course = new Course();
+        //add a unique slug to the course from STR::slug
+        $course->slug = Str::slug($request->title);
         $course->title = $request->title;
         $course->name = $request->name;
         $course->description = $request->description;
@@ -59,12 +61,13 @@ class CourseController extends Controller
         $image_name = time() . '.' . $image->getClientOriginalExtension();
         $image->move(public_path('images'), $image_name);
         $course->image = $image_name;
-        $course->price = $request->price;
         $course->category_id = $request->category_id;
         $course->is_free = $request->is_free;
+        
         $course->level = $request->level;
         $course->language = $request->language;
         $course->save();
+        return redirect()->route('dashboard');
     }
 
     /**
@@ -86,7 +89,6 @@ class CourseController extends Controller
             'name' => 'required',
             'description' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'price' => 'required',
             'category_id' => 'required',    
             'is_free' =>'required',
             'level' => 'required',
@@ -106,12 +108,12 @@ class CourseController extends Controller
         $image_name = time() . '.' . $image->getClientOriginalExtension();
         $image->move(public_path('images'), $image_name);
         $course->image = $image_name;
-        $course->price = $request->price;
         $course->category_id = $request->category_id;
         $course->is_free = $request->is_free;
         $course->level = $request->level;
         $course->language = $request->language;
         $course->save();
+        return redirect()->route('dashboard');
     }
 
     /**
@@ -129,5 +131,6 @@ class CourseController extends Controller
     {
         $course = Course::find($id);
         $course->delete();
+        return redirect()->route('dashboard');
     }
 }

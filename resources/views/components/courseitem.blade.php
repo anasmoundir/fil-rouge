@@ -15,7 +15,6 @@
                 role="dialog" aria-modal="true" aria-labelledby="modal-headline">
                 <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                     <h2 class="text-lg font-medium text-gray-900 mb-4" id="modal-headline">Create Course</h2>
-                    //give the action from the ressource course
                     <form action="{{ route('courses.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-2">
@@ -42,42 +41,24 @@
                                 @endforeach
                             </select>
                         </div>
-
                         <div class="mb-2">
-                            <label for="image" class="block mb-2 font-bold text-gray-700">Upload image</label>
-                            <input type="file" name="videos[]" id="videos" class="form-input w-full" multiple
-                                required>
-                        </div>
-
-                        <div class="mb-2">
-                            <label for="image" class="block mb-2 font-bold text-gray-700">Upload image</label>
+                            <label for="image" class="block mb-2 font-bold text-gray-700">Image</label>
                             <input type="file" name="image" id="image" class="form-input w-full" required>
                         </div>
 
                         <div class="mb-2">
-                            <label for="price" class="block mb-2 font-bold text-gray-700">Price</label>
-                            <input type="number" name="price" id="price" class="form-input w-full" required>
+                            <label for="is_free" class="block mb-2 font-bold text-gray-700">is free</label>
+                            <select name="is_free" id="is_free" class="form-select w-full" required>
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            </select>
                         </div>
-
-                        <div class="mb-2  
-              <div class="mb-2">
-                            <label for="image" class="block mb-2 font-bold text-gray-700">Upload image</label>
-                            <input type="file" name="videos[]" id="videos" class="form-input w-full" multiple
-                                required>
-                        </div>
-                        <div class="mb-2">
-                            <label for="free" class="block mb-2 font-bold text-gray-700">Free</label>
-                            <input type="checkbox" name="free" id="free" class="form-input w-full"
-                                value="free" required>
-                        </div>
-
-
                         <div class="mb-2">
                             <label for="level" class="block mb-2 font-bold text-gray-700">Level</label>
                             <select name="level" id="level" class="form-select w-full" required>
-                                <option value="1">Beginner</option>
-                                <option value="2">Intermediate</option>
-                                <option value="3">Advanced</option>
+                                <option value="Beginner">Beginner</option>
+                                <option value="Intermediate">Intermediate</option>
+                                <option value="Advanced">Advanced</option>
                             </select>
                         </div>
 
@@ -96,7 +77,7 @@
                             </button>
                             <button type="submit"
                                 class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                Create
+                                Create Course
                             </button>
                         </div>
                     </form>
