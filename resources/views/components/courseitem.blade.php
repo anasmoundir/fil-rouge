@@ -187,161 +187,156 @@
                                 {{ $course->updated_at }}
                             </td>
                             <td>
-                              <td
-                                    class="text-sm font-medium leading-5 text-center whitespace-no-wrap border-b border-gray-200">
-                                    <div x-data="{ showModal: false }">
-   
-                                      <div class="flex justify-end">
-                                          <button @click="showModal = true" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                              Edit
-                                          </button>
-                                      </div>
-                                    
-                                      <div x-show="showModal" class="fixed z-10 inset-0 overflow-y-auto">
-                                          <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-                                              <div class="fixed inset-0 transition-opacity">
-                                                  <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
-                                              </div>
-                                    
-                                              <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
-                                                  <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                                                      <h2 class="text-lg font-medium text-gray-900 mb-4" id="modal-headline">Edit Category</h2>
-                                                      <form method="POST" action="{{ route('categories.update', $categorie->id) }}" enctype="multipart/form-data">
-                                                          @csrf
-                                                          @method('PUT')
-                                    
-                                                          <div class="mb-4">
-                                                              <label for="name" class="block mb-2 font-bold text-gray-700">Name</label>
-                                                              <input type="text" name="name" id="name" class="form-input w-full" value="{{ $categorie->name }}" required>
-                                                          </div>
-                                    
-                                                          <div class="mb-4">
-                                                              <label for="image" class="block mb-2 font-bold text-gray-700">Upload Image</label>
-                                                              <input type="file" name="image" id="image" class="form-input w-full">
-                                                          </div>
-                                    
-                                                          <div class="flex justify-end">
-                                                              <button type="button" @click="showModal = false" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 mr-2 rounded">
-                                                                  Cancel
-                                                              </button>
-                                                              <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                                                  Update
-                                                              </button>
-                                                          </div>
-                                                      </form>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-                                        
-                                </td>
-              
-                                      class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-                                      <div x-show="showModal" class="fixed inset-0 transition-opacity"
-                                          aria-hidden="true" @click="showModal = false">
-                                          <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
-                                      </div>
-                          
-                                      <span class="hidden sm:inline-block sm:align-middle sm:h-screen"
-                                          aria-hidden="true">&#8203;</span>
+                            <td
+                                class="text-sm font-medium leading-5 text-center whitespace-no-wrap border-b border-gray-200">
+                                <div x-data="{ showModal: false }">
 
-                                          class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
-                                          <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                                              <div class="sm:flex sm:items-start">
-                                                  <div
-                                                      class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 sm:mx-0 sm:h-10 sm:w-10">
-                                                      <svg class="h-6 w-6 text-blue-600"
-                                                          xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                          viewBox="0 0 24 24" stroke="currentColor"
-                                                          aria-hidden="true">
-                                                          <path stroke-linecap="round" stroke-linejoin="round"
-                                                              stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                                                      </svg>
-                                                  </div>
-                                                  <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                                                      <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4">
-                                                          Edit Course</h3>
-                                                      <form x-ref="editForm" x-on:submit.prevent="submitEditForm('{{ route('courses.update', $course) }}')">
-                                                          @csrf
-                                                          @method('PUT')
-                                                          <div>
-                                                              <label for="name"
-                                                                  class="block text-sm font-medium text-gray-700 mb-2">Name</label>
-                                                              <input type="text" name="name" id="name"
-                                                                  value="{{ $course->name }}"
-                                                                  class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md">
-                                                          </div>
-                                                          <div class="mt-4">
-                                                              <label for="title"
-                                                                  class="block text-sm font-medium text-gray-700 mb-2">Title</label>
-                                                              <input type="text" name="title" id="title"
-                                                                  value="{{ $course->title }}"
-                                                                  class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md">
-                                                          </div>
-                                                          <div class="mt-4">
-                                                              <label for="description"
-                                                                  class="block text-sm font-medium text-gray-700 mb-2">Description</label>
-                                                              <textarea name="description" id="description" rows="3"  
-                                                                  class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md">{{ $course->description }}</textarea>
-                                                          </div>
-                                                          <div class="mt-4">
-                                                              <label for="image"
-                                                                  class="block text-sm font-medium text-gray-700 mb-2">Image</label>
-                                                              <input type="file" name="image" id="image"
-                                                                  value="{{ $course->image }}"
-                                                                  class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md">
-                                                          </div>
-                                                          <div class="mt-4">
-                                                              <label for="is_free"
-                                                                  class="block text-sm font-medium text-gray-700 mb-2">Is Free</label>
-                                                              <input type="text" name="is_free" id="is_free"
-                                                                  value="{{ $course->is_free }}"
-                                                                  class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md">
-                                                          </div>
-                                                          <div class="mt-4">
-                                                              <label for="instructor_id"
-                                                                  class="block text-sm font-medium text-gray-700 mb-2">Instructor</label>
-                                                              <select name="instructor_id" id="instructor_id"
-                                                                  class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md">
-                                                                  @foreach ($instructors as $instructor)
-                                                                      <option value="{{ $instructor->id }}"
-                                                                          {{ $instructor->id == $course->instructor_id ? 'selected' : '' }}>
-                                                                          {{ $instructor->name }}</option>
-                                                                  @endforeach
-                                                              </select>
-                                                          </div>
-                                                          <div class="mt-4">
-                                                              <label for="category_id"
-                                                                  class="block text-sm font-medium text-gray-700 mb-2">Category</label>
-                                                              <select name="category_id" id="category_id"
-                                                                  class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md">
-                                                                  @foreach ($categories as $category)
-                                                                      <option value="{{ $category->id }}"
-                                                                          {{ $category->id == $course->category_id ? 'selected' : '' }}>
-                                                                          {{ $category->name }}</option>
-                                                                  @endforeach
-                                                              </select>
-                                                          </div>
-                                                          <div class="mt-4">
-                                                              
-                                                          </div>
-                                                        //close here the information
-                                                      </form>
-                                                  </div>
-                                              </div>
-                                          </div>
+                                    <div class="flex justify-end">
+                                        <button @click="showModal = true"
+                                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                            Edit
+                                        </button>
+                                    </div>
 
-                                          <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                                              <button type="button" x-on:click="showModal = false"
-                                                  class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm">
-                                                  Save
-                                              </button>
-                                              <button type="button" x-on:click="showModal = false"
-                                                  class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
-                                                  Cancel
-                                              </button>
-                                          </div>
+                                    <div x-show="showModal" class="fixed z-10 inset-0 overflow-y-auto">
+                                        <div
+                                            class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                                            <div class="fixed inset-0 transition-opacity">
+                                                <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+                                            </div>
+
+                                            <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
+                                                role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+                                                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                                                    <h2 class="text-lg font-medium text-gray-900 mb-4"
+                                                        id="modal-headline">Edit Course</h2>
+                                                    <form method="POST"
+                                                        action="{{ route('courses.update', $course->id) }}"
+                                                        enctype="multipart/form-data">
+                                                        @csrf
+                                                        @method('PUT')
+
+                                                        <div class="mb-4">
+                                                            <label for="name"
+                                                                class="block mb-2 font-bold text-gray-700">Name</label>
+                                                            <input type="text" name="name" id="name"
+                                                                class="form-input w-full" value="{{ $course->name }}"
+                                                                required>
+                                                        </div>
+
+                                                        <div class="mb-4">
+                                                            <label for="title"
+                                                                class="block mb-2 font-bold text-gray-700">Title</label>
+                                                            <input type="text" name="title" id="title"
+                                                                class="form-input w-full">
+                                                        </div>
+                                                        <!-- description -->
+                                                        <div class="mb-4">
+                                                            <label for="description"
+                                                                class="block mb-2 font-bold text-gray-700">Description</label>
+                                                            <textarea name="description" id="description" cols="30" rows="10" class="form-input w-full"></textarea>
+                                                        </div>
+                                                        <!--is_free-->
+                                                        <div class="mb-4">
+                                                            <label for="is_free"
+                                                                class="block mb-2 font-bold text-gray-700">Is
+                                                                Free</label>
+                                                            <select name="is_free" id="is_free"
+                                                                class="form-input w-full">
+                                                                <option value="1">Yes</option>
+                                                                <option value="0">No</option>
+                                                            </select>
+                                                        </div>
+                                                        <!--instructor approved-->
+                                                        
+                                                        <div class="mb-4">
+                                                            <label for="instructor"
+                                                                class="block mb-2 font-bold text-gray-700">Instructor</label>
+                                                            <select name="instructor" id="instructor"
+                                                                class="form-input w-full">
+                                                                @foreach ($instructors as $instructor)
+                                                                    <option value="{{ $instructor->id }}">
+                                                                        {{ $instructor->name }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+
+                                                        <!--category-->
+                                                        <div class="mb-4">
+                                                            <label for="category"
+                                                                class="block mb-2 font-bold text-gray-700">Category</label>
+                                                            <select name="category" id="category"
+                                                                class="form-input w-full">
+                                                                @foreach ($categories as $category)
+                                                                    <option value="{{ $category->id }}">
+                                                                        {{ $category->name }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                        <!--level-->
+                                                        <div class="mb-4">
+                                                            <label for="level"
+                                                                class="block mb-2 font-bold text-gray-700">Level</label>
+                                                            <select name="level" id="level"
+                                                                class="form-input w-full">
+                                                                <option value="beginner">Beginner</option>
+                                                                <option value="intermediate">Intermediate</option>
+                                                                <option value="advanced">Advanced</option>
+                                                            </select>
+                                                        </div>
+                                                        <!--language-->
+                                                        <div class="mb-4">
+                                                            <label for="language"
+                                                                class="block mb-2 font-bold text-gray-700">Language</label>
+                                                            <select name="language" id="language"
+                                                                class="form-input w-full">
+                                                                <option value="english">English</option>
+                                                                <option value="french">French</option>
+                                                                <option value="spanish">Spanish</option>
+                                                            </select>
+                                                        </div>
+
+
+                                                        <div class="flex justify-end">
+                                                            <button type="button" @click="showModal = false"
+                                                                class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 mr-2 rounded">
+                                                                Cancel
+                                                            </button>
+                                                            <button type="submit"
+                                                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                                                Update
+                                                            </button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <td class="text-sm
+                                        font-medium leading-5 whitespace-no-wrap border-b border-gray-200 ">
+                                  
+                                    <a href="{{ route('courses.destroy', $course->id) }}"
+                                        class="text-gray-600 hover:text-gray-900 ml-4"
+                                        onclick="event.preventDefault(); document.getElementById('delete-form-{{ $course->id }}').submit();">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none"
+                                            viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M6 18L18 6M6 6l12 12" />
+                                        </svg>
+                                    </a>
+                                    <form id="delete-form-{{ $course->id }}"
+                                        action="{{ route('courses.destroy', $course->id) }}" method="POST"
+                                        style="display: none;">
+                                        @csrf
+                                        @method('DELETE')
+                                    </form>
+                                  </td>
+
+                            </td>
+
+
+
                             </td>
                         </tr>
                     @endforeach
@@ -350,4 +345,3 @@
         </div>
     </div>
 </div>
-
