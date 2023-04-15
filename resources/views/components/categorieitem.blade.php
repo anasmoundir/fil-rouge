@@ -109,10 +109,7 @@
                                     class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
                                     <span>{{ $categorie->created_at }}</span>
                                 </td>
-                              
-              
-
-
+                            
                                 <td
                                     class="text-sm font-medium leading-5 text-center whitespace-no-wrap border-b border-gray-200">
                                     <div x-data="{ showModal: false }">

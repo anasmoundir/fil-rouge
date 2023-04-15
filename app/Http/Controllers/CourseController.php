@@ -84,18 +84,27 @@ class CourseController extends Controller
      */
     public function edit(string $id)
     {
-        //validation before the update
+        //
+      
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
         $request->validate([
             'title' => 'required',
             'name' => 'required',
             'description' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'categorie_id' => 'required',    
             'is_free' =>'required',
             'level' => 'required',
             'language' => 'required',
             'instructor_id' => 'required',
         ]);
+
         // return message if the validation is not correct
         if(!$request->hasFile('image'))
         {
@@ -120,19 +129,13 @@ class CourseController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        $course = Course::find($id);
+        $course = Course::findOrFail($id);
+        $image_path = public_path('images') . '/' . $course->image;
+        
         $course->delete();
         return redirect()->route('dashboard');
     }
