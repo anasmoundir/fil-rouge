@@ -26,21 +26,19 @@
                             <label for="Name" class="block mb-2 font-bold text-gray-700">Name</label>
                             <textarea name="name" id="name" class="form-textarea w-full" required></textarea>
                         </div>
-
-
                         <div class="mb-2">
                             <label for="description" class="block mb-2 font-bold text-gray-700">description</label>
                             <textarea name="description" id="description" class="form-textarea w-full" required></textarea>
                         </div>
-
                         <div class="mb-2">
-                            <label for="category_id" class="block mb-2 font-bold text-gray-700">Category</label>
-                            <select name="category_id" id="course_id" class="form-select w-full" required>
-                                @foreach ($categories as $categorie)
-                                    <option value="{{ $categorie->id }}">{{ $categorie->title }}</option>
+                            <label for="categorie_id" class="block mb-2 font-bold text-gray-700">Category</label>
+                            <select name="categorie_id" id="categorie_id" class="form-select w-full" required>
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
                                 @endforeach
                             </select>
                         </div>
+
                         <div class="mb-2">
                             <label for="image" class="block mb-2 font-bold text-gray-700">Image</label>
                             <input type="file" name="image" id="image" class="form-input w-full" required>
@@ -90,8 +88,7 @@
 
 <div class="flex flex-col">
     <div class="overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
-        <div
-            class="inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg">
+        <div class="inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg">
             <table class="min-w-full">
                 <thead>
                     <tr>
