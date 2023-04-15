@@ -163,16 +163,17 @@
                                 {{ $course->description }}
                             </td>
                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                <img src="{{ asset('storage/' . $course->image) }}" alt="" width="100px">
+                                <img src="{{ asset('storage/' . $course->image) }}" alt="" width="10px">
+                                {{ $course->image }}
                             </td>
                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                 {{ $course->is_free }}
                             </td>
                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                {{ $course->instructor->name }}
+                                {{ $course->instructor_name }}
                             </td>
                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                {{-- {{ $course->category->name }} --}}
+                                {{ $course->categorie_name }}
                             </td>
                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                 {{ $course->level }}
@@ -228,13 +229,14 @@
                                                             <label for="title"
                                                                 class="block mb-2 font-bold text-gray-700">Title</label>
                                                             <input type="text" name="title" id="title"
+                                                                value="{{ $course->title }}"
                                                                 class="form-input w-full">
                                                         </div>
                                                         <!-- description -->
                                                         <div class="mb-4">
                                                             <label for="description"
                                                                 class="block mb-2 font-bold text-gray-700">Description</label>
-                                                            <textarea name="description" id="description" cols="30" rows="10" class="form-input w-full"></textarea>
+                                                            <textarea name="description" id="description" cols="30" rows="10" class="form-input w-full"> {{ $course->description }}</textarea>
                                                         </div>
                                                         <!--is_free-->
                                                         <div class="mb-4">
@@ -242,30 +244,34 @@
                                                                 class="block mb-2 font-bold text-gray-700">Is
                                                                 Free</label>
                                                             <select name="is_free" id="is_free"
-                                                                class="form-input w-full">
+                                                                class="form-input w-full"
+                                                                value="{{ $course->is_free }}">
                                                                 <option value="1">Yes</option>
                                                                 <option value="0">No</option>
                                                             </select>
                                                         </div>
                                                         <!--instructor approved-->
-                                                        
-                                                        <div class="mb-4">
-                                                            <label for="instructor"
-                                                                class="block mb-2 font-bold text-gray-700">Instructor</label>
-                                                            <select name="instructor" id="instructor"
-                                                                class="form-input w-full">
-                                                                @foreach ($instructors as $instructor)
-                                                                    <option value="{{ $instructor->id }}">
-                                                                        {{ $instructor->name }}</option>
-                                                                @endforeach
-                                                            </select>
-                                                        </div>
+                                                        <!--check if  instructor is approved ?-->
 
+                                                        <div class="mb-4">
+                                                            <label for=" instructor_id"
+                                                                class="block mb-2 font-bold text-gray-700">Instructor</label>
+                                                            <select name="instructor_id" id="instructor_id"
+                                                                class="form-select w-full" required>
+                                                                @foreach ($instructors as $instructor)
+                                                                    <option value="{{ $instructor->id }}"
+                                                                        @if ($instructor->id == $course->instructor_id) selected @endif>
+                                                                        {{ $instructor->first_name }}
+                                                                        {{ $instructor->last_name }}
+                                                                    </option>
+                                                                @endforeach
+                                                                </select>
+                                                        </div>
                                                         <!--category-->
                                                         <div class="mb-4">
-                                                            <label for="category"
+                                                            <label for="categorie_id"
                                                                 class="block mb-2 font-bold text-gray-700">Category</label>
-                                                            <select name="category" id="category"
+                                                            <select name="categorie_id" id="categorie_id"
                                                                 class="form-input w-full">
                                                                 @foreach ($categories as $category)
                                                                     <option value="{{ $category->id }}">
@@ -278,7 +284,8 @@
                                                             <label for="level"
                                                                 class="block mb-2 font-bold text-gray-700">Level</label>
                                                             <select name="level" id="level"
-                                                                class="form-input w-full">
+                                                                class="form-input w-full"
+                                                                value="{{ $course->is_free }}">
                                                                 <option value="beginner">Beginner</option>
                                                                 <option value="intermediate">Intermediate</option>
                                                                 <option value="advanced">Advanced</option>
@@ -290,6 +297,7 @@
                                                                 class="block mb-2 font-bold text-gray-700">Language</label>
                                                             <select name="language" id="language"
                                                                 class="form-input w-full">
+                                                                value="{{ $course->is_free }}">
                                                                 <option value="english">English</option>
                                                                 <option value="french">French</option>
                                                                 <option value="spanish">Spanish</option>
@@ -313,25 +321,26 @@
                                         </div>
                                     </div>
                                 </div>
-                                <td class="text-sm
+                            <td
+                                class="text-sm
                                         font-medium leading-5 whitespace-no-wrap border-b border-gray-200 ">
-                                  
-                                    <a href="{{ route('courses.destroy', $course->id) }}"
-                                        class="text-gray-600 hover:text-gray-900 ml-4"
-                                        onclick="event.preventDefault(); document.getElementById('delete-form-{{ $course->id }}').submit();">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none"
-                                            viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M6 18L18 6M6 6l12 12" />
-                                        </svg>
-                                    </a>
-                                    <form id="delete-form-{{ $course->id }}"
-                                        action="{{ route('courses.destroy', $course->id) }}" method="POST"
-                                        style="display: none;">
-                                        @csrf
-                                        @method('DELETE')
-                                    </form>
-                                  </td>
+
+                                <a href="{{ route('courses.destroy', $course->id) }}"
+                                    class="text-gray-600 hover:text-gray-900 ml-4"
+                                    onclick="event.preventDefault(); document.getElementById('delete-form-{{ $course->id }}').submit();">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                </a>
+                                <form id="delete-form-{{ $course->id }}"
+                                    action="{{ route('courses.destroy', $course->id) }}" method="POST"
+                                    style="display: none;">
+                                    @csrf
+                                    @method('DELETE')
+                                </form>
+                            </td>
 
                             </td>
 
