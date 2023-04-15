@@ -12,6 +12,8 @@ class LessonController extends Controller
     public function index()
     {
         //
+        
+
     }
 
     /**

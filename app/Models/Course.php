@@ -8,6 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Course extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'name',
+        'title',
+        'description',
+        'image',
+        'is_free',
+        'instructor_id',
+        'categorie_id',
+        'level',
+        'language',
+    ];
     public function categorie()
     {
         return $this->belongsTo(Categorie::class);
@@ -16,4 +27,13 @@ class Course extends Model
     {
         return $this->hasMany(Lesson::class);
     }
+    public function instructor()
+    {
+        return $this->belongsTo(Instructor::class);
+    }
+    public function students()
+    {
+        return $this->belongsToMany(Student::class);
+    }
+
 }

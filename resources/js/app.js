@@ -2,8 +2,13 @@ import './bootstrap';
 import Alpine from 'alpinejs';
 window.Alpine = Alpine;
 Alpine.start();
-import { createApp } from 'vue'
+import { createApp } from 'vue';
+import VideoUpload from './components/VideoUpload.vue';
 
-const app = createApp({})
-// app.component('MyDashboard', MyDashboard)
-app.mount('#app')
+Vue.component('videoUpload', require('./components/VideoUpload.vue').default);
+
+export default ({
+      components: {
+            VideoUpload
+      },
+});
