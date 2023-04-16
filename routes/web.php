@@ -18,6 +18,7 @@ use App\Http\Controllers\InstructorLessonController;
 use App\Http\Controllers\VideoUploadController;
 use App\Http\Controllers\StudentResourceController;
 use App\Http\Controllers\approveInstructor;
+use App\Http\Controllers\DashboardUser;
 
 
 /*
@@ -53,12 +54,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
+
 
 //route to instructor_approval page for admin from the approveInstructore controller index 
-Route::get('/instructor_approval', [approveInstructor::class, 'index'])->name('instructor_approval');
+Route::get('/instructor_approval', [DashboardUser::class, 'index'])->name('instructor_approval');
+
+//route to approve profile function 
+Route::post('/approve_profile/{id}', [approveInstructor::class, 'approveInstructor'])->name('approve_instructor');    
 
 
 

@@ -93,7 +93,8 @@ class InstructorAuthController extends Controller
         'role' => 'pending_instructor',
     ]);
        
-       $instructor  = instructor::create([
+       
+    $instructor  = instructor::create([
         'first_name' => $request->first_name,
         'last_name' => $request->last_name,
         'date_of_birth' => $request->date_of_birth,
