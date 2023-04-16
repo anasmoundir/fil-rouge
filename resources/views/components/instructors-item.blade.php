@@ -55,7 +55,7 @@
                         @foreach ($instructors as $instructor)
                             <tr>
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                    {{ $instructor->first_name }}  {{ $instructor->first_name }}
+                                    {{ $instructor->last_name }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                     {{ $instructor->date_of_birth }}
@@ -64,7 +64,7 @@
                                     {{ $instructor->teaching_experience }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                    {{ $instructor->created_at }}
+                                    {{ $instructor->created_at->format('d/m/Y') }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                     {{ $instructor->approved }}
@@ -123,12 +123,11 @@
                                                                     <div
                                                                         class="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                                                         <dt class="text-sm font-medium text-gray-500">
-                                                                            Name
+                                                                            name
                                                                         </dt>
                                                                         <dd
                                                                             class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                                                            John Doe
-                                                                        </dd>
+                                                                            {{ $instructor->last_name }} </dd>
                                                                     </div>
                                                                     <div
                                                                         class="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -137,18 +136,17 @@
                                                                         </dt>
                                                                         <dd
                                                                             class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                                                            john.doe@example.com
+                                                                            {{$instructor->email}}
                                                                         </dd>
                                                                     </div>
                                                                     <div
                                                                         class="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                                                         <dt class="text-sm font-medium text-gray-500">
-                                                                            Phone Number
+                                                                            field of expertise
                                                                         </dt>
                                                                         <dd
                                                                             class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                                                            (555)
-                                                                            555-5555
+                                                                            {{$instructor->field_of_expertise}}
                                                                         </dd>
                                                                     </div>
                                                                     <div
@@ -157,22 +155,23 @@
                                                                             Address
                                                                         </dt>
                                                                         <dd
-                                                                            class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                                                            123 Main St, Anytown USA
-                                                                        </dd>
+                                                                        class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                                                            {{$instructor->address}}
+                                                                          </dd>
                                                                     </div>
-                                                                    <div
-                                                                        class="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                                                        <dt class="text-sm font-medium text-gray-500">
-                                                                            CV
-                                                                        </dt>
-                                                                        <dd
-                                                                            class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                                                            <a href="#"
-                                                                                class="text-blue-500 hover:text-blue-700">View
-                                                                                CV</a>
-                                                                        </dd>
-                                                                    </div>
+                                                                    <div class="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                                                      <dt class="text-sm font-medium text-gray-500 flex items-center">
+                                                                          CV
+                                                                      </dt>
+                                                                      <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 flex items-center">
+                                                                          <a href="{{ route('download_cv', ['id' => $instructor->id]) }}" class="text-blue-600 hover:text-blue-800 flex items-center">
+                                                                              <svg class="h-5 w-5 text-gray-400 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                                                                  <path fill-rule="evenodd" d="M15 14a1 1 0 0 1-2 0V8a1 1 0 1 1 2 0v6zm-3.707-6.707a1 1 0 0 0-1.414-1.414l-2 2a1 1 0 0 0 1.414 1.414L11 8.414V16a1 1 0 1 0 2 0V8.414l.293.293a1 1 0 0 0 1.414-1.414l-2-2z" clip-rule="evenodd" />
+                                                                              </svg>
+                                                                              <span>Download CV</span>
+                                                                          </a>
+                                                                      </dd>
+                                                                  </div>
                                                                     <div
                                                                         class="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                                                         <dt class="text-sm font-medium text-gray-500">
@@ -206,22 +205,34 @@
                                                                 </div>
                                                             </div>
                                                             <div class="flex justify-end py-4">
-                                                              <form method="POST" action="{{ route('approve_instructor', $instructor->id) }}">
-                                                                @csrf
-                                                                <button type="submit">Click me</button>
-                                                            </form>
-                                                      
-                                                            <button type="button" @click="showModal = false"
-                                                            class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 mr-2 rounded">
-                                                            Cancel
-                                                            </button>
+                                                                <form method="POST"
+                                                                    action="{{ route('approve_instructor', $instructor->id) }}">
+                                                                    @csrf
+                                                                    <button type="submit"
+                                                                        class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 mr-2 rounded">
+                                                                        Approve
+                                                                    </button>
+                                                                </form>
+                                                                <form method="POST"
+                                                                    action="{{ route('reject_instructor', $instructor->id) }}">
+                                                                    @csrf
+                                                                    <button type="submit"
+                                                                        class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 mr-2 rounded">
+                                                                        Deny
+                                                                    </button>
+                                                                </form>
+
+                                                                <button type="button" @click="showModal = false"
+                                                                    class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 mr-2 rounded">
+                                                                    Cancel
+                                                                </button>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                              
+
 
                                 </td>
                                 </td>

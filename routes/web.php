@@ -62,7 +62,10 @@ Route::get('/instructor_approval', [DashboardUser::class, 'index'])->name('instr
 //route to approve profile function 
 Route::post('/approve_profile/{id}', [approveInstructor::class, 'approveInstructor'])->name('approve_instructor');    
 
-
+//route to reject profile function
+Route::post('/reject_profile/{id}', [approveInstructor::class, 'rejectInstructor'])->name('reject_instructor');
+//route to download the cv 
+Route::get('/download_cv/{id}', [approveInstructor::class, 'downloadResume'])->name('download_cv');
 
 Route::middleware('auth')->group(function () {
 
