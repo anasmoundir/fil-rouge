@@ -23,6 +23,13 @@ class DashboardUser extends Controller
         $courses = Course::all();
         $categories = Categorie::all();
         $instructors = Instructor::all();
+        foreach ($instructors as $instructor) {
+            foreach ($users as $user) {
+                if ($instructor->user_id == $user->id) {
+                    $instructor->email = $user->email;
+                }
+            }
+        }
         return view('instructor_approval', compact('users', 'lessons', 'courses', 'categories', 'instructors'));
     }
 
