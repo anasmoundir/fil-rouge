@@ -66,6 +66,8 @@ Route::post('/approve_profile/{id}', [approveInstructor::class, 'approveInstruct
 Route::post('/reject_profile/{id}', [approveInstructor::class, 'rejectInstructor'])->name('reject_instructor');
 //route to download the cv 
 Route::get('/download_cv/{id}', [approveInstructor::class, 'downloadResume'])->name('download_cv');
+//route to delete the profile
+Route::delete('/delete_profile/{id}', [approveInstructor::class, 'deleteInstructor'])->name('delete_profile');
 
 Route::middleware('auth')->group(function () {
 

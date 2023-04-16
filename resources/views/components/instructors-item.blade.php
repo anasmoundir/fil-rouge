@@ -160,18 +160,17 @@
                                                                           </dd>
                                                                     </div>
                                                                     <div class="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                                                      <dt class="text-sm font-medium text-gray-500 flex items-center">
-                                                                          CV
+                                                                      <dt class="text-sm font-medium text-gray-500">
+                                                                        CV
                                                                       </dt>
-                                                                      <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 flex items-center">
-                                                                          <a href="{{ route('download_cv', ['id' => $instructor->id]) }}" class="text-blue-600 hover:text-blue-800 flex items-center">
-                                                                              <svg class="h-5 w-5 text-gray-400 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                                                                  <path fill-rule="evenodd" d="M15 14a1 1 0 0 1-2 0V8a1 1 0 1 1 2 0v6zm-3.707-6.707a1 1 0 0 0-1.414-1.414l-2 2a1 1 0 0 0 1.414 1.414L11 8.414V16a1 1 0 1 0 2 0V8.414l.293.293a1 1 0 0 0 1.414-1.414l-2-2z" clip-rule="evenodd" />
-                                                                              </svg>
-                                                                              <span>Download CV</span>
-                                                                          </a>
+                                                                      <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                                                        <a href="{{ route('download_cv', ['id' => $instructor->id]) }}" class="text-blue-600 hover:text-blue-800">
+                                                                          <svg class="h-6 w-6 fill-current text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                                                            <path fill-rule="evenodd" d="M15 14a1 1 0 0 1-2 0V8a1 1 0 1 1 2 0v6zm-3.707-6.707a1 1 0 0 0-1.414-1.414l-2 2a1 1 0 0 0 1.414 1.414L11 8.414V16a1 1 0 1 0 2 0V8.414l.293.293a1 1 0 0 0 1.414-1.414l-2-2z" clip-rule="evenodd" />
+                                                                          </svg>Download CV
+                                                                        </a>
                                                                       </dd>
-                                                                  </div>
+                                                                    </div>
                                                                     <div
                                                                         class="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                                                         <dt class="text-sm font-medium text-gray-500">
@@ -221,6 +220,14 @@
                                                                         Deny
                                                                     </button>
                                                                 </form>
+                                                                <form method="POST"
+                                                                    action="{{ route('delete_profile', $instructor->id) }}">
+                                                                    @csrf
+                                                                    <button type="submit"
+                                                                        class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 mr-2 rounded">
+                                                                        Delete
+                                                                    </button>
+                                                                </form>
 
                                                                 <button type="button" @click="showModal = false"
                                                                     class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 mr-2 rounded">
@@ -232,8 +239,6 @@
                                                 </div>
                                             </div>
                                         </div>
-
-
                                 </td>
                                 </td>
                             </tr>
@@ -243,4 +248,16 @@
             </div>
         </div>
     </div>
-</div>
+  </div>
+
+
+
+<script>
+   const deleteForm = document.getElementById('delete-form');
+    deleteForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        if (confirm('Are you sure you want to delete this instructor?')) {
+            this.submit();
+        }
+    });
+</script>
