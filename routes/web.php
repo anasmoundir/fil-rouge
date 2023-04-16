@@ -16,6 +16,8 @@ use App\Http\Controllers\InstructorCourseController;
 use App\Http\Controllers\StudentLessonController;
 use App\Http\Controllers\InstructorLessonController;
 use App\Http\Controllers\VideoUploadController;
+use App\Http\Controllers\StudentResourceController;
+use App\Http\Controllers\approveInstructor;
 
 
 /*
@@ -55,8 +57,13 @@ Route::get('/', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
+//route to instructor_approval page for admin from the approveInstructore controller index 
+Route::get('/instructor_approval', [approveInstructor::class, 'index'])->name('instructor_approval');
+
+
+
 Route::middleware('auth')->group(function () {
-    //video upload
+
     Route::get('/video/upload', [VideoUploadController::class, 'index'])->name('video.upload');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

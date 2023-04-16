@@ -13,9 +13,10 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
     <!-- Vite runtime script -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-
+    <script src="{{ asset('./ressources/js/app.js') }}"></script>
     <!-- Vite-generated CSS -->
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    @livewireStyles
 </head>
 
 <body class="font-sans antialiased">
@@ -39,5 +40,6 @@
 
     <!-- Vite-generated JavaScript -->
     <script type="module" src="{{ mix('js/app.js') }}"></script>
+    @livewireScripts
 </body>
 </html>
