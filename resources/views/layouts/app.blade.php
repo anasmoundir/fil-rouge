@@ -14,9 +14,8 @@
     <link href="{{ asset('css/heroicons.css') }}" rel="stylesheet">
     <!-- Vite runtime script -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <script src="{{ asset('./ressources/js/app.js') }}"></script>
     @push('scripts')
-        <script src="{{ asset('js/app.js') }}"></script>
+        <script src="{{ asset('js/app.js') }}" type="module"></script>
         <script src="{{ asset('js/alpine.js') }}"></script>
         <script src="{{ asset('js/bootstrap.js') }}"></script>
         <script src="{{ asset('js/feather.js') }}"></script>
@@ -27,7 +26,7 @@
 
 <body class="font-sans antialiased">
 
-   
+
     <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
         @if (isset($header))
             <header class="bg-white dark:bg-gray-800 shadow">
@@ -40,11 +39,12 @@
         <main>
             {{ $slot }}
         </main>
-    </div>  
+    </div>
 
     <!-- Vite-generated JavaScript -->
     <script type="module" src="{{ mix('js/app.js') }}"></script>
     @livewireScripts
     @stack('scripts')
 </body>
+
 </html>
