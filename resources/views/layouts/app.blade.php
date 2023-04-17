@@ -11,18 +11,24 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <link href="{{ asset('css/heroicons.css') }}" rel="stylesheet">
     <!-- Vite runtime script -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script src="{{ asset('./ressources/js/app.js') }}"></script>
-    <!-- Vite-generated CSS -->
+    @push('scripts')
+        <script src="{{ asset('js/app.js') }}"></script>
+        <script src="{{ asset('js/alpine.js') }}"></script>
+        <script src="{{ asset('js/bootstrap.js') }}"></script>
+        <script src="{{ asset('js/feather.js') }}"></script>
+    @endpush
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     @livewireStyles
 </head>
 
 <body class="font-sans antialiased">
+
+   
     <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
-        {{-- @include('layouts.navigation') --}}
-        <!-- Page Heading -->
         @if (isset($header))
             <header class="bg-white dark:bg-gray-800 shadow">
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
@@ -30,9 +36,7 @@
                 </div>
             </header>
         @endif
-        <!-- Vue dashboard -->
         <div id="vue-dashboard"></div>
-        <!-- Page Content -->
         <main>
             {{ $slot }}
         </main>
@@ -41,5 +45,6 @@
     <!-- Vite-generated JavaScript -->
     <script type="module" src="{{ mix('js/app.js') }}"></script>
     @livewireScripts
+    @stack('scripts')
 </body>
 </html>

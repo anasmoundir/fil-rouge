@@ -66,7 +66,6 @@
 
 
         <div class="w-5/6 p-4">
-            <livewire:categories />
             <div id="categories-container" class="container">
                 <x-categorieitem :categories="$categories" />
             </div>

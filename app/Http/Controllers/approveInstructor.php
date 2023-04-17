@@ -16,16 +16,34 @@ class approveInstructor extends Controller
     public function approveInstructor(Request $request)
     {
         $instructor = Instructor::find($request->id);
-        $instructor->status = 1;
+        $instructor->approved = 1;
+        $instructor->user->roles()->attach(3);
         $instructor->save();
         return redirect()->back();
     }
+    public function rejectInstructor(Request $request)
+    {
+        $instructor = Instructor::find($request->id);
+        $instructor->approved = 0;
+        if ($instructor->user->roles()->where('role_id', 3)->exists()) {
+            $instructor->user->roles()->detach(3);
+        }
+        $instructor->save();
+        return redirect()->back();
+    }
+
     public function downloadResume($id)
     {
+
         $instructor = Instructor::find($id);
-        // the cv is stored here $cv_name = time() . '.' . $cv->getClientOriginalExtension(); $cv->move(public_path('cv'), $cv_name);
         $cv_name = $instructor->cv;
+        if (!file_exists(public_path('cv/' . $cv_name))) {
+            return redirect()->back();
+        }
         return response()->download(public_path('cv/' . $cv_name));
     }
+
+
+  
 
 }

@@ -93,7 +93,8 @@ class InstructorAuthController extends Controller
         'role' => 'pending_instructor',
     ]);
        
-       $instructor  = instructor::create([
+       
+    $instructor  = instructor::create([
         'first_name' => $request->first_name,
         'last_name' => $request->last_name,
         'date_of_birth' => $request->date_of_birth,
@@ -109,5 +110,17 @@ class InstructorAuthController extends Controller
     $role = Role::first();
     $user->roles()->attach($role->id);
     return redirect()->route('instructor.login');
+}
+
+public function deleteInstructor($id)
+{
+    $instructor = Instructor::find($id);
+
+    if (!$instructor) {
+        return redirect()->back()->with('error', 'Instructor not found.');
+    }
+
+    $instructor->delete();
+    return redirect()->back()->with('success', 'Instructor deleted successfully.');
 }
 }

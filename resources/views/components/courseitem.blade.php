@@ -251,8 +251,7 @@
                                                                 <option value="0">No</option>
                                                             </select>
                                                         </div>
-                                                        <!--instructor approved-->
-                                                        <!--check if  instructor is approved ?-->
+                                                        
 
                                                         <div class="mb-4">
                                                             <label for=" instructor_id"

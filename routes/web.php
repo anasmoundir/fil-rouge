@@ -18,6 +18,7 @@ use App\Http\Controllers\InstructorLessonController;
 use App\Http\Controllers\VideoUploadController;
 use App\Http\Controllers\StudentResourceController;
 use App\Http\Controllers\approveInstructor;
+use App\Http\Controllers\DashboardUser;
 
 
 /*
@@ -30,6 +31,8 @@ use App\Http\Controllers\approveInstructor;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+
 Route::get('/student/login', [StudentAuthController::class, 'showLoginForm'])->name('student.showLoginForm');
 Route::post('/student/login', [StudentAuthController::class, 'login'])->name('student.login');
 Route::get('/student/register', [StudentAuthController::class, 'showRegistrationForm'])->name('student.showRegistrationForm');
@@ -48,21 +51,34 @@ Route::get('/admin/register', [AdminAuthController::class, 'showRegistrationForm
 Route::post('/admin/register', [AdminAuthController::class, 'register']);
 
 
+Route::get('/lesson', [LessonController::class, 'index'])->name('lesson.index');
+
+
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
 
-//route to instructor_approval page for admin from the approveInstructore controller index 
-Route::get('/instructor_approval', [approveInstructor::class, 'index'])->name('instructor_approval');
+//lesson Ressource store function 
+Route::post('/lesson/{lesson}/resource', [StudentResourceController::class, 'store'])->name('lesson.resource.store');
+
+
 
 
 
 Route::middleware('auth')->group(function () {
+    //route to instructor_approval page for admin from the approveInstructore controller index 
+Route::get('/instructor_approval', [DashboardUser::class, 'index'])->name('instructor_approval');
+
+Route::post('/approve_profile/{id}', [approveInstructor::class, 'approveInstructor'])->name('approve_instructor');    
+
+//route to reject profile function
+Route::post('/reject_profile/{id}', [approveInstructor::class, 'rejectInstructor'])->name('reject_instructor');
+//route to download the cv 
+Route::get('/download_cv/{id}', [approveInstructor::class, 'downloadResume'])->name('download_cv');
+
+Route::delete('/delete_profile/{id}', [InstructorAuthController::class, 'deleteInstructor'])->name('delete_profile');
 
     Route::get('/video/upload', [VideoUploadController::class, 'index'])->name('video.upload');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -71,7 +87,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/users', [DashboardController::class, 'users'])->name('users');
     Route::get('/settings', [DashboardController::class, 'settings'])->name('settings');
     Route::resource('courses', CourseController::class);
-    Route::resource('lessons', LessonController::class);    
+  
     Route::resource('categories', CategoryController::class);
     Route::get('/admin', function () { 
     return view('admin.index'); })->name('admin');    
