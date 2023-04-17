@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+//bring the lesson model
+use App\Models\Lesson;
 class LessonController extends Controller
 {
     /**
@@ -11,9 +12,10 @@ class LessonController extends Controller
      */
     public function index()
     {
-        //
-        
-
+        $categories = Categorie::all();
+        $instructors = Instructor::all();
+        $courses = Course::all();
+        return view('add_lesson', compact('categories', 'instructors', 'courses'));
     }
 
     /**
