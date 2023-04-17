@@ -3,7 +3,7 @@
 
       <div class="flex  flex-col md:flex-row">
   
-            <aside class="w-1/6  min-h-screen">
+            <aside :class="{ 'hidden': !sidebarOpen, 'md:block': sidebarOpen }" class="w-1/6 min-h-screen bg-white border-r-2 border-gray-200">
                   <nav class="flex flex-col h-full py-6 px-2 space-y-4 text-gray-700 bg-white border-r-2 border-gray-200">
                       <!-- Logo -->
                       <a href="#" class="flex items-center justify-center mb-6">
@@ -75,7 +75,6 @@
                 </div>
             </div>
         </section>
-  
       </div>
 </x-app-layout>
 <script>
