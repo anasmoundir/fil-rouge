@@ -15,7 +15,7 @@ class LessonController extends Controller
         $categories = Categorie::all();
         $instructors = Instructor::all();
         $courses = Course::all();
-        return view('add_lesson', compact('categories', 'instructors', 'courses'));
+        return view('instructorlab', compact('categories', 'instructors', 'courses'));
     }
 
     /**

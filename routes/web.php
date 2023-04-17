@@ -31,6 +31,8 @@ use App\Http\Controllers\DashboardUser;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+
 Route::get('/student/login', [StudentAuthController::class, 'showLoginForm'])->name('student.showLoginForm');
 Route::post('/student/login', [StudentAuthController::class, 'login'])->name('student.login');
 Route::get('/student/register', [StudentAuthController::class, 'showRegistrationForm'])->name('student.showRegistrationForm');
@@ -49,11 +51,17 @@ Route::get('/admin/register', [AdminAuthController::class, 'showRegistrationForm
 Route::post('/admin/register', [AdminAuthController::class, 'register']);
 
 
+Route::get('/lesson', [LessonController::class, 'index'])->name('lesson.index');
+
+
 
 Route::get('/', function () {
     return view('welcome');
 });
 
+
+//lesson Ressource store function 
+Route::post('/lesson/{lesson}/resource', [StudentResourceController::class, 'store'])->name('lesson.resource.store');
 
 
 
@@ -79,7 +87,7 @@ Route::delete('/delete_profile/{id}', [InstructorAuthController::class, 'deleteI
     Route::get('/users', [DashboardController::class, 'users'])->name('users');
     Route::get('/settings', [DashboardController::class, 'settings'])->name('settings');
     Route::resource('courses', CourseController::class);
-    Route::resource('lessons', LessonController::class);    
+  
     Route::resource('categories', CategoryController::class);
     Route::get('/admin', function () { 
     return view('admin.index'); })->name('admin');    

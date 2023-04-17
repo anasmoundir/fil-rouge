@@ -29,6 +29,7 @@ class LessonResourceController extends Controller
         $lessonResource->course_id = $request->course_id;
         $lessonResource->save();
 
-        return redirect()->route('lessons.show', $lessonResource->lesson_id);
+        return redirect()->back()->with('success', 'Lesson Resource created successfully');
     }
+
 }
