@@ -111,4 +111,16 @@ class InstructorAuthController extends Controller
     $user->roles()->attach($role->id);
     return redirect()->route('instructor.login');
 }
+
+public function deleteInstructor($id)
+{
+    $instructor = Instructor::find($id);
+
+    if (!$instructor) {
+        return redirect()->back()->with('error', 'Instructor not found.');
+    }
+
+    $instructor->delete();
+    return redirect()->back()->with('success', 'Instructor deleted successfully.');
+}
 }

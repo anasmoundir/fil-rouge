@@ -22,7 +22,7 @@ class DashboardUser extends Controller
         $lessons = Lesson::all();
         $courses = Course::all();
         $categories = Categorie::all();
-        $instructors = Instructor::all();
+        $instructors =  Instructor::with('user')->paginate(10);
         foreach ($instructors as $instructor) {
             foreach ($users as $user) {
                 if ($instructor->user_id == $user->id) {
