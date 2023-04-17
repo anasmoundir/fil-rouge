@@ -41,11 +41,6 @@ class approveInstructor extends Controller
     }
 
 
-    public function deleteInstructor($id)
-    {
-        $instructor = Instructor::find($id);
-        $instructor->delete();
-        return redirect()->back();
-    }
+  
 
 }
