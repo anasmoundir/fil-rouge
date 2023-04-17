@@ -18,4 +18,14 @@ class LessonResource extends Model
         'file',
         'lesson_id',
     ];
+    //belongs to lesson
+    public function lesson()
+    {
+        return $this->belongsTo(Lesson::class);
+    }
+    //polimorphic relation with progress
+    public function progress()
+    {
+        return $this->morphOne(Progress::class, 'progressable');
+    }
 }
