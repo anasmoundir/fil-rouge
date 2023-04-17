@@ -25,6 +25,9 @@ class approveInstructor extends Controller
     {
         $instructor = Instructor::find($request->id);
         $instructor->approved = 0;
+        if ($instructor->user->roles()->where('role_id', 3)->exists()) {
+            $instructor->user->roles()->detach(3);
+        }
         $instructor->save();
         return redirect()->back();
     }

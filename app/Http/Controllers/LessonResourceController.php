@@ -14,7 +14,7 @@ class LessonResourceController extends Controller
         $request->validate([
             'name' => 'required',
             'description' => 'required',
-            'type' => 'required',
+            'type' => 'required'|'active_url',
             'file' => 'required',
             'category_id' => 'required|exists:categories,id',
             'course_id' => 'required|exists:courses,id',
