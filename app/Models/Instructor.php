@@ -30,4 +30,8 @@ class Instructor extends Model
     {
         return $this->hasMany(Course::class);
     }
+    public function progress()
+    {
+        return $this->morphOne(Progress::class, 'progressable');
+    }
 }

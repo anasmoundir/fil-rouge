@@ -35,5 +35,9 @@ class Course extends Model
     {
         return $this->belongsToMany(Student::class);
     }
+    public function progress()
+    {
+        return $this->morphOne(Progress::class, 'progressable');
+    }
 
 }

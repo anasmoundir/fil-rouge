@@ -12,7 +12,7 @@ const app = createApp({
         }
       }
     });
-    
+      
     app.component('video-upload', VideoUpload);
     
     app.mount('#app');
