@@ -12,4 +12,5 @@ class Progress extends Model
     {
         return $this->morphTo();
     }
+
 }

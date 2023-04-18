@@ -17,6 +17,12 @@ class LessonResource extends Model
         'type',
         'file',
         'lesson_id',
+        'processed',
+        'uid',
+        'ressouce_id',
+        'visibility',
+        'allow_download',
+        'processed_percentage'
     ];
     //belongs to lesson
     public function lesson()
@@ -27,5 +33,9 @@ class LessonResource extends Model
     public function progress()
     {
         return $this->morphOne(Progress::class, 'progressable');
+    }
+    public function getRouteKeyName()
+    {
+        return 'uid';
     }
 }

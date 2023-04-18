@@ -19,6 +19,6 @@
     "dependencies": {
         "@heroicons/vue": "^2.0.17",
         "jquery": "^3.6.4",
-        "vue": "^3.2.36"
+        "vue": "^3.2.47"
     }
 }

@@ -9,6 +9,7 @@ class Lesson extends Model
 {
     use HasFactory;
    protected $fillable = [
+
         'title',
         'description',
         'video',
@@ -18,4 +19,18 @@ class Lesson extends Model
     {
         return $this->belongsTo(Course::class);
     }
+    public function resources()
+    {
+        return $this->hasMany(LessonResource::class);
+    }
+    public function progress()
+    {
+        return $this->morphOne(Progress::class, 'progressable');
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }
+
