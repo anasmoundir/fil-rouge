@@ -57,9 +57,7 @@ Route::post('/lesson/uploading', [LessonResourceController::class, 'store'])->na
 Route::get('/lesson/{lesson}/resource', [LessonResourceController::class, 'show'])->name('lesson.resource.show');
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 
 
 
