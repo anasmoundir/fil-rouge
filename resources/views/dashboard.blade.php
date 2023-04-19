@@ -71,7 +71,7 @@
             </div>
 
             <div id="lessons-container" class="container">
-                <x-lessonitem :lessons="$lessons" :courses="$courses" />
+                {{-- <x-lessonitem :lessons="$lessons" :courses="$courses" /> --}}
             </div>
 
             <div id="courses-container" class="container">
