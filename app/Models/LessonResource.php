@@ -20,7 +20,6 @@ class LessonResource extends Model
         'processed',
         'uid',
         'ressouce_id',
-        'visibility',
         'allow_download',
         'processed_percentage'
     ];

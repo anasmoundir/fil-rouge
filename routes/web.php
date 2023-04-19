@@ -66,11 +66,12 @@ Route::get('/', function () {
 //lesson Ressource store function 
 // Route::post('/lesson/{lesson}/resource', [StudentResourceController::class, 'store'])->name('lesson.resource.store');
 
+Route::post('/lesson/AddNewLesson',[LessonController::class, 'store'])->name('lessons.store');
 
    //the instructor routes for the instructor instructorlab blade 
 Route::get('/instructorlab', [LessonController::class, 'index'])->name('instructorlab');
 //define lesson store route 
-Route::post('/lesson/AddNewLesson',[LessonController::class, 'index'])->name('lessons.store');
+
 
 
 

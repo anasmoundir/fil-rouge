@@ -128,7 +128,7 @@
                                       <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
                                           <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                                               <h2 class="text-lg font-medium text-gray-900 mb-4" id="modal-headline">Edit Category</h2>
-                                              //livewire edit methode
+        
 
                                               <form wire:submit.prevent="editCategory({{$categorie->id}})" enctype="multipart/form-data">
                                                   @csrf
