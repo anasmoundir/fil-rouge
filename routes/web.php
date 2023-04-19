@@ -57,20 +57,19 @@ Route::post('/lesson/uploading', [LessonResourceController::class, 'store'])->na
 Route::get('/lesson/{lesson}/resource', [LessonResourceController::class, 'show'])->name('lesson.resource.show');
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 
 
 
 //lesson Ressource store function 
 // Route::post('/lesson/{lesson}/resource', [StudentResourceController::class, 'store'])->name('lesson.resource.store');
 
+Route::post('/lesson/AddNewLesson',[LessonController::class, 'store'])->name('lessons.store');
 
    //the instructor routes for the instructor instructorlab blade 
 Route::get('/instructorlab', [LessonController::class, 'index'])->name('instructorlab');
 //define lesson store route 
-Route::post('/lesson/AddNewLesson',[LessonController::class, 'index'])->name('lessons.store');
+
 
 
 

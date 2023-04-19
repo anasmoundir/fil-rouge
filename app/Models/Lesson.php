@@ -12,7 +12,7 @@ class Lesson extends Model
 
         'title',
         'description',
-        'video',
+        'video_url',
         'course_id',
     ];
     public function course()
@@ -28,6 +28,9 @@ class Lesson extends Model
         return $this->morphOne(Progress::class, 'progressable');
     }
 
+    protected $attributes = [
+        'video_url' => "https://www.youtube.com/watch?v=8SbUC-UaAxE",
+    ];
     public function getRouteKeyName()
     {
         return 'slug';
