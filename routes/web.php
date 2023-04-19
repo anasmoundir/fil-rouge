@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
@@ -19,7 +18,7 @@ use App\Http\Controllers\VideoUploadController;
 use App\Http\Controllers\StudentResourceController;
 use App\Http\Controllers\approveInstructor;
 use App\Http\Controllers\DashboardUser;
-
+use App\Http\Controllers\LessonResourceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,8 +50,11 @@ Route::get('/admin/register', [AdminAuthController::class, 'showRegistrationForm
 Route::post('/admin/register', [AdminAuthController::class, 'register']);
 
 
-Route::get('/lesson', [LessonController::class, 'index'])->name('lesson.index');
+Route::get('/lesson', [LessonResourceController::class, 'index'])->name('lesson.index');
 
+Route::post('/lesson/uploading', [LessonResourceController::class, 'store'])->name('lesson.store');
+
+Route::get('/lesson/{lesson}/resource', [LessonResourceController::class, 'show'])->name('lesson.resource.show');
 
 
 Route::get('/', function () {
@@ -60,9 +62,15 @@ Route::get('/', function () {
 });
 
 
-//lesson Ressource store function 
-Route::post('/lesson/{lesson}/resource', [StudentResourceController::class, 'store'])->name('lesson.resource.store');
 
+//lesson Ressource store function 
+// Route::post('/lesson/{lesson}/resource', [StudentResourceController::class, 'store'])->name('lesson.resource.store');
+
+
+   //the instructor routes for the instructor instructorlab blade 
+Route::get('/instructorlab', [LessonController::class, 'index'])->name('instructorlab');
+//define lesson store route 
+Route::post('/lesson/AddNewLesson',[LessonController::class, 'index'])->name('lessons.store');
 
 
 
