@@ -11,4 +11,8 @@ class VideoUploadController extends Controller
     {
         return view('instructorlab');
     }
+    public function store(Request $request)
+    {
+     
+    }
 }
