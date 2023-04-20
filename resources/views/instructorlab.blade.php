@@ -6,7 +6,7 @@
     </x-slot>
 
     @if ($errors->any())
-        <div class="alert alert-danger">
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
             <ul>
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
@@ -16,10 +16,108 @@
     @endif
 
     @if (session('success'))
-        <div class="alert alert-success">
+        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
             {{ session('success') }}
         </div>
     @endif
+    <x-course_-cards :courses=$courses />
+    <div x-data="{ showModal: false }" x-init="showModal = false">
+
+        <div class="flex px-4">
+            <button @click="showModal = true"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Add course
+            </button>
+        </div>
+        <div x-show="showModal" class="fixed z-10 inset-0 overflow-y-auto">
+            <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                <div class="fixed inset-0 transition-opacity">
+                    <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+                </div>
+
+                <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
+                    role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+                    <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                        <h2 class="text-lg font-medium text-gray-900 mb-4" id="modal-headline">Create Course if is not
+                            exist</h2>
+                        <form action="{{ route('AddCourseIfNotexist') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <div class="mb-2">
+                                <label for="title" class="block mb-2 font-bold text-gray-700">Title</label>
+                                <input type="text" name="title" id="title" class="form-input w-full" required>
+                            </div>
+
+                            <div class="mb-2">
+                                <label for="Name" class="block mb-2 font-bold text-gray-700">Name</label>
+                                <textarea name="name" id="name" class="form-textarea w-full" required></textarea>
+                            </div>
+                            <div class="mb-2">
+                                <label for="description" class="block mb-2 font-bold text-gray-700">description</label>
+                                <textarea name="description" id="description" class="form-textarea w-full" required></textarea>
+                            </div>
+                            <div class="mb-2">
+                                <label for="categorie_id" class="block mb-2 font-bold text-gray-700">Category</label>
+                                <select name="categorie_id" id="categorie_id" class="form-select w-full" required>
+                                    @foreach ($categories as $categorie)
+                                        <option value="{{ $categorie->id }}">{{ $categorie->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="mb-2">
+                                <label for="instructor_id" class="block mb-2 font-bold text-gray-700">Instructor</label>
+                                <select name="instructor_id" id="instructor_id" class="form-select w-full" required>
+                                    @foreach ($instructors as $instructor)
+                                        <option value="{{ $instructor->id }}">{{ $instructor->first_name }}
+                                            {{ $instructor->last_name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="mb-2">
+                                <label for="image" class="block mb-2 font-bold text-gray-700">Image</label>
+                                <input type="file" name="image" id="image" class="form-input w-full" required>
+                            </div>
+
+                            <div class="mb-2">
+                                <label for="is_free" class="block mb-2 font-bold text-gray-700">is free</label>
+                                <select name="is_free" id="is_free" class="form-select w-full" required>
+                                    <option value="1">Yes</option>
+                                    <option value="0">No</option>
+                                </select>
+                            </div>
+                            <div class="mb-2">
+                                <label for="level" class="block mb-2 font-bold text-gray-700">Level</label>
+                                <select name="level" id="level" class="form-select w-full" required>
+                                    <option value="Beginner">Beginner</option>
+                                    <option value="Intermediate">Intermediate</option>
+                                    <option value="Advanced">Advanced</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-2">
+                                <label for="language" class="block mb-2 font-bold text-gray-700">language</label>
+                                <select name="language" id="language" class="form-select w-full" required>
+                                    <option value="Arabic">Arabic</option>
+                                    <option value="English">English</option>
+                                    <option value="French">French</option>
+                                    <option value="Spanish">Spanish</option>
+                                </select>
+                            </div>
+                            <div class="flex justify-end">
+                                <button type="button" @click="showModal = false"
+                                    class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 mr-2 rounded">
+                                    Cancel
+                                </button>
+                                <button type="submit"
+                                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                    Create Course
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-6">
@@ -91,6 +189,8 @@
             </div>
         </div>
     </div>
+
+
 </x-app-layout>
 
 
