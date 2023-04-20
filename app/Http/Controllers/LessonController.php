@@ -11,6 +11,9 @@ use App\Models\Lesson;
 use App\Models\LessonResource;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Str;
+
 class LessonController extends Controller
 {
     /**
@@ -32,12 +35,74 @@ class LessonController extends Controller
     {
         //
     }
+    //adding the course if is not exist
+    public function AddCourseIfNotexist(Request $request)
+    {
+    
+        $course = Course::where('title', $request->title)->first();
+        if ($course) {
+            return response()->json(['message' => 'Course already exist', 'course' => $course]);
+        } else {
+            // $course = new Course();
+            // $course->slug = Str::slug($request->title);
+            // $course->title = $request->title;
+            // $course->name = $request->name;
+            // $course->description = $request->description;
+            // $image = $request->file('image');
+            // $image_name = time() . '.' . $image->getClientOriginalExtension();
+            // $image->move(public_path('images'), $image_name);
+            // $course->image = $image_name;
+            // $course->categorie_id = $request->categorie_id;
+            // $course->is_free = $request->is_free;
+            // $course->level = $request->level;
+            // $course->language = $request->language;
+            // $course->instructor_id = $request->instructor_id;
+            // $course->save();
+            // return redirect()->back()->with('success', 'Course created successfully');
+            // }
+            $request->validate([
+            'title' => 'required',
+            'name' => 'required',
+            'description' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'categorie_id' => 'required',    
+            'is_free' =>'required',
+            'level' => 'required',
+            'language' => 'required',
+            'instructor_id' => 'required',
+        ]);
+
+        if(!$request->hasFile('image'))
+        {
+            return redirect()->back()->with('error', 'The image must be a file of type: jpeg, png, jpg, gif, svg.');
+        }
+
+        $course = new Course();
+        $course->slug = Str::slug($request->title);
+        $course->title = $request->title;
+        $course->name = $request->name;
+        $course->description = $request->description;
+        $image = $request->file('image');
+        $image_name = time() . '.' . $image->getClientOriginalExtension();
+        $image->move(public_path('images'), $image_name);
+        $course->image = $image_name;
+        $course->categorie_id = $request->categorie_id;
+        $course->is_free = $request->is_free;
+        $course->level = $request->level;
+        $course->language = $request->language;
+        $course->instructor_id = $request->instructor_id;
+        $course->save();
+        Alert::success('course +', 'Success Course Added succefully');
+        return redirect()->route('instructorlab');
+        
+    }}
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
+      
         $validatedData = $request->validate([
             'course_id' => 'required|integer',
             'new_course_name' => 'required_if:course_id,0',
@@ -85,8 +150,8 @@ class LessonController extends Controller
                 ->usingFileName($file->getClientOriginalName())
                 ->toMediaCollection('lesson_resources');
         }
-    
-        return redirect()->route('instructorlab')->with('success', 'Lesson created successfully');
+        Alert::success('Success ', 'Lesson created successfully');
+        return redirect()->route('instructorlab');
     } 
     /**
      * Display the specified resource.
@@ -102,6 +167,7 @@ class LessonController extends Controller
     public function edit(string $id)
     {
         //
+        
     }
 
     /**

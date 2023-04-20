@@ -72,7 +72,7 @@ Route::post('/lesson/AddNewLesson',[LessonController::class, 'store'])->name('le
 Route::get('/instructorlab', [LessonController::class, 'index'])->name('instructorlab');
 //define lesson store route 
 
-
+Route::post('/instructurAddCourse', [LessonController::class, 'AddCourseIfNotexist'])->name('AddCourseIfNotexist');
 
 
 

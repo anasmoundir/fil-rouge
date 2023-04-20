@@ -73,12 +73,14 @@
                                         {{ $instructor->created_at->format('d/m/Y') }}
                                     </td>
                                     <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                       @if ($instructor->approved)
-                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                        @if ($instructor->approved)
+                                            <span
+                                                class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                                                 Approved
                                             </span>
                                         @else
-                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
+                                            <span
+                                                class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
                                                 Not Approved
                                             </span>
                                         @endif
@@ -97,8 +99,9 @@
                                     <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                         {{ $instructor->address }}
                                     </td>
-                                    <td class="text-sm font-medium leading-5 text-center whitespace-no-wrap border-b border-gray-200">
-                                        <div x-data="{ showModal: false }">
+                                    <td
+                                        class="text-sm font-medium leading-5 text-center whitespace-no-wrap border-b border-gray-200">
+                                        <div x-data="{ showModal: false }" x-init="showModal = false">
                                             <div class="flex justify-end">
                                                 <button @click="showModal = true"
                                                     class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
@@ -268,11 +271,11 @@
                                                 </div>
                                             </div>
                                     </td>
-                                 
+
                                 </tr>
                             @endforeach
                         </tbody>
-                        
+
                     </table>
                 </div>
                 {{ $instructors->links() }}
@@ -294,25 +297,30 @@
 </script>
 
 <style>
-   table {
-  font-size: 14px;
-  color: #333333;
-}
-tbody tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-tbody tr:nth-child(odd) {
-  background-color: #ffffff;
-}
-thead {
-  background-color: #e5e5e5;
-}
-th {
-  font-weight: bold;
-  padding: 0px;
-  text-align: center;
-}
-td {
-padding-left: 0px;
-}
+    table {
+        font-size: 14px;
+        color: #333333;
+    }
+
+    tbody tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    tbody tr:nth-child(odd) {
+        background-color: #ffffff;
+    }
+
+    thead {
+        background-color: #e5e5e5;
+    }
+
+    th {
+        font-weight: bold;
+        padding: 0px;
+        text-align: center;
+    }
+
+    td {
+        padding-left: 0px;
+    }
 </style>
