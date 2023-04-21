@@ -21,11 +21,15 @@ class LessonController extends Controller
      */
     public function index()
     {
-       
+        $display = false;
         $categories = Categorie::all();
         $instructors = Instructor::all();
+    
         $courses = Course::all();
-        return view('instructorlab', compact('categories', 'instructors', 'courses'));
+        $users = User::all();
+        $display = false;
+        // dd($categories, $instructors, $courses, $display, $users);
+        return view('instructorlab', compact('categories', 'instructors', 'courses', 'display', 'users'));
     }
 
     /**
@@ -35,31 +39,35 @@ class LessonController extends Controller
     {
         //
     }
-    //adding the course if is not exist
+    public function fetchCourseItem()
+    {
+        $user = auth()->user();
+        $categories = Categorie::all();
+        $instructors = Instructor::all();
+        $courses = Course::all();
+        $users = User::all();
+        $instructor_id = User::select('instructors.id as instructor_id')
+        ->join('role_user', 'users.id', '=', 'role_user.user_id')
+        ->join('roles', 'role_user.role_id', '=', 'roles.id')
+        ->join('instructors', 'users.id', '=', 'instructors.user_id')
+        ->where('roles.name', '=', 'instructor')
+        ->where('users.id', '=', $user->id)
+        ->first()->instructor_id;
+        $courses = Course::where('instructor_id', $instructor_id)->get();
+        $display = true;
+        return view('instructorlab', compact('courses', 'instructor_id' , 'display','categories', 'instructors','users'));
+    }
+
+
     public function AddCourseIfNotexist(Request $request)
     {
     
         $course = Course::where('title', $request->title)->first();
         if ($course) {
-            return response()->json(['message' => 'Course already exist', 'course' => $course]);
+
+            Alert::error('Error!', 'Course already exist');
+            return redirect()->route('instructorlab');
         } else {
-            // $course = new Course();
-            // $course->slug = Str::slug($request->title);
-            // $course->title = $request->title;
-            // $course->name = $request->name;
-            // $course->description = $request->description;
-            // $image = $request->file('image');
-            // $image_name = time() . '.' . $image->getClientOriginalExtension();
-            // $image->move(public_path('images'), $image_name);
-            // $course->image = $image_name;
-            // $course->categorie_id = $request->categorie_id;
-            // $course->is_free = $request->is_free;
-            // $course->level = $request->level;
-            // $course->language = $request->language;
-            // $course->instructor_id = $request->instructor_id;
-            // $course->save();
-            // return redirect()->back()->with('success', 'Course created successfully');
-            // }
             $request->validate([
             'title' => 'required',
             'name' => 'required',

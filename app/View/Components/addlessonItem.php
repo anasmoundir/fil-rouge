@@ -6,16 +6,19 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class course_Cards extends Component
+
+class addlessonItem extends Component
 {
     /**
      * Create a new component instance.
      */
-    public $courses,$user;
-    public function __construct($users,$courses)
+    public $courses,$users,$categories,$instructors;
+    public function __construct($courses,$users,$categories,$instructors)
     {
-        $this-> users =$users;
         $this->courses = $courses;
+        $this->users = $users;
+        $this->categories = $categories;
+        $this->instructors = $instructors;
     }
 
     /**
@@ -23,6 +26,6 @@ class course_Cards extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.course_-cards');
+        return view('components.addlesson-item');
     }
 }

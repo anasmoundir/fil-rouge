@@ -30,6 +30,11 @@ use App\Http\Controllers\LessonResourceController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/CategorieCourse',[LessonController::class, 'fetchCourseItem'])->name('course.instructor'); 
+Route::get('/lesson', [LessonResourceController::class, 'index'])->name('lesson.index');
+Route::post('/lesson/uploading', [LessonResourceController::class, 'store'])->name('lesson.store');
+
+Route::get('/lesson/{lesson}/resource', [LessonResourceController::class, 'show'])->name('lesson.resource.show');
 
 
 Route::get('/student/login', [StudentAuthController::class, 'showLoginForm'])->name('student.showLoginForm');
@@ -37,7 +42,7 @@ Route::post('/student/login', [StudentAuthController::class, 'login'])->name('st
 Route::get('/student/register', [StudentAuthController::class, 'showRegistrationForm'])->name('student.showRegistrationForm');
 Route::post('/student/register', [StudentAuthController::class, 'register'])->name('student.register');
 Route::get('/student', [StudentAuthController::class, 'showStudentPage'])->name('student');
-
+    
 
 Route::get('/instructor/login', [InstructorAuthController::class, 'showLoginForm'])->name('instructor.showLoginForm');
 Route::post('/instructor/login', [InstructorAuthController::class, 'login'])->name('instructor.login');
@@ -50,11 +55,9 @@ Route::get('/admin/register', [AdminAuthController::class, 'showRegistrationForm
 Route::post('/admin/register', [AdminAuthController::class, 'register']);
 
 
-Route::get('/lesson', [LessonResourceController::class, 'index'])->name('lesson.index');
+// fetch course item function from lesonRessourceControlle
 
-Route::post('/lesson/uploading', [LessonResourceController::class, 'store'])->name('lesson.store');
 
-Route::get('/lesson/{lesson}/resource', [LessonResourceController::class, 'show'])->name('lesson.resource.show');
 
 
 Route::get('/', function () {
