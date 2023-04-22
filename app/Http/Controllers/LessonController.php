@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class LessonController extends Controller
 {
@@ -21,14 +25,12 @@ class LessonController extends Controller
      */
     public function index()
     {
-        $display = false;
+      
         $categories = Categorie::all();
         $instructors = Instructor::all();
-    
         $courses = Course::all();
         $users = User::all();
         $display = false;
-        // dd($categories, $instructors, $courses, $display, $users);
         return view('instructorlab', compact('categories', 'instructors', 'courses', 'display', 'users'));
     }
 
@@ -44,27 +46,25 @@ class LessonController extends Controller
         $user = auth()->user();
         $categories = Categorie::all();
         $instructors = Instructor::all();
-        $courses = Course::all();
         $users = User::all();
-        $instructor_id = User::select('instructors.id as instructor_id')
-        ->join('role_user', 'users.id', '=', 'role_user.user_id')
-        ->join('roles', 'role_user.role_id', '=', 'roles.id')
-        ->join('instructors', 'users.id', '=', 'instructors.user_id')
-        ->where('roles.name', '=', 'instructor')
-        ->where('users.id', '=', $user->id)
-        ->first()->instructor_id;
-        $courses = Course::where('instructor_id', $instructor_id)->get();
-        $display = true;
-        return view('instructorlab', compact('courses', 'instructor_id' , 'display','categories', 'instructors','users'));
-    }
+        $instructor = Instructor::where('user_id', auth()->user()->id)->first();
+        $courses = Course::where('instructor_id', $instructor->id)->get();
+        foreach ($courses as $course) {
+            $lessons = Lesson::where('course_id', $course->id)->get();
+            foreach ($lessons as $lesson) {
+                $lessonResources = LessonResource::whereIn('lesson_id', $lessons->pluck('id'))->get();
+            }
+        }
 
+        $display = true;
+        return view('instructorlab', compact('courses', 'display', 'instructor', 'lessons', 'lessonResources'));
+    }
 
     public function AddCourseIfNotexist(Request $request)
     {
     
         $course = Course::where('title', $request->title)->first();
         if ($course) {
-
             Alert::error('Error!', 'Course already exist');
             return redirect()->route('instructorlab');
         } else {

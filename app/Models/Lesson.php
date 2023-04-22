@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Lesson extends Model
 {
+    use \Staudenmeir\EloquentHasManyDeep\HasRelationships;
     use HasFactory;
    protected $fillable = [
 
@@ -19,15 +20,19 @@ class Lesson extends Model
     {
         return $this->belongsTo(Course::class);
     }
-    public function resources()
-    {
-        return $this->hasMany(LessonResource::class);
-    }
+    
     public function progress()
     {
         return $this->morphOne(Progress::class, 'progressable');
     }
-
+    public function lessonResources()
+    {
+        return $this->hasMany(LessonResource::class);
+    }
+    public function media()
+    {
+        return $this->hasManyDeep(Media::class, [LessonResource::class, Media::class]);
+    }
     protected $attributes = [
         'video_url' => "https://www.youtube.com/watch?v=8SbUC-UaAxE",
     ];

@@ -11,11 +11,14 @@ class course_Cards extends Component
     /**
      * Create a new component instance.
      */
-    public $courses,$user;
-    public function __construct($users,$courses)
+    public $courses,$lessonResources,$lessons,$instructor;
+    public function __construct($courses,$instructor,$lessons,$lessonResources)
     {
-        $this-> users =$users;
         $this->courses = $courses;
+        $this->instructor = $instructor;
+        $this->lessons = $lessons;
+        $this->lessonResources = $lessonResources;
+
     }
 
     /**

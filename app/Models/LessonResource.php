@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
-//implement has media interface 
+use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
+use Illuminate\Support\Collection;
 
 class LessonResource extends Model implements HasMedia
 {
@@ -28,16 +29,28 @@ class LessonResource extends Model implements HasMedia
         'allow_download',
         'processed_percentage'
     ];
-    //belongs to lesson
+
+    // belongs to lesson
     public function lesson()
     {
         return $this->belongsTo(Lesson::class);
     }
-    //polimorphic relation with progress
+
+    public function media(): \Illuminate\Database\Eloquent\Relations\MorphMany
+    {
+        return $this->morphMany(Media::class, 'model');
+    }
+
+    public function getMedia(string $collectionName = 'lesson_ressources', callable|array $filters = []): MediaCollection
+{
+    return $this->getMediaCollection($collectionName, $filters) ?? new MediaCollection();
+}
+
     public function progress()
     {
         return $this->morphOne(Progress::class, 'progressable');
     }
+
     public function getRouteKeyName()
     {
         return 'uid';
