@@ -28,7 +28,8 @@ class LessonController extends Controller
       
         $categories = Categorie::all();
         $instructors = Instructor::all();
-        $courses = Course::all();
+        $instructor = Instructor::where('user_id', auth()->user()->id)->first();
+        $courses = Course::where('instructor_id', $instructor->id)->get();
         $users = User::all();
         $display = false;
         return view('instructorlab', compact('categories', 'instructors', 'courses', 'display', 'users'));
@@ -55,6 +56,7 @@ class LessonController extends Controller
                 $lessonResources = LessonResource::whereIn('lesson_id', $lessons->pluck('id'))->get();
             }
         }
+
 
         $display = true;
         return view('instructorlab', compact('courses', 'display', 'instructor', 'lessons', 'lessonResources'));
@@ -86,6 +88,7 @@ class LessonController extends Controller
         }
 
         $course = new Course();
+        $instructor = Instructor::where('user_id', auth()->user()->id)->first();
         $course->slug = Str::slug($request->title);
         $course->title = $request->title;
         $course->name = $request->name;
@@ -98,7 +101,7 @@ class LessonController extends Controller
         $course->is_free = $request->is_free;
         $course->level = $request->level;
         $course->language = $request->language;
-        $course->instructor_id = $request->instructor_id;
+        $course->instructor_id = $instructor->id;
         $course->save();
         Alert::success('course +', 'Success Course Added succefully');
         return redirect()->route('instructorlab');
@@ -126,6 +129,7 @@ class LessonController extends Controller
             'name' => $request->input('course_name'),
             // ...
         ]);
+        
     
         $lesson = Lesson::create([
             'title' => $validatedData['title'],
