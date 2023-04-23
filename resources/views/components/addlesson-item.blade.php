@@ -1,4 +1,3 @@
-
 <!-- Knowing is not enough; we must apply. Being willing is not enough; we must do. - Leonardo da Vinci -->
 <div x-data="{ showModal: false }" x-init="showModal = false">
 
@@ -141,9 +140,7 @@
                         <select id="course_id" name="course_id" required class="px-4 py-2 border rounded-lg">
                             <option value="">Select a Course</option>
                             @foreach ($courses as $course)
-                                <option value="{{ $course->id }}"
-                                    {{ old('course_id') == $course->id ? 'selected' : '' }}>{{ $course->name }}
-                                </option>
+                                <option value="{{ $course->id }}">{{ $course->name }}</option>
                             @endforeach
                         </select>
                     </div>

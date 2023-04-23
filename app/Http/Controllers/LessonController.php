@@ -23,6 +23,29 @@ class LessonController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function fetchCourseItem()
+    {
+        $user = auth()->user();
+        $categories = Categorie::all();
+        $instructors = Instructor::all();
+        $users = User::all();
+        $instructor = Instructor::where('user_id', auth()->user()->id)->first();
+        $courses = Course::where('instructor_id', $instructor->id)->get();
+        $lessons = [];
+        $lessonResources = [];
+    
+        foreach ($courses as $course) {
+            $courseLessons = Lesson::where('course_id', $course->id)->get();
+            if (!$courseLessons->isEmpty()) {
+                $lessons = $courseLessons;
+                $lessonResources = LessonResource::whereIn('lesson_id', $lessons->pluck('id'))->get();
+            }
+        }
+    
+        $display = true;
+        return view('instructorlab', compact('courses', 'display', 'instructor', 'lessons', 'lessonResources'));
+    }
+
     public function index()
     {
       
@@ -43,24 +66,7 @@ class LessonController extends Controller
     {
         //
     }
-    public function fetchCourseItem()
-    {
-        $user = auth()->user();
-        $categories = Categorie::all();
-        $instructors = Instructor::all();
-        $users = User::all();
-        $instructor = Instructor::where('user_id', auth()->user()->id)->first();
-        $courses = Course::where('instructor_id', $instructor->id)->get();
-        foreach ($courses as $course) {
-            $lessons = Lesson::where('course_id', $course->id)->get();
-            foreach ($lessons as $lesson) {
-                $lessonResources = LessonResource::whereIn('lesson_id', $lessons->pluck('id'))->get();
-            }
-        }
-
-        $display = true;
-        return view('instructorlab', compact('courses', 'display', 'instructor', 'lessons', 'lessonResources'));
-    }
+   
 
     public function AddCourseIfNotexist(Request $request)
     {
@@ -112,69 +118,65 @@ class LessonController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-      
-        $validatedData = $request->validate([
-            'course_id' => 'required|integer',
-            'new_course_name' => 'required_if:course_id,0',
-            'title' => 'required',
-            'description' => 'required',
-            'video_url' => 'nullable|url',
-            'lesson_resources.*.name' => 'required',
-            'lesson_resources.*.description' => 'required',
-            'lesson_resources.*.file' => 'required|file|max:10240',
+{
+    $validatedData = $request->validate([
+        'course_id' => 'required|integer|exists:courses,id',
+        'title' => 'required',
+        'description' => 'required',
+        'video_url' => 'nullable|url',
+        'lesson_resources.*.name' => 'required',
+        'lesson_resources.*.description' => 'required',
+        'lesson_resources.*.file' => 'required|file|max:10240',
+    ]);
+
+    $course = Course::findOrFail($validatedData['course_id']);
+
+    $lesson = Lesson::create([
+        'title' => $validatedData['title'],
+        'description' => substr($validatedData['description'], 0, 256),
+        'course_id' => $course->id,
+        'video_url' => $validatedData['video_url'],
+    ]);
+
+    foreach ($validatedData['lesson_resources'] as $index => $lessonResourceData) {
+        $file = $lessonResourceData['file'];
+        $type = $file->getClientOriginalExtension();
+
+        $lessonResource = new LessonResource([
+            'name' => $lessonResourceData['name'],
+            'description' => substr($lessonResourceData['description'], 0, 256),
+            'lesson_id' => $lesson->id,
+            'type' => $type,
+            'allow_download' => true,
+            'prosseced_percentage' => '0',
+            'uid' => uniqid(),
+            'ressouce_id' => '0',
+            'file' => $file->getClientOriginalName(),
         ]);
-    
-        $course = Course::firstOrCreate(['id' => $validatedData['course_id']], [
-            'name' => $request->input('course_name'),
-            // ...
-        ]);
-    
-        $lesson = Lesson::create([
-            'title' => $validatedData['title'],
-            'description' => substr($validatedData['description'], 0, 256),
-            'course_id' => $course->id,
-            'video_url' => $validatedData['video_url'],
-        ]);
-    
-        foreach ($validatedData['lesson_resources'] as $index => $lessonResourceData) {
-            $file = $lessonResourceData['file'];
-            $type = $file->getClientOriginalExtension();
-    
-            $lessonResource = new LessonResource([
-                'name' => $lessonResourceData['name'],
-                'description' => substr($lessonResourceData['description'], 0, 256),
-                'lesson_id' => $lesson->id,
-                'type' => $type,
-                'allow_download' => true,
-                'prosseced_percentage' => '0',
-                'uid' => uniqid(),
-                'ressouce_id' => '0',
-                'file' => $file->getClientOriginalName(),
-            ]);
-    
-            $lessonResource->lesson()->associate($lesson);
-            $lessonResource->save();
-    
-            // Add the media file to the lesson resource
-            $lessonResource->addMedia($file)
-                ->usingFileName($file->getClientOriginalName())
-                ->toMediaCollection('lesson_resources');
-        }
-        Alert::success('Success ', 'Lesson created successfully');
-        return redirect()->route('instructorlab');
-    } 
+
+        $lessonResource->lesson()->associate($lesson);
+        $lessonResource->save();
+
+        // Add the media file to the lesson resource
+        $lessonResource->addMedia($file)
+            ->usingFileName($file->getClientOriginalName())
+            ->toMediaCollection('lesson_resources');
+    }
+
+    Alert::success('Success ', 'Lesson created successfully');
+    return redirect()->route('instructorlab');
+}
     /**
      * Display the specified resource.
      */
-    // delete the course
     public function deleteCourse($id)
     {
-        $course = Course::find($id);
-        $course->delete();
+        $courses = Course::find($id);
+        $courses->delete();
         Alert::success('Success ', 'Course deleted successfully');
         $display = true;
-        return view('instructorlab', compact('display'));
+        // $data = $this->fetchCourseItem();
+        return redirect()->route('instructorlab');
     }
     // delete the lesson
     public function deleteLesson($id)
@@ -183,7 +185,8 @@ class LessonController extends Controller
         $lesson->delete();
         Alert::success('Success ', 'Lesson deleted successfully');
         $display = true;
-        return view('instructorlab', compact('display'));
+        // $data = $this->fetchCourseItem();
+        return redirect()->route('instructorlab');
     }
     // delete the lesson resource
     public function deleteLessonResource($id)
@@ -192,7 +195,8 @@ class LessonController extends Controller
         $lessonResource->delete();
         Alert::success('Success ', 'Lesson Resource deleted successfully');
         $display = true;
-        return view('instructorlab', compact('display'));
+        // $data = $this->fetchCourseItem();
+        return redirect()->route('instructorlab');
     }
 
     public function show(string $id)
