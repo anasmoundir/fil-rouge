@@ -18,12 +18,20 @@
                           <li class="mb-2">
                               <span class="font-medium">{{ $lesson->title }}</span> - {{ $lesson->description }}
                               <ul class="list-disc ml-6">
-                                  @foreach ($lesson->lessonResources as $lessonResource)
-                                      <li>
-                                          <a href="{{ asset('storage/' . $lessonResource->file) }}" target="_blank"
-                                              class="text-blue-500 hover:underline">{{ $lessonResource->name }}</a>
-                                      </li>
-                                  @endforeach
+                                @foreach ($lesson->lessonResources as $lessonResource)
+                                <li>
+                                    <a href="{{ asset('storage/' . $lessonResource->file) }}" target="_blank" class="text-blue-500 hover:underline">{{ $lessonResource->name }}</a>
+                                    <form action="{{ route('lesson-resource.delete', $lessonResource->id) }}" method="POST" class="inline-block">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="ml-2 text-red-600 hover:text-red-800">
+                                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                            </svg>
+                                        </button>
+                                    </form>
+                                </li>
+                            @endforeach
                               </ul>
                           </li>
                       @endforeach

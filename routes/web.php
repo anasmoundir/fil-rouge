@@ -76,11 +76,13 @@ Route::post('/instructurAddCourse', [LessonController::class, 'AddCourseIfNotexi
 
 Route::middleware('auth')->group(function () {
     //route to instructor_approval page for admin from the approveInstructore controller index 
-    Route::get('/CategorieCourse',[LessonController::class, 'fetchCourseItem'])->name('course.instructor'); 
-    Route::get('/lesson', [LessonController::class, 'index'])->name('lesson.index');
-    Route::post('/lesson/uploading', [LessonController::class, 'store'])->name('lesson.store');
-    Route::get('/lesson/{lesson}/resource', [LessonController::class, 'show'])->name('lesson.resource.show');
-    
+Route::get('/CategorieCourse',[LessonController::class, 'fetchCourseItem'])->name('course.instructor'); 
+Route::get('/lesson', [LessonController::class, 'index'])->name('lesson.index');
+Route::post('/lesson/uploading', [LessonController::class, 'store'])->name('lesson.store');
+Route::get('/lesson/{lesson}/resource', [LessonController::class, 'show'])->name('lesson.resource.show');
+Route::delete('/lesson/{lesson}/delete', [LessonController::class, 'deleteLessonResource'])->name('lesson-resource.delete');
+Route::delete('/lesson/{lesson}/deleteCourse', [LessonController::class, 'deleteCourse'])->name('lesson.deleteCourse');
+Route::delete('/lesson/{lesson}/deleteLesson', [LessonController::class, 'deleteLesson'])->name('lesson.deleteLesson');
 
 
 Route::get('/instructor_approval', [DashboardUser::class, 'index'])->name('instructor_approval');
