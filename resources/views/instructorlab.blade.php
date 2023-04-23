@@ -29,7 +29,8 @@
     @endif
 
     @if ($display)
-        <x-course_-cards :courses=$courses :users=$users />
+        <x-course_-cards :courses=$courses :instructor=$instructor :lessons=$lessons
+            :lessonResources=$lessonResources />
     @else
         <x-addlesson-item :users="$users" :categories="$categories" :courses="$courses" :instructors="$instructors" />
     @endif

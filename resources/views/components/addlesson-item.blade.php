@@ -1,7 +1,8 @@
+
 <!-- Knowing is not enough; we must apply. Being willing is not enough; we must do. - Leonardo da Vinci -->
 <div x-data="{ showModal: false }" x-init="showModal = false">
 
-    <div class="flex px-4">
+    <div class="flex justify-end">
         <button @click="showModal = true" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
             Add course
         </button>
