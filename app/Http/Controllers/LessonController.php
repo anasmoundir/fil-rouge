@@ -31,8 +31,9 @@ class LessonController extends Controller
         $instructor = Instructor::where('user_id', auth()->user()->id)->first();
         $courses = Course::where('instructor_id', $instructor->id)->get();
         $users = User::all();
+        $categories = Categorie::all();
         $display = false;
-        return view('instructorlab', compact('categories', 'instructors', 'courses', 'display', 'users'));
+        return view('instructorlab', compact('categories', 'instructors', 'courses', 'display', 'users', 'categories'));
     }
 
     /**
@@ -56,7 +57,6 @@ class LessonController extends Controller
                 $lessonResources = LessonResource::whereIn('lesson_id', $lessons->pluck('id'))->get();
             }
         }
-
 
         $display = true;
         return view('instructorlab', compact('courses', 'display', 'instructor', 'lessons', 'lessonResources'));
@@ -129,7 +129,6 @@ class LessonController extends Controller
             'name' => $request->input('course_name'),
             // ...
         ]);
-        
     
         $lesson = Lesson::create([
             'title' => $validatedData['title'],
@@ -168,6 +167,34 @@ class LessonController extends Controller
     /**
      * Display the specified resource.
      */
+    // delete the course
+    public function deleteCourse($id)
+    {
+        $course = Course::find($id);
+        $course->delete();
+        Alert::success('Success ', 'Course deleted successfully');
+        $display = true;
+        return view('instructorlab', compact('display'));
+    }
+    // delete the lesson
+    public function deleteLesson($id)
+    {
+        $lesson = Lesson::find($id);
+        $lesson->delete();
+        Alert::success('Success ', 'Lesson deleted successfully');
+        $display = true;
+        return view('instructorlab', compact('display'));
+    }
+    // delete the lesson resource
+    public function deleteLessonResource($id)
+    {
+        $lessonResource = LessonResource::find($id);
+        $lessonResource->delete();
+        Alert::success('Success ', 'Lesson Resource deleted successfully');
+        $display = true;
+        return view('instructorlab', compact('display'));
+    }
+
     public function show(string $id)
     {
         //
