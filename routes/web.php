@@ -85,6 +85,7 @@ Route::delete('/lesson/{lesson}/deleteCourse', [LessonController::class, 'delete
 Route::delete('/lesson/{lesson}/deleteLesson', [LessonController::class, 'deleteLesson'])->name('lesson.deleteLesson');
 
 
+
 Route::get('/instructor_approval', [DashboardUser::class, 'index'])->name('instructor_approval');
 
 Route::post('/approve_profile/{id}', [approveInstructor::class, 'approveInstructor'])->name('approve_instructor');    
