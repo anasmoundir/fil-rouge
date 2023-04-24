@@ -172,6 +172,10 @@ class LessonController extends Controller
     public function deleteCourse($id)
     {
         $courses = Course::find($id);
+        $image_path = public_path('images/' . $courses->image);
+        if (File::exists($image_path)) {
+            File::delete($image_path);
+        }
         $courses->delete();
         Alert::success('Success ', 'Course deleted successfully');
         $display = true;
