@@ -10,6 +10,10 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="{{ asset('../css/app.css') }}">
+    <script src="{{ asset('../js/app.js/jquery.js') }}"></script>
+
 
     <!-- Styles -->
     <style>
@@ -853,6 +857,7 @@
         <script src="https://cdn.tailwindcss.com"></script>
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
     </head>
 
 
@@ -862,7 +867,7 @@
         <div class="bg-cover bg-center h-screen flex justify-center items-center"
             style="background-image: url('{{ asset('images/pexels-christina-morillo-1181534.jpg') }}');">
             <div class="container mx-auto py-24 text-center">
-                <h1 class="text-black text-6xl font-semibold font-serif mb-8">Welcome to BrainRose LMS Platefome</h1>
+                <h1 class="text-black text-6xl font-semibold font-serif mb-8">Welcome to BrainRose LMS Plateforme</h1>
                 <p class="text-black text-4xl mb-12">Discover new skills and advance your career with our online
                     courses.
                 </p>
@@ -912,38 +917,25 @@
         <div class="container mx-auto mt-16">
             <h2 class="text-2xl font-bold mb-4">Browse Our Course Categories</h2>
             <div class="grid grid-cols-3 gap-4">
-                <div class="bg-white shadow rounded-lg p-4">
-                    <h3 class="text-lg font-bold mb-2">Category 1</h3>
-                    <p class="text-gray-600">Description of Category 1</p>
-                    <a href="#" class="text-blue-500 font-semibold hover:text-blue-700 mt-2">View Courses</a>
-                </div>
-                <div class="bg-white shadow rounded-lg p-4">
-                    <h3 class="text-lg font-bold mb-2">Category 2</h3>
-                    <p class="text-gray-600">Description of Category 2</p>
-                    <a href="#" class="text-blue-500 font-semibold hover:text-blue-700 mt-2">View Courses</a>
-                </div>
-                <div class="bg-white shadow rounded-lg p-4">
-                    <h3 class="text-lg font-bold mb-2">Category 3</h3>
-                    <p class="text-gray-600">Description of Category 3</p>
-                    <a href="#" class="text-blue-500 font-semibold hover:text-blue-700 mt-2">View Courses</a>
-                </div>
-                <div class="bg-white shadow rounded-lg p-4">
-                    <h3 class="text-lg font-bold mb-2">Category 4</h3>
-                    <p class="text-gray-600">Description of Category 4</p>
-                    <a href="#" class="text-blue-500 font-semibold hover:text-blue-700 mt-2">View Courses</a>
-                </div>
-                <div class="bg-white shadow rounded-lg p-4">
-                    <h3 class="text-lg font-bold mb-2">Category 5</h3>
-                    <p class="text-gray-600">Description of Category 5</p>
-                    <a href="#" class="text-blue-500 font-semibold hover:text-blue-700 mt-2">View Courses</a>
-                </div>
-                <div class="bg-white shadow rounded-lg p-4">
-                    <h3 class="text-lg font-bold mb-2">Category 6</h3>
-                    <p class="text-gray-600">Description of Category 6</p>
-                    <a href="#" class="text-blue-500 font-semibold hover:text-blue-700 mt-2">View Courses</a>
-                </div>
+                @foreach ($categories as $category)
+                    <div class="bg-white shadow rounded-lg p-4">
+                        <img src="{{ asset('images/' . $category->image) }}" alt="{{ $category->name }}"
+                            class="w-full mb-4">
+                        <h3 class="text-lg font-bold mb-2">{{ $category->name }}</h3>
+                        <p class="text-gray-600">{{ $category->courses->count() }} courses available</p>
+                        <a href="{{ route('courses.by_category', ['slug' => $category->slug]) }}"
+                            class="text-blue-500 font-semibold hover:text-blue-700 mt-2">See courses</a>
+                    </div>
+                @endforeach
+            </div>
+            <div class="my-8">
+                {{ $categories->links() }}
             </div>
         </div>
+
+
+
+
         Note that I've
         <div class="flex flex-col ">
             <div class="bg-gray-800">

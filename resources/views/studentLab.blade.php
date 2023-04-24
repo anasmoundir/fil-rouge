@@ -1,4 +1,17 @@
 <x-app-layout>
+    <h1>Courses for {{ $category->name }}</h1>
+
+@foreach($courses as $course)
+    <div class="bg-white shadow rounded-lg p-4">
+        <h3 class="text-lg font-bold mb-2">{{ $course->name }}</h3>
+        <p class="text-gray-600">{{ $course->description }}</p>
+        <a href="#" class="text-blue-500 font-semibold hover:text-blue-700 mt-2">Enroll Now</a>
+    </div>
+@endforeach
+
+{{ $courses->links() }}
+
+
 <div x-data="{ message: 'Hello from Vue!' }">
       <video-upload :message="message"></video-upload>
   </div>
