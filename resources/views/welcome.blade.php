@@ -823,6 +823,23 @@
                 padding: 2rem
             }
         }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .button {
+            font-family: 'Montserrat', sans-serif;
+        }
     </style>
 </head>
 
@@ -841,18 +858,93 @@
 
     <x-navbar></x-navbar>
 
-    <main class="pt-20 mt-4">
-        <div class="bg-cover bg-center h-screen"
-            style="background-image: url('');">
-            <div class="container mx-auto py-40 text-center">
-                <h1 class="text-white text-5xl font-bold">Welcome to our LMS</h1>
-                <p class="text-white text-lg mt-4">Discover new skills and advance your career with our online courses.
+    <main>
+        <div class="bg-cover bg-center h-screen flex justify-center items-center"
+            style="background-image: url('{{ asset('images/pexels-christina-morillo-1181534.jpg') }}');">
+            <div class="container mx-auto py-24 text-center">
+                <h1 class="text-black text-6xl font-semibold font-serif mb-8">Welcome to BrainRose LMS Platefome</h1>
+                <p class="text-black text-4xl mb-12">Discover new skills and advance your career with our online
+                    courses.
                 </p>
                 <a href="#"
-                    class="mt-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Start Learning</a>
+                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full">Start Learning</a>
+            </div>
+        </div>
+        <div class="bg-gray-100">
+            <div class="container mx-auto py-12">
+                <h2 class="text-3xl text-center font-bold mb-8">Why Choose Our LMS?</h2>
+                <div class="flex flex-col md:flex-row">
+                    <div class="md:w-1/3 p-8">
+                        <div class="bg-white rounded-lg shadow-md overflow-hidden mb-4">
+                            <div class="bg-blue-500 text-white font-bold py-3 px-4">Expert Instructors</div>
+                            <div class="p-4">
+                                <p class="text-gray-800 leading-relaxed mb-4">Our courses are taught by industry experts
+                                    with years of experience in their respective fields.</p>
+                                <a href="#" class="text-blue-500 hover:underline">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:w-1/3 p-8">
+                        <div class="bg-white rounded-lg shadow-md overflow-hidden mb-4">
+                            <div class="bg-blue-500 text-white font-bold py-3 px-4">Flexible Learning</div>
+                            <div class="p-4">
+                                <p class="text-gray-800 leading-relaxed mb-4">Our online courses offer flexible learning
+                                    options that fit your schedule and lifestyle.</p>
+                                <a href="#" class="text-blue-500 hover:underline">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:w-1/3 p-8">
+                        <div class="bg-white rounded-lg shadow-md overflow-hidden mb-4">
+                            <div class="bg-blue-500 text-white font-bold py-3 px-4">Community Support</div>
+                            <div class="p-4">
+                                <p class="text-gray-800 leading-relaxed mb-4">Our courses come with a supportive
+                                    community of learners and instructors, providing you with a collaborative learning
+                                    experience.</p>
+                                <a href="#" class="text-blue-500 hover:underline">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
+        <div class="container mx-auto mt-16">
+            <h2 class="text-2xl font-bold mb-4">Browse Our Course Categories</h2>
+            <div class="grid grid-cols-3 gap-4">
+                <div class="bg-white shadow rounded-lg p-4">
+                    <h3 class="text-lg font-bold mb-2">Category 1</h3>
+                    <p class="text-gray-600">Description of Category 1</p>
+                    <a href="#" class="text-blue-500 font-semibold hover:text-blue-700 mt-2">View Courses</a>
+                </div>
+                <div class="bg-white shadow rounded-lg p-4">
+                    <h3 class="text-lg font-bold mb-2">Category 2</h3>
+                    <p class="text-gray-600">Description of Category 2</p>
+                    <a href="#" class="text-blue-500 font-semibold hover:text-blue-700 mt-2">View Courses</a>
+                </div>
+                <div class="bg-white shadow rounded-lg p-4">
+                    <h3 class="text-lg font-bold mb-2">Category 3</h3>
+                    <p class="text-gray-600">Description of Category 3</p>
+                    <a href="#" class="text-blue-500 font-semibold hover:text-blue-700 mt-2">View Courses</a>
+                </div>
+                <div class="bg-white shadow rounded-lg p-4">
+                    <h3 class="text-lg font-bold mb-2">Category 4</h3>
+                    <p class="text-gray-600">Description of Category 4</p>
+                    <a href="#" class="text-blue-500 font-semibold hover:text-blue-700 mt-2">View Courses</a>
+                </div>
+                <div class="bg-white shadow rounded-lg p-4">
+                    <h3 class="text-lg font-bold mb-2">Category 5</h3>
+                    <p class="text-gray-600">Description of Category 5</p>
+                    <a href="#" class="text-blue-500 font-semibold hover:text-blue-700 mt-2">View Courses</a>
+                </div>
+                <div class="bg-white shadow rounded-lg p-4">
+                    <h3 class="text-lg font-bold mb-2">Category 6</h3>
+                    <p class="text-gray-600">Description of Category 6</p>
+                    <a href="#" class="text-blue-500 font-semibold hover:text-blue-700 mt-2">View Courses</a>
+                </div>
+            </div>
+        </div>
+        Note that I've
         <div class="flex flex-col ">
             <div class="bg-gray-800">
                 <div class="bg-gray-300 pt-12 pb-6 flex-1">
