@@ -9,9 +9,16 @@ class Categorie extends Model
 {
     protected $fillable = ['name', 'image'];
     use HasFactory;
-    public function lessons()
+  
+    
+    public function courses()
     {
-        return $this->hasMany(Lesson::class);
+        return $this->hasMany(Course::class);
+    }
+
+    public function coursesCount()
+    {
+        return $this->courses()->count();
     }
     
 }

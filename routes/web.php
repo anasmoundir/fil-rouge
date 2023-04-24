@@ -18,6 +18,7 @@ use App\Http\Controllers\VideoUploadController;
 use App\Http\Controllers\StudentResourceController;
 use App\Http\Controllers\approveInstructor;
 use App\Http\Controllers\DashboardUser;
+use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\LessonResourceController;
 
 /*
@@ -31,6 +32,7 @@ use App\Http\Controllers\LessonResourceController;
 |
 */
 
+Route::get('/courses/{slug}', [CourseController::class, 'coursesByCategory'])->name('courses.by_category');
 
 Route::get('/student/login', [StudentAuthController::class, 'showLoginForm'])->name('student.showLoginForm');
 Route::post('/student/login', [StudentAuthController::class, 'login'])->name('student.login');
@@ -55,9 +57,7 @@ Route::post('/admin/register', [AdminAuthController::class, 'register']);
 
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 
 
 

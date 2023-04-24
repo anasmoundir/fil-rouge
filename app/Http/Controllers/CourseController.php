@@ -75,6 +75,13 @@ class CourseController extends Controller
         return redirect()->route('dashboard');
     }
 
+    public function coursesByCategory($slug)
+    {
+        $category = Categorie::where('slug', $slug)->firstOrFail();
+        $courses = $category->courses()->paginate(10);
+        return view('studentlab', compact('category', 'courses'));
+    }
+
     /**
      * Display the specified resource.
      */
