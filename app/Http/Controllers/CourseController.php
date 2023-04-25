@@ -94,6 +94,7 @@ class CourseController extends Controller
 {
     $student_id = Role::where('name', 'student')->first()->id;
     $student = Student::where('user_id', auth()->user()->id)->first();
+    $student_id = $student->id;
     $course = Course::findOrFail($course_id);
     
     if ($course->students->contains($student_id)) {
@@ -101,20 +102,37 @@ class CourseController extends Controller
         return redirect()->back()->with('error', 'You are already enrolled in this course.');
     }
     $course->students()->attach($student_id);
+    $display = 'courses';
     Alert::success('course enrolled', 'Success Course Added succefully');
-    return redirect()->back()->with('success', 'You have been enrolled in the course.');
+    // call my courses function when it finish rendering 
+    return $this->myCourses();
 }
 //get the courses that belong to the student authentified
 public function myCourses()
 {
     $student_id = Role::where('name', 'student')->first()->id;
     $student = Student::where('user_id', auth()->user()->id)->first();
-    $courses = $student->courses;
+    $courses = $student->courses()->get();
     $display = 'mycourses';
     return view('studentlab', compact('courses', 'display'));
 }
 
-
+//unsubscribe from a course
+public function unsubscribe($course_id)
+{
+    $student = $this;
+    dd($student);
+    $course = Course::findOrFail($course_id);
+    
+    if (!$course->students->contains($student)) {
+        Alert::error('course not enrolled', 'Error');
+        return redirect()->back()->with('error', 'You are not enrolled in this course.');
+    }
+    
+    $course->students()->detach($student->id);
+    Alert::success('course unenrolled', 'Success Course Removed succefully');
+    return redirect()->back()->with('success', 'You have been unenrolled from the course.');
+}
 
 
     /**

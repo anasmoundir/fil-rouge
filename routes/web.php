@@ -77,10 +77,11 @@ Route::post('/instructurAddCourse', [LessonController::class, 'AddCourseIfNotexi
 Route::middleware('auth')->group(function () {
     //let them for student middleware after
     Route::post('/course/{course_id}/enroll', [CourseController::class, 'enroll'])->name('course.enroll');
-Route::get('/courses/{slug}', [CourseController::class, 'coursesByCategory'])->name('courses.by_category');
-Route::get('/my-courses', [CourseController::class, 'myCourses'])->name('enrolled.courses');
+    Route::get('/courses/{slug}', [CourseController::class, 'coursesByCategory'])->name('courses.by_category');
+    Route::get('/my-courses', [CourseController::class, 'myCourses'])->name('enrolled.courses');
+    Route::post('/course/{course_id}/unsubscribe', [CourseController::class, 'unsubscribe'])->name('course.unsubscribe');
 
-    //route to instructor_approval page for admin from the approveInstructore controller index 
+//route to instructor_approval page for admin from the approveInstructore controller index 
 Route::get('/CategorieCourse',[LessonController::class, 'fetchCourseItem'])->name('course.instructor'); 
 Route::get('/lesson', [LessonController::class, 'index'])->name('lesson.index');
 Route::post('/lesson/uploading', [LessonController::class, 'store'])->name('lesson.store');

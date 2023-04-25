@@ -20,10 +20,10 @@ class StudentAuthController extends Controller
 
       public function login(Request $request)
       {
-          $credentials = $request->only('email', 'password');
-          if (Auth::guard('student')->attempt($credentials)) {
-              return redirect()->intended('student');
-          }  
+        $credentials = $request->only('email', 'password');
+        if (Auth::guard('web')->attempt($credentials)) {
+            return redirect()->intended('student');
+        }  
       }
 
         public function showRegistrationForm()
