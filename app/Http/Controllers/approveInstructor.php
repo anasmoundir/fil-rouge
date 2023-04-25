@@ -42,6 +42,7 @@ class approveInstructor extends Controller
         }
         return response()->download(public_path('cv/' . $cv_name));
     }
+    
 
 
   

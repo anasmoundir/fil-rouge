@@ -86,7 +86,8 @@ class CourseController extends Controller
     {
         $category = Categorie::where('slug', $slug)->firstOrFail();
         $courses = $category->courses()->paginate(10);
-        return view('studentlab', compact('category', 'courses'));
+        $display = 'courses';
+        return view('studentlab', compact('category', 'courses', 'display'));
     }
 
     public function enroll($course_id)
@@ -103,6 +104,19 @@ class CourseController extends Controller
     Alert::success('course enrolled', 'Success Course Added succefully');
     return redirect()->back()->with('success', 'You have been enrolled in the course.');
 }
+//get the courses that belong to the student authentified
+public function myCourses()
+{
+    $student_id = Role::where('name', 'student')->first()->id;
+    $student = Student::where('user_id', auth()->user()->id)->first();
+    $courses = $student->courses;
+    $display = 'mycourses';
+    return view('studentlab', compact('courses', 'display'));
+}
+
+
+
+
     /**
      * Display the specified resource.
      */
