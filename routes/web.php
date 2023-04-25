@@ -32,7 +32,7 @@ use App\Http\Controllers\LessonResourceController;
 |
 */
 
-Route::get('/courses/{slug}', [CourseController::class, 'coursesByCategory'])->name('courses.by_category');
+
 
 Route::get('/student/login', [StudentAuthController::class, 'showLoginForm'])->name('student.showLoginForm');
 Route::post('/student/login', [StudentAuthController::class, 'login'])->name('student.login');
@@ -75,6 +75,9 @@ Route::post('/instructurAddCourse', [LessonController::class, 'AddCourseIfNotexi
 
 
 Route::middleware('auth')->group(function () {
+    //let them for student middleware after
+    Route::post('/course/{course_id}/enroll', [CourseController::class, 'enroll'])->name('course.enroll');
+Route::get('/courses/{slug}', [CourseController::class, 'coursesByCategory'])->name('courses.by_category');
     //route to instructor_approval page for admin from the approveInstructore controller index 
 Route::get('/CategorieCourse',[LessonController::class, 'fetchCourseItem'])->name('course.instructor'); 
 Route::get('/lesson', [LessonController::class, 'index'])->name('lesson.index');

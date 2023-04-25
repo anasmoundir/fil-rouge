@@ -5,8 +5,7 @@
         </h2>
         <div class="flex items-center">
             <a href="{{ route('course.instructor') }}"
-                class="px-4 py-2 text-sm text-gray-700 bg-gray-100 hover:bg-gray-200 rounded transition duration-300">See
-                Your Courses</a>
+                class="px-4 py-2 text-sm text-gray-700 bg-gray-100 hover:bg-gray-200 rounded transition duration-300">My Enrolled Courses</a>
             <a href="{{ route('instructorlab') }}"
                 class="px-4 py-2 ml-4 text-sm text-white bg-blue-500 hover:bg-blue-600 rounded transition duration-300">Add
                 Your Lesson</a>
@@ -19,7 +18,12 @@
             <h2 class="text-2xl font-bold mb-4">{{ $course->name }}</h2>
             <div class="flex justify-between items-center mb-4">
                 <p class="text-gray-600">{{ $course->description }}</p>
-                <button class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600">Enroll Now</button>
+                <form action="{{ route('course.enroll', $course->id) }}" method="POST">
+                    @csrf
+                    <button type="submit"
+                        class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600">Enroll Now</button>
+                </form>
+
             </div>
             <div class="flex items-center border-b border-gray-300 pb-4 mb-4">
                 <span class="text-lg font-bold mr-4">{{ $course->lessons->count() }} Lessons</span>
