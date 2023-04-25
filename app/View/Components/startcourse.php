@@ -11,11 +11,13 @@ class startcourse extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public $course,$display,$lessons;
+    public function __construct($course,$display,$lessons)
     {
-        //
+        $this->lessons = $lessons;
+        $this->course = $course;
+        $this->display = $display;
     }
-
     /**
      * Get the view / contents that represent the component.
      */

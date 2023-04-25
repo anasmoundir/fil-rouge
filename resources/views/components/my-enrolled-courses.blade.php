@@ -1,4 +1,4 @@
-<x-slot name="header">
+{{-- <x-slot name="header">
     <div class="flex justify-between items-center">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight my-class">
             {{ __('Available Courses') }}
@@ -12,7 +12,7 @@
                 Your Lesson</a>
         </div>
     </div>
-</x-slot>
+</x-slot> --}}
 <div class="bg-white rounded-md shadow-md p-6">
     <h2 class="text-2xl font-bold mb-4">Your Courses</h2>
     <div class="flex flex-wrap -mx-4">
@@ -26,12 +26,13 @@
                         <h3 class="text-lg font-medium">{{ $course->name }}</h3>
                         <p class="text-gray-500">{{ $course->instructor->name }}</p>
                         <p class="mt-2 text-gray-500">{{ $course->description }}</p>
-                        <a class="block mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Proceed
-                            to course</a>
+                        <a href="{{ route('course.proceed', $course->id) }}"
+                            class="block mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            Proceed to course
+                        </a>
                         <form method="POST" action="{{ route('course.unsubscribe', $course) }}" class="inline">
                             @csrf
                             @method('POST')
-                            <!-- Change to POST method -->
                             <button type="submit"
                                 class="block mt-4 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Unsubscribe</button>
                         </form>
