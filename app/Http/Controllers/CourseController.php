@@ -141,11 +141,10 @@ public function proceed($course_id)
         $lesson->lessonResources = $lesson->lessonResources->sortBy('order');
     }
     // dd($lessons);
-
     $display = 'lessons';
     $currentLesson = $lessons->first();
-    // dd($currentLesson->lessonResources);
 
+    // dd($currentLesson->lessonResources);
     return view('studentlab', compact('course', 'lessons', 'display', 'currentLesson'));
 }
 
