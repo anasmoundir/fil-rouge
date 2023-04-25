@@ -132,6 +132,19 @@ public function unsubscribe($course_id)
     Alert::success('course unenrolled', 'Success Course Removed succefully');
     return redirect()->back()->with('success', 'You have been unenrolled from the course.');
 }
+//proceed to the course to watch lessons
+public function proceed($course_id)
+{
+    
+    $course = Course::with('instructor', 'lessons', 'lessons.lessonResources.media')->findOrFail($course_id);
+     $lessons =  $course->lessons->sortBy('order');
+     
+        foreach ($lessons as $lesson) {
+            $lesson->lessonResources = $lesson->lessonResources->sortBy('order');
+        }
+    $display = 'lessons';
+    return view('studentlab', compact('course', 'display', 'lessons'));
+}
 
 
     /**

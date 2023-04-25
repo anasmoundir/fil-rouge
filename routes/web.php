@@ -80,6 +80,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/courses/{slug}', [CourseController::class, 'coursesByCategory'])->name('courses.by_category');
     Route::get('/my-courses', [CourseController::class, 'myCourses'])->name('enrolled.courses');
     Route::post('/course/{course_id}/unsubscribe', [CourseController::class, 'unsubscribe'])->name('course.unsubscribe');
+    //proceed to the  course 
+    Route::get('/course/{course_id}/proceed', [CourseController::class, 'proceed'])->name('course.proceed'); 
+
 
 //route to instructor_approval page for admin from the approveInstructore controller index 
 Route::get('/CategorieCourse',[LessonController::class, 'fetchCourseItem'])->name('course.instructor'); 
