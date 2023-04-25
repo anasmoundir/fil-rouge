@@ -6,6 +6,13 @@ use App\Models\Course;
 use App\Models\Categorie;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\Instructor;
+use App\Models\User;
+use App\Models\Lesson;
+use App\Models\Student;
+use App\Models\Role;
+use Illuminate\Support\Facades\DB;
+use RealRashid\SweetAlert\Facades\Alert;
 
 
 class CourseController extends Controller
@@ -82,6 +89,20 @@ class CourseController extends Controller
         return view('studentlab', compact('category', 'courses'));
     }
 
+    public function enroll($course_id)
+{
+    $student_id = Role::where('name', 'student')->first()->id;
+    $student = Student::where('user_id', auth()->user()->id)->first();
+    $course = Course::findOrFail($course_id);
+    
+    if ($course->students->contains($student_id)) {
+        Alert::error('course already enrolled', 'Error');
+        return redirect()->back()->with('error', 'You are already enrolled in this course.');
+    }
+    $course->students()->attach($student_id);
+    Alert::success('course enrolled', 'Success Course Added succefully');
+    return redirect()->back()->with('success', 'You have been enrolled in the course.');
+}
     /**
      * Display the specified resource.
      */
