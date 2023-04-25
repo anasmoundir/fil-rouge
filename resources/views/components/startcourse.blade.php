@@ -34,6 +34,11 @@
             <div class="w-full md:w-3/4 px-4 py-6">
 
                 <div class="bg-gray-100 p-4">
+                    <video class="w-full" controls>
+                        <source src="http://127.0.0.1:8000/storage/lesson1.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <h1>here </h1>
                     @if ($currentLesson->lessonResources->count() > 0)
                         @foreach ($currentLesson->lessonResources as $lessonResource)
                             @foreach ($lessonResource->media as $media)
@@ -42,6 +47,7 @@
                                         <source src="{{ $media->getUrl() }}" type="{{ $media->mime_type }}">
                                         Your browser does not support the video tag.
                                     </video>
+                             
                                 @elseif ($media->mime_type == 'application/pdf')
                                     <iframe src="{{ $media->getUrl() }}" frameborder="0"
                                         class="w-full h-screen"></iframe>
