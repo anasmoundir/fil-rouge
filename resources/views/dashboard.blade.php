@@ -69,12 +69,8 @@
                             <span
                                 class="inline-block px-2 py-1 ml-auto text-xs font-semibold leading-5 text-gray-600 rounded-full">+</span>
                         </a>
-                        <ul id="coursesDropdown"
-                            class="absolute top-full left-0 mt-1 ml-6 w-1/2 bg-white rounded-lg shadow-md">
-                            <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Mathematics</a></li>
-                            <li><a href="#" class="block py-1 px-2 hover:bg-gray-100">Science</a></li>
-                            <li><a href="#" class="block py-1 px-2 hover:bg-gray-100">History</a></li>
-                        </ul>
+                
+    
                     </li>
                 </ul>
         </aside>
