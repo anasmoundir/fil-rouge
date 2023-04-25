@@ -11,11 +11,16 @@ class startcourse extends Component
     /**
      * Create a new component instance.
      */
-    public $course,$display,$lessons;
-    public function __construct($course,$display,$lessons)
+    public $course;
+    public $lessons;
+    public $currentLesson;
+    public $display;
+    
+    public function __construct($course, $lessons, $currentLesson, $display)
     {
-        $this->lessons = $lessons;
         $this->course = $course;
+        $this->lessons = $lessons;
+        $this->currentLesson = $currentLesson;
         $this->display = $display;
     }
     /**

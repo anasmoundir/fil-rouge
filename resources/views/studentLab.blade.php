@@ -19,6 +19,6 @@
     @elseif ($display == 'courses')
         <x-courses-by-categorie :courses="$courses"> </x-courses-by-categorie>
     @elseif ($display == 'lessons')
-        <x-startcourse :course="$course" :lessons="$lessons" :display="$display"> </x-startcourse>
+        <x-startcourse :course="$course" :lessons="$lessons"   :currentLesson="$currentLesson" :display="$display"></x-startcourse>
     @endif
 </x-app-layout>
