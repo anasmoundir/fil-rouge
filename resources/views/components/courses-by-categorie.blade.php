@@ -31,14 +31,9 @@
                 <nav>
                     <ul class="flex">
                         <li class="mr-4">
-                            <a href="#" class="text-gray-600 hover:text-black">Overview</a>
-                        </li>
-                        <li class="mr-4">
                             <a href="#" class="text-gray-600 hover:text-black">Lessons</a>
                         </li>
-                        <li>
-                            <a href="#" class="text-gray-600 hover:text-black">Instructor</a>
-                        </li>
+
                     </ul>
                 </nav>
             </div>
