@@ -99,8 +99,8 @@ class CourseController extends Controller
     
     if ($course->students->contains($student_id)) {
         Alert::error('course already enrolled', 'Error');
-        return redirect()->back()->with('error', 'You are already enrolled in this course.');
-    }
+        return $this->myCourses();
+        }
     $course->students()->attach($student_id);
     $display = 'courses';
     Alert::success('course enrolled', 'Success Course Added succefully');
@@ -120,10 +120,9 @@ public function myCourses()
 //unsubscribe from a course
 public function unsubscribe($course_id)
 {
-    $student = $this;
-    dd($student);
+    $student_id = Role::where('name', 'student')->first()->id;
+    $student = Student::where('user_id', auth()->user()->id)->first();
     $course = Course::findOrFail($course_id);
-    
     if (!$course->students->contains($student)) {
         Alert::error('course not enrolled', 'Error');
         return redirect()->back()->with('error', 'You are not enrolled in this course.');

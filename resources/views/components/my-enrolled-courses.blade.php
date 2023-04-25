@@ -31,7 +31,6 @@
                         <form method="POST" action="{{ route('course.unsubscribe', $course) }}" class="inline">
                             @csrf
                             @method('POST')
-                            <!-- Change to POST method -->
                             <button type="submit"
                                 class="block mt-4 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Unsubscribe</button>
                         </form>
