@@ -40,4 +40,5 @@ BrainRose est un outil puissant et polyvalent pour les établissements d'enseign
 
 
 
-![youcode_logo_dark](https://user-images.githubusercontent.com/24464220/234575564-eebe8fa3-e06c-4719-90c4-7ada110a413d.png)![BrainRose copy](https://user-images.githubusercontent.com/24464220/234575720-03cfc02c-b733-4944-8d8d-8f45e849079f.png)
+![youcode_logo_dark](https://user-images.githubusercontent.com/24464220/234575564-eebe8fa3-e06c-4719-90c4-7ada110a413d.png)![BrainRose copy](https://user-images.githubusercontent.com/24464220/234576270-5119fa03-bd7b-4976-8425-7247f7350a49.png)
+
