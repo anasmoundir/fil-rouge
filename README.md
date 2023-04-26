@@ -1,7 +1,6 @@
 
 
 
-![youcode_logo_dark](https://user-images.githubusercontent.com/24464220/234575564-eebe8fa3-e06c-4719-90c4-7ada110a413d.png)![BrainRose copy](https://user-images.githubusercontent.com/24464220/234575720-03cfc02c-b733-4944-8d8d-8f45e849079f.png)
 
 BrainRose est un système de gestion de l'apprentissage (LMS) développé avec le framework Laravel et le moteur de template Blade. Il permet aux établissements d'enseignement et aux entreprises de créer des cours en ligne, de gérer des ressources pédagogiques et d'offrir des formations en ligne à leurs apprenants. BrainRose est disponible en trois versions : Admin, Instructeur et Étudiant.
 
@@ -20,3 +19,25 @@ BrainRose utilise la méthodologie Scrum pour la planification du projet et la g
 Dans la version Admin de BrainRose, les administrateurs peuvent gérer les utilisateurs, les cours et les ressources pédagogiques. Dans la version Instructeur, les instructeurs peuvent créer et gérer des cours, ainsi que suivre les progrès des apprenants. Dans la version Étudiant, les apprenants peuvent accéder aux cours, suivre des leçons et télécharger des ressources pédagogiques.
 
 BrainRose est un outil puissant et polyvalent pour les établissements d'enseignement et les entreprises qui cherchent à offrir des formations en ligne de haute qualité à leurs apprenants. Avec son architecture flexible et son interface utilisateur conviviale, BrainRose est un choix judicieux pour toute organisation cherchant à développer son offre de formation en ligne.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+![youcode_logo_dark](https://user-images.githubusercontent.com/24464220/234575564-eebe8fa3-e06c-4719-90c4-7ada110a413d.png)![BrainRose copy](https://user-images.githubusercontent.com/24464220/234575720-03cfc02c-b733-4944-8d8d-8f45e849079f.png)
