@@ -40,11 +40,11 @@ class InstructorAuthController extends Controller
                 $instructor = Instructor::where('user_id', $user->id)->first();
                 if($instructor->approved){
                     if (Auth::guard('instructor')) {
-                        return redirect()->intended('instructor');
+                        return redirect()->intended('instructorlab');
                     }
                  }
                  else{
-                    return view('application_pending');
+                    return view('instructorlab');
                 }
             }
             else if(($user->roles()->first()->name) == 'pending_instructor')
