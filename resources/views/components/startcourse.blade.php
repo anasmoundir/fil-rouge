@@ -34,20 +34,19 @@
             <div class="w-full md:w-3/4 px-4 py-6">
 
                 <div class="bg-gray-100 p-4">
-                    <video class="w-full" controls>
+                    {{-- <video class="w-full" controls>
                         <source src="http://127.0.0.1:8000/storage/lesson1.mp4" type="video/mp4">
                         Your browser does not support the video tag.
-                    </video>
+                    </video> --}}
                     <h1>here </h1>
                     @if ($currentLesson->lessonResources->count() > 0)
                         @foreach ($currentLesson->lessonResources as $lessonResource)
                             @foreach ($lessonResource->media as $media)
                                 @if ($media->mime_type == 'video/mp4' || $media->mime_type == 'video/quicktime')
-                                    <video class="w-full" controls>
-                                        <source src="{{ $media->getUrl() }}" type="{{ $media->mime_type }}">
+                                    <video id="lesson-video" class="w-full" controls>
+                                        <source src="{{ $lessons[0]->firstMediaUrl }}" type="video/mp4">
                                         Your browser does not support the video tag.
                                     </video>
-                             
                                 @elseif ($media->mime_type == 'application/pdf')
                                     <iframe src="{{ $media->getUrl() }}" frameborder="0"
                                         class="w-full h-screen"></iframe>
@@ -66,3 +65,15 @@
     </div>
 
 </x-app-layout>
+<script>
+    const lessonLinks = document.querySelectorAll('.lesson-link');
+    const videoEl = document.querySelector('#lesson-video');
+
+    lessonLinks.forEach(link => {
+        link.addEventListener('click', event => {
+            event.preventDefault();
+            const mediaUrl = link.dataset.mediaUrl;
+            videoEl.src = mediaUrl;
+        });
+    });
+</script>

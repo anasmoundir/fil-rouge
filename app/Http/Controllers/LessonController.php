@@ -23,6 +23,11 @@ class LessonController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function __construct()
+{
+    $this->middleware('auth');
+}
+
     public function fetchCourseItem()
     {
         $user = auth()->user();
@@ -126,7 +131,7 @@ class LessonController extends Controller
         'video_url' => 'nullable|url',
         'lesson_resources.*.name' => 'required',
         'lesson_resources.*.description' => 'required',
-        'lesson_resources.*.file' => 'required|file|max:10240',
+        'lesson_resources.*.file' => 'required|file',
     ]);
 
     $course = Course::findOrFail($validatedData['course_id']);

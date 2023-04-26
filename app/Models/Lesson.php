@@ -40,5 +40,12 @@ class Lesson extends Model
     {
         return 'slug';
     }
+    public function getFirstMediaUrlAttribute()
+{
+    if ($this->lessonResources->count() > 0) {
+        return $this->lessonResources[0]->media->getUrl();
+    }
+    return null;
+}
 }
 
