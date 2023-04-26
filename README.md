@@ -1,66 +1,24 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+![youcode_logo_dark](https://user-images.githubusercontent.com/24464220/234575564-eebe8fa3-e06c-4719-90c4-7ada110a413d.png)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+BrainRose est un système de gestion de l'apprentissage (LMS) développé avec le framework Laravel et le moteur de template Blade. Il permet aux établissements d'enseignement et aux entreprises de créer des cours en ligne, de gérer des ressources pédagogiques et d'offrir des formations en ligne à leurs apprenants. BrainRose est disponible en trois versions : Admin, Instructeur et Étudiant.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Pour installer et exécuter BrainRose, vous devez :
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Installer PHP version 7.4 ou supérieure
+Installer Composer
+Installer MySQL version 5.7 ou supérieure
+Télécharger ou cloner le dépôt Github de BrainRose
+Exécuter la commande "composer install" pour installer toutes les dépendances
+Renommer le fichier ".env.example" en ".env" et configurer la base de données
+Exécuter les migrations en exécutant la commande "php artisan migrate"
+Exécuter la commande "php artisan serve" pour lancer l'application
+BrainRose utilise la méthodologie Scrum pour la planification du projet et la gestion des tâches. Le projet est divisé en sprints de deux semaines, avec des objectifs clairs et mesurables pour chaque sprint. L'équipe de développement travaille en étroite collaboration avec les parties prenantes pour assurer que le projet répond aux besoins des utilisateurs finaux.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Dans la version Admin de BrainRose, les administrateurs peuvent gérer les utilisateurs, les cours et les ressources pédagogiques. Dans la version Instructeur, les instructeurs peuvent créer et gérer des cours, ainsi que suivre les progrès des apprenants. Dans la version Étudiant, les apprenants peuvent accéder aux cours, suivre des leçons et télécharger des ressources pédagogiques.
 
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+BrainRose est un outil puissant et polyvalent pour les établissements d'enseignement et les entreprises qui cherchent à offrir des formations en ligne de haute qualité à leurs apprenants. Avec son architecture flexible et son interface utilisateur conviviale, BrainRose est un choix judicieux pour toute organisation cherchant à développer son offre de formation en ligne.
