@@ -35,19 +35,19 @@ use App\Http\Controllers\LessonResourceController;
 
 
 Route::get('/student/login', [StudentAuthController::class, 'showLoginForm'])->name('student.showLoginForm');
-Route::post('/student/login', [StudentAuthController::class, 'login'])->name('student.login');
+Route::post('/student/login', [StudentAuthController::class, 'login'])->name('student.login')->middleware('logout');
 Route::get('/student/register', [StudentAuthController::class, 'showRegistrationForm'])->name('student.showRegistrationForm');
 Route::post('/student/register', [StudentAuthController::class, 'register'])->name('student.register');
 Route::get('/student', [StudentAuthController::class, 'showStudentPage'])->name('student');
 
 
 Route::get('/instructor/login', [InstructorAuthController::class, 'showLoginForm'])->name('instructor.showLoginForm');
-Route::post('/instructor/login', [InstructorAuthController::class, 'login'])->name('instructor.login');
+Route::post('/instructor/login', [InstructorAuthController::class, 'login'])->name('instructor.login')->middleware('logout');
 Route::get('/instructor/register', [InstructorAuthController::class, 'showRegistrationForm'])->name('instructor.showRegistrationForm');
 Route::post('/instructor/register', [InstructorAuthController::class, 'register'])->name('instructor.register');
 
 Route::get('/admin/login', [AdminAuthController::class, 'showLoginForm'])->name('admin.showLoginForm');
-Route::post('/admin/login', [AdminAuthController::class, 'login'])->name('admin.login');
+Route::post('/admin/login', [AdminAuthController::class, 'login'])->name('admin.login')->middleware('logout');
 Route::get('/admin/register', [AdminAuthController::class, 'showRegistrationForm'])-> name('admin.showRegistrationForm');
 Route::post('/admin/register', [AdminAuthController::class, 'register'])->name('admin.register');
 
@@ -112,7 +112,7 @@ Route::delete('/delete_profile/{id}', [InstructorAuthController::class, 'deleteI
     Route::get('/users', [DashboardController::class, 'users'])->name('users');
     Route::get('/settings', [DashboardController::class, 'settings'])->name('settings');
     Route::resource('courses', CourseController::class);
-  
+    Route :: get ( '/dashboard' , [ DashboardController :: class , 'index' ]) -> name ( 'dashboard' )->middleware(['auth', 'verified']);
     Route::resource('categories', CategoryController::class);
     Route::get('/admin', function () { 
     return view('admin.index'); })->name('admin');    
@@ -122,5 +122,4 @@ Route::delete('/delete_profile/{id}', [InstructorAuthController::class, 'deleteI
 // })->name('home');
 
 
-Route :: get ( '/dashboard' , [ DashboardController :: class , 'index' ]) -> name ( 'dashboard' )->middleware(['auth', 'verified']);
 require __DIR__.'/auth.php';
