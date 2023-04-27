@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 
 class AdminAuthController extends Controller
 {
-    public function showLoginForm(): View
+    public function showLoginForm()
     {
         return view('auth.admin.login');
     }
@@ -46,14 +46,9 @@ class AdminAuthController extends Controller
         if (auth()->attempt($credentials)) {
             $user = User::where('email', $credentials['email'])->first();
             if ($user->role == 'admin') {
-                return redirect()->intended(RouteServiceProvider::HOME);
-            } else if ($user->role == 'instructor') {
                 return redirect()->route('dashboard');
             }
-            else 
-            {
-                return redirect()->route('student');
-            }
+           
         }
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',

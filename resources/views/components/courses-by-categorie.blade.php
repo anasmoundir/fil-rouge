@@ -53,5 +53,5 @@
 </div>
 
 <div class="container mx-auto my-8">
-    {{ $courses->links() }}
+    {{-- {{ $courses->links() }} --}}
 </div>

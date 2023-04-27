@@ -59,7 +59,7 @@ class InstructorAuthController extends Controller
             return redirect()->back()->withErrors(['email' => 'Invalid email or password']);
         }    
         }
-        catch(\Exception $e){
+        catch(Exception $e){
             return redirect()->back()->withErrors(['email' => 'Invalid email or password']);
         }
       }
