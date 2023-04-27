@@ -13,7 +13,6 @@
                 <div class="p-4">
                     <h3 class="font-bold text-xl mb-2">{{ $course->name }}</h3>
                     <p class="text-gray-700 text-base mb-2">{{ $course->description }}</p>
-                    {{-- <a href="{{ route('courses.show', ['slug' => $course->slug]) }}" class="inline-block bg-blue-500 text-white px-3 py-1 rounded-full hover:bg-blue-600 transition duration-300">Start Learning</a> --}}
                 </div>
             </div>
         @endforeach
