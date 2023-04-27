@@ -58,12 +58,13 @@
             </li>
             
               <li class="mx-4 my-6 md:my-0">
+
                   @if (Route::has('register'))
                       <a href="{{ route('register') }}"
                           class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"><span>You don't Have an account yet?</span> </a> 
                 @endif
               </li>
-              @endguest
+            @endguest
                 @auth('instructor')
                 <li class="mx-4 my-6 md:my-0">
                     <x-nav-link :href="route('instructorlab')" :active="request()->routeIs('instructorlab')">
