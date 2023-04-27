@@ -6,11 +6,11 @@
         </div>
     @endif
 
-    <div class="flex flex-col">
-        <div class="overflow-x-auto">
-            <div class="sm:-mx-6 lg:-mx-8">
-                <div
-                    class="inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg">
+   
+<div class="flex flex-col">
+    <div class="overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
+        <div class="inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg">
+            <table class="min-w-full">
                     <table class="container min-w-full divide-y divide-gray-200">
                         <thead class="bg-gray-50">
                             <tr>
@@ -277,11 +277,11 @@
                         </tbody>
 
                     </table>
-                </div>
-                {{-- {{ $instructors->links() }} --}}
             </div>
+            {{-- {{ $instructors->links() }} --}}
         </div>
     </div>
+</div>
 </div>
 
 

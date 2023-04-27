@@ -63,15 +63,14 @@ Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 
 //lesson Ressource store function 
 // Route::post('/lesson/{lesson}/resource', [StudentResourceController::class, 'store'])->name('lesson.resource.store');
-
+Route::middleware('auth','instructor')->group(function()
+{
 Route::post('/lesson/AddNewLesson',[LessonController::class, 'store'])->name('lessons.store');
 
-   //the instructor routes for the instructor instructorlab blade 
 Route::get('/instructorlab', [LessonController::class, 'index'])->name('instructorlab');
-//define lesson store route 
 
 Route::post('/instructurAddCourse', [LessonController::class, 'AddCourseIfNotexist'])->name('AddCourseIfNotexist');
-
+});
 
 Route::middleware('auth','student')->group(function()
 {

@@ -12,9 +12,8 @@ class InstructorMiddleware
     {
         $user = Auth::user();
         $instructor = Instructor::where('user_id', $user->id)->first();
-
         if (!$instructor || !$instructor->id) {
-            return redirect()->route('welcome')->with('error', 'You are not authorized to access this page.');
+            return redirect()->route('instructor.showLoginForm')->with('error', 'You are not authorized to access this page.');
         }
 
         return $next($request);

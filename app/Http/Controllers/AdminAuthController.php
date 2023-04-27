@@ -48,13 +48,7 @@ class AdminAuthController extends Controller
             if ($user->role == 'admin') {
                 return redirect()->route('dashboard');
             }
-            //  else if ($user->role == 'instructor') {
-            //     return redirect()->route('dashboard');
-            // }
-            // else 
-            // {
-            //     return redirect()->route('student');
-            // }
+           
         }
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',

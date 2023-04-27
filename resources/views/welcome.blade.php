@@ -871,7 +871,8 @@
                 <p class="text-black text-4xl mb-12">Discover new skills and advance your career with our online
                     courses.
                 </p>
-                <a href="#"
+
+                <a href="{{ route('student.register') }}"
                     class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full">Start Learning</a>
             </div>
         </div>
@@ -949,7 +950,20 @@
             </div>
         </footer>
         <script>
-            $(document).ready(function() {
-                $(".text-center").addClass("animate__animated animate__fadeInUp");
+            function Menu(e) {
+                let list = document.querySelector('ul');
+                e.name === 'menu' ? (e.name = "close", list.classList.add('top-[80px]'), list.classList.add('opacity-100')) : (e
+                    .name = "menu", list.classList.remove('top-[120px]'), list.classList.remove('opacity-100'))
+            }
+            const navbar = document.querySelector('nav');
+            let prevScrollPos = window.pageYOffset;
+            window.addEventListener('scroll', function() {
+                const currentScrollPos = window.pageYOffset;
+                if (prevScrollPos > currentScrollPos) {
+                    navbar.classList.remove('hidden');
+                } else {
+                    navbar.classList.add('hidden');
+                }
+                prevScrollPos = currentScrollPos;
             });
         </script>
