@@ -46,10 +46,10 @@ Route::post('/instructor/login', [InstructorAuthController::class, 'login'])->na
 Route::get('/instructor/register', [InstructorAuthController::class, 'showRegistrationForm'])->name('instructor.showRegistrationForm');
 Route::post('/instructor/register', [InstructorAuthController::class, 'register'])->name('instructor.register');
 
-Route::get('/admin/login', [AdminAuthController::class, 'showLoginForm']);
-Route::post('/admin/login', [AdminAuthController::class, 'login']);
-Route::get('/admin/register', [AdminAuthController::class, 'showRegistrationForm']);
-Route::post('/admin/register', [AdminAuthController::class, 'register']);
+Route::get('/admin/login', [AdminAuthController::class, 'showLoginForm'])->name('admin.showLoginForm');
+Route::post('/admin/login', [AdminAuthController::class, 'login'])->name('admin.login');
+Route::get('/admin/register', [AdminAuthController::class, 'showRegistrationForm'])-> name('admin.showRegistrationForm');
+Route::post('/admin/register', [AdminAuthController::class, 'register'])->name('admin.register');
 
 
 // fetch course item function from lesonRessourceControlle
@@ -73,16 +73,19 @@ Route::get('/instructorlab', [LessonController::class, 'index'])->name('instruct
 Route::post('/instructurAddCourse', [LessonController::class, 'AddCourseIfNotexist'])->name('AddCourseIfNotexist');
 
 
-
-Route::middleware('auth')->group(function () {
-    //let them for student middleware after
+Route::middleware('auth','student')->group(function()
+{
     Route::post('/course/{course_id}/enroll', [CourseController::class, 'enroll'])->name('course.enroll');
     Route::get('/courses/{slug}', [CourseController::class, 'coursesByCategory'])->name('courses.by_category');
     Route::get('/my-courses', [CourseController::class, 'myCourses'])->name('enrolled.courses');
     Route::post('/course/{course_id}/unsubscribe', [CourseController::class, 'unsubscribe'])->name('course.unsubscribe');
     Route::get('/course/{course_id}/proceed', [CourseController::class, 'proceed'])->name('course.proceed'); 
+});
 
 
+
+Route::middleware('auth','admin')->group(function () {
+ 
 //route to instructor_approval page for admin from the approveInstructore controller index 
 Route::get('/CategorieCourse',[LessonController::class, 'fetchCourseItem'])->name('course.instructor'); 
 Route::get('/lesson', [LessonController::class, 'index'])->name('lesson.index');
@@ -91,8 +94,6 @@ Route::get('/lesson/{lesson}/resource', [LessonController::class, 'show'])->name
 Route::delete('/lesson/{lesson}/delete', [LessonController::class, 'deleteLessonResource'])->name('lesson-resource.delete');
 Route::delete('/lesson/{lesson}/deleteCourse', [LessonController::class, 'deleteCourse'])->name('lesson.deleteCourse');
 Route::delete('/lesson/{lesson}/deleteLesson', [LessonController::class, 'deleteLesson'])->name('lesson.deleteLesson');
-
-
 
 Route::get('/instructor_approval', [DashboardUser::class, 'index'])->name('instructor_approval');
 
@@ -117,6 +118,9 @@ Route::delete('/delete_profile/{id}', [InstructorAuthController::class, 'deleteI
     Route::get('/admin', function () { 
     return view('admin.index'); })->name('admin');    
    });
+//    Route::get('/', function () {
+//     return view('welcome');
+// })->name('home');
 
 
 Route :: get ( '/dashboard' , [ DashboardController :: class , 'index' ]) -> name ( 'dashboard' )->middleware(['auth', 'verified']);

@@ -1,19 +1,19 @@
 <x-app-layout>
     @if ($errors->any())
-  <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-    <ul>
-      @foreach ($errors->all() as $error)
-        <li>{{ $error }}</li>
-      @endforeach
-    </ul>
-  </div>
-@endif
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
-@if (session('success'))
-  <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
-    {{ session('success') }}
-  </div>
-@endif
+    @if (session('success'))
+        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+            {{ session('success') }}
+        </div>
+    @endif
     <x-navbar></x-navbar>
     <div class="flex flex-col md:flex-row">
 
@@ -40,10 +40,10 @@
                         </a>
                     </li>
                     <li class="relative">
-                        <a id="usersLink" href="#"
+                        <a id="instructorLink" href="#"
                             class="flex items-center p-2 space-x-2 rounded-md hover:bg-gray-100">
                             <x-heroicon-o-user-group class="w-5 h-5" />
-                            <span>Users</span>
+                            <span>approve instructor</span>
                             <span
                                 class="inline-block px-2 py-1 ml-auto text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full">10</span>
                         </a>
@@ -69,8 +69,8 @@
                             <span
                                 class="inline-block px-2 py-1 ml-auto text-xs font-semibold leading-5 text-gray-600 rounded-full">+</span>
                         </a>
-                
-    
+
+
                     </li>
                 </ul>
         </aside>
@@ -81,13 +81,16 @@
                 <x-categorieitem :categories="$categories" />
             </div>
 
-            <div id="lessons-container" class="container">
-                {{-- <x-lessonitem :lessons="$lessons" :courses="$courses" /> --}}
+            <div id="lessons-container" class="container hidden">
+                <x-lessonitem :lessons="$lessons" :courses="$courses" />
             </div>
 
-            <div id="courses-container" class="container">
+            <div id="courses-container" class="container hidden">
                 <x-courseitem :categories="$categories" :courses="$courses" :instructors="$instructors" />
             </div>
+        </div>
+        <div id="istructor-container" class="container hidden">
+            <x-instructors-item :instructors="$instructors" class="w-full"></x-instructors-item>
         </div>
     </div>
 
@@ -98,27 +101,43 @@
 <script>
     const categoriesLink = document.getElementById('categoriesLink');
     const lessonsLink = document.getElementById('lessonsLink');
-    const coursesLink = document.getElementById('courses-container');
-
+    const coursesLink = document.getElementById('coursesLink');
+    const instructorLink = document.getElementById('instructorLink');
     const categoriesContainer = document.getElementById('categories-container');
     const lessonsContainer = document.getElementById('lessons-container');
     const coursesContainer = document.getElementById('courses-container');
+    const instructorContainer = document.getElementById('istructor-container');
 
-    categoriesLink.addEventListener('click', () => {
-        categoriesContainer.style.display = 'block';
-        lessonsContainer.style.display = 'none';
-        coursesContainer.style.display = 'none';
-    });
+
 
     lessonsLink.addEventListener('click', () => {
-        categoriesContainer.style.display = 'none';
-        lessonsContainer.style.display = 'block';
-        coursesContainer.style.display = 'none';
+        categoriesContainer.classList.add('hidden')
+        lessonsContainer.classList.remove('hidden')
+        coursesContainer.classList.add('hidden')
+        instructorContainer.classList.add('hidden')
     });
 
     coursesLink.addEventListener('click', () => {
-        categoriesContainer.style.display = 'none';
-        lessonsContainer.style.display = 'none';
-        coursesContainer.style.display = 'block';
+
+        categoriesContainer.classList.add('hidden')
+        coursesContainer.classList.remove('hidden')
+        lessonsContainer.classList.add('hidden')
+        instructorContainer.classList.add('hidden')
     });
+
+    categoriesLink.addEventListener('click', () => {
+
+        categoriesContainer.classList.remove('hidden')
+        coursesContainer.classList.add('hidden')
+        lessonsContainer.classList.add('hidden')
+        instructorContainer.classList.add('hidden')
+    });
+    // instructorLink.addEventListener('click', () = {
+
+    //     categoriesContainer.classList.add('hidden')
+    //     coursesContainer.classList.add('hidden')
+    //     lessonsContainer.classList.add('hidden')
+    //     instructorContainer.classList.remove('hidden')
+
+    // })
 </script>

@@ -278,7 +278,7 @@
 
                     </table>
                 </div>
-                {{ $instructors->links() }}
+                {{-- {{ $instructors->links() }} --}}
             </div>
         </div>
     </div>

@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Redirect;
 use App\Models\User;
 use App\Models\Student;
 
+use App\Models\Categorie;
+
 class StudentAuthController extends Controller
 {
       public function showLoginForm()
@@ -61,12 +63,14 @@ class StudentAuthController extends Controller
         'enrollement_date' => $validatedData['enrollement_date'],
         'user_id' => $user->id,
         ]);
-
-        auth()->login($user);
-        return redirect()->route('student');
+      
+        $categories = Categorie::all();
+        return view('welcome', compact('categories'));
         }
+        
         public function showStudentPage()
         {
-            return view('student');
+            $categories = Categorie::all();
+        return view('welcome', compact('categories'));
          }
 }
